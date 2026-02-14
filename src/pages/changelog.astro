@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Changelog - Makonome">
+  <main>
+    <header>
+      <a href="/" class="back-link">← Back to home</a>
+      <h1>Changelog</h1>
+      <p class="subtitle">All notable changes to Makonome</p>
+    </header>
+
+    <section class="changelog">
+      <article class="version unreleased">
+        <h2>Unreleased</h2>
+        <div class="changes">
+          <h3>Added</h3>
+          <ul>
+            <li>Time-based tempo changer mode with live countdown display</li>
+            <li>Grayed-out controls in sheets when features are disabled</li>
+          </ul>
+          <h3>Fixed</h3>
+          <ul>
+            <li>Tempo changer time mode not triggering correctly</li>
+            <li>Crash when tapping beat indicators during time-based tempo changes</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="version">
+        <h2>1.0.0-beta <span class="date">June 2025</span></h2>
+        <p class="version-note">Initial beta release.</p>
+        <div class="changes">
+          <h3>Added</h3>
+          <ul>
+            <li>Core metronome with sample-accurate timing (AVAudioEngine)</li>
+            <li>Adjustable BPM (40-400) with tap tempo</li>
+            <li>Time signatures from 1 to 16 beats per bar</li>
+            <li>Subdivisions: quarter, eighth, sixteenth, triplets</li>
+            <li>Per-beat accent and mute controls</li>
+            <li>Multiple click sounds: click, clave, woodblock, cowbell</li>
+            <li>Pitch adjustment for click sounds</li>
+            <li>Gap Trainer for internalized timing practice</li>
+            <li>Tempo Changer for gradual speed increases</li>
+            <li>Practice session tracking with history</li>
+            <li>Preset save/load system</li>
+            <li>Haptic feedback (experimental)</li>
+            <li>Tempo detection via microphone (experimental)</li>
+            <li>Dark theme support</li>
+            <li>Background audio playback</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Makonome. Built with ♥ for musicians.</p>
+    </footer>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  header {
+    padding: 2rem 0 3rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .back-link:hover {
+    color: var(--color-accent);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    color: var(--color-text-muted);
+  }
+
+  .changelog {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .version {
+    padding: 2rem;
+    background: var(--color-surface);
+    border-radius: 16px;
+    border: 1px solid #333;
+  }
+
+  .version.unreleased {
+    border-color: var(--color-accent-dim);
+    border-style: dashed;
+  }
+
+  .version h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .date {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: var(--color-text-muted);
+  }
+
+  .version-note {
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .changes h3 {
+    font-size: 1rem;
+    color: var(--color-accent);
+    margin: 1.5rem 0 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .changes h3:first-child {
+    margin-top: 0;
+  }
+
+  .changes ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .changes li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  .changes li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+  }
+
+  footer {
+    border-top: 1px solid #333;
+    margin-top: 4rem;
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--color-text-muted);
+  }
+</style>

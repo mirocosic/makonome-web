@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Manual - Makonome">
+  <main>
+    <header>
+      <a href="/" class="back-link">← Back to home</a>
+      <h1>Manual</h1>
+      <p class="subtitle">Learn how to get the most out of Makonome</p>
+    </header>
+
+    <nav class="toc">
+      <h2>Contents</h2>
+      <ul>
+        <li><a href="#basics">Basic Controls</a></li>
+        <li><a href="#time-signatures">Time Signatures & Subdivisions</a></li>
+        <li><a href="#beat-accents">Beat Accents & Muting</a></li>
+        <li><a href="#gap-trainer">Gap Trainer</a></li>
+        <li><a href="#tempo-changer">Tempo Changer</a></li>
+        <li><a href="#sounds">Sounds & Settings</a></li>
+        <li><a href="#practice">Practice Tracking</a></li>
+      </ul>
+    </nav>
+
+    <section class="content">
+      <article id="basics">
+        <h2>Basic Controls</h2>
+        <p>The main screen shows a circular BPM dial. Drag around the dial to adjust tempo, or tap the center to type a specific BPM value.</p>
+        <ul>
+          <li><strong>BPM Range:</strong> 40 to 400 BPM</li>
+          <li><strong>Tap Tempo:</strong> Tap the hand icon repeatedly to set tempo by feel</li>
+          <li><strong>Play/Stop:</strong> The large green button starts and stops the metronome</li>
+        </ul>
+      </article>
+
+      <article id="time-signatures">
+        <h2>Time Signatures & Subdivisions</h2>
+        <p>Tap the music note icon to configure your time signature and subdivision.</p>
+        <ul>
+          <li><strong>Beats per bar:</strong> 1 to 16 beats</li>
+          <li><strong>Subdivisions:</strong> Quarter notes, eighth notes, sixteenth notes, or triplets</li>
+        </ul>
+      </article>
+
+      <article id="beat-accents">
+        <h2>Beat Accents & Muting</h2>
+        <p>Tap any beat indicator at the top to cycle through states:</p>
+        <ul>
+          <li><strong>Normal:</strong> Regular click sound</li>
+          <li><strong>Accented:</strong> Louder, higher-pitched click (filled circle)</li>
+          <li><strong>Muted:</strong> Silent beat (dashed circle)</li>
+        </ul>
+        <p>Use this to create custom accent patterns or practice specific rhythmic figures.</p>
+      </article>
+
+      <article id="gap-trainer">
+        <h2>Gap Trainer</h2>
+        <p>The Gap Trainer helps you develop your internal sense of time by periodically muting the metronome.</p>
+        <p>Access it from the <strong>⋯</strong> menu and configure:</p>
+        <ul>
+          <li><strong>Normal bars:</strong> How many bars the metronome plays</li>
+          <li><strong>Muted bars:</strong> How many bars of silence follow</li>
+        </ul>
+        <p>The pattern repeats: play → silence → play → silence. Try to keep steady time during the silent sections!</p>
+      </article>
+
+      <article id="tempo-changer">
+        <h2>Tempo Changer</h2>
+        <p>Gradually increase tempo over time to push your limits progressively.</p>
+        <p>Access it from the <strong>⋯</strong> menu and configure:</p>
+        <ul>
+          <li><strong>BPM Increment:</strong> How much to increase (1-10 BPM)</li>
+          <li><strong>Interval Mode:</strong> Increase every N bars, or every N seconds</li>
+          <li><strong>Target BPM:</strong> Optionally set a maximum tempo to stop at</li>
+        </ul>
+        <p>Great for building speed on exercises or working up to a target tempo.</p>
+      </article>
+
+      <article id="sounds">
+        <h2>Sounds & Settings</h2>
+        <p>Customize your click sound in Settings:</p>
+        <ul>
+          <li><strong>Click sounds:</strong> Click, Clave, Woodblock, Cowbell</li>
+          <li><strong>Pitch adjustment:</strong> Raise or lower the click pitch</li>
+          <li><strong>Volume:</strong> Tap the speaker icon on the main screen</li>
+          <li><strong>Haptic feedback:</strong> Feel the beat (experimental feature)</li>
+        </ul>
+      </article>
+
+      <article id="practice">
+        <h2>Practice Tracking</h2>
+        <p>Makonome automatically logs your practice sessions. View your history in the Practice tab to see:</p>
+        <ul>
+          <li>Total practice time</li>
+          <li>Session dates and durations</li>
+          <li>Tempo and settings used</li>
+        </ul>
+      </article>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Makonome. Built with ♥ for musicians.</p>
+    </footer>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  header {
+    padding: 2rem 0 3rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .back-link:hover {
+    color: var(--color-accent);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    color: var(--color-text-muted);
+  }
+
+  .toc {
+    background: var(--color-surface);
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+    border: 1px solid #333;
+  }
+
+  .toc h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .toc ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+  }
+
+  .toc a {
+    color: var(--color-accent);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  article {
+    scroll-margin-top: 2rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #333;
+  }
+
+  article p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  article ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  article li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  article li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+  }
+
+  article strong {
+    color: var(--color-text);
+  }
+
+  footer {
+    border-top: 1px solid #333;
+    margin-top: 4rem;
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--color-text-muted);
+  }
+</style>

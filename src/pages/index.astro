@@ -60,6 +60,76 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
+    <section class="gallery">
+      <h2>See It in Action</h2>
+      <div class="carousel">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <div class="device-frame-small">
+              <div class="device-notch-small"></div>
+              <img src="/screenshots/metronome-main.png" alt="Metronome main screen" />
+            </div>
+            <p class="slide-caption">Precision BPM Control</p>
+          </div>
+          <div class="carousel-slide">
+            <div class="device-frame-small">
+              <div class="device-notch-small"></div>
+              <img src="/screenshots/screen-2.png" alt="Settings screen" />
+            </div>
+            <p class="slide-caption">Customizable Settings</p>
+          </div>
+          <div class="carousel-slide">
+            <div class="device-frame-small">
+              <div class="device-notch-small"></div>
+              <img src="/screenshots/screen-3.png" alt="Practice tab" />
+            </div>
+            <p class="slide-caption">Practice Tracking</p>
+          </div>
+          <div class="carousel-slide">
+            <div class="device-frame-small">
+              <div class="device-notch-small"></div>
+              <img src="/screenshots/screen-4.png" alt="Practice history" />
+            </div>
+            <p class="slide-caption">Session History</p>
+          </div>
+          <div class="carousel-slide">
+            <div class="device-frame-small">
+              <div class="device-notch-small"></div>
+              <img src="/screenshots/screen-5.png" alt="Tempo Changer" />
+            </div>
+            <p class="slide-caption">Tempo Changer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing">
+      <h2>Simple Pricing</h2>
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <h3>Makonome</h3>
+          <p class="pricing-model">One-time purchase</p>
+        </div>
+        <ul class="pricing-features">
+          <li>All features included</li>
+          <li>All future upgrades included</li>
+          <li>No subscriptions</li>
+          <li>No ads, ever</li>
+        </ul>
+        <div class="trial-badge">
+          <span>14-day free trial</span>
+        </div>
+        <p class="pricing-note">Try everything free for 14 days. Buy once, own forever.</p>
+        <p class="refund-note">Not happy? Get a refund through the App Store.</p>
+      </div>
+    </section>
+
+    <!-- Lightbox modal -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" aria-label="Close">&times;</button>
+      <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+    </div>
+
     <footer>
       <p>&copy; 2025 Makonome. Built with ♥ for musicians.</p>
       <nav>
@@ -194,6 +264,218 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     line-height: 1.6;
   }
 
+  .pricing {
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .pricing h2 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .pricing-card {
+    max-width: 400px;
+    margin: 0 auto;
+    background: var(--color-surface);
+    border-radius: 24px;
+    border: 2px solid var(--color-accent-dim);
+    padding: 2.5rem;
+  }
+
+  .pricing-header h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-model {
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    text-align: left;
+  }
+
+  .pricing-features li {
+    padding: 0.6rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: var(--color-text-muted);
+  }
+
+  .pricing-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+
+  .trial-badge {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    display: inline-block;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .pricing-note {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+
+  .refund-note {
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    margin-top: 0.75rem;
+    opacity: 0.7;
+  }
+
+  .gallery {
+    padding: 4rem 0;
+  }
+
+  .gallery h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .carousel {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem 0 1.5rem;
+  }
+
+  .carousel::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .carousel::-webkit-scrollbar-track {
+    background: var(--color-surface);
+    border-radius: 3px;
+    margin: 0 30%;
+  }
+
+  .carousel::-webkit-scrollbar-thumb {
+    background: var(--color-accent-dim);
+    border-radius: 3px;
+  }
+
+  .carousel::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+  }
+
+  .carousel-track {
+    display: inline-flex;
+    gap: 1.5rem;
+    padding: 0 calc(50% - 100px);
+  }
+
+  .carousel-slide {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    text-align: center;
+  }
+
+  .device-frame-small {
+    position: relative;
+    padding: 8px;
+    background: #1c1c1e;
+    border-radius: 36px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .device-notch-small {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 20px;
+    background: #000;
+    border-radius: 14px;
+    z-index: 10;
+  }
+
+  .device-frame-small img {
+    display: block;
+    width: 180px;
+    height: auto;
+    border-radius: 28px;
+  }
+
+  .slide-caption {
+    margin-top: 1rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .device-frame-small {
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .device-frame-small:hover {
+    transform: scale(1.02);
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+    cursor: pointer;
+  }
+
+  .lightbox.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    line-height: 1;
+  }
+
+  .lightbox-close:hover {
+    opacity: 1;
+  }
+
+  .lightbox-img {
+    max-height: 90vh;
+    max-width: 90vw;
+    border-radius: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    cursor: default;
+  }
+
   footer {
     border-top: 1px solid #333;
     padding: 3rem 0;
@@ -228,5 +510,58 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       width: 220px;
       border-radius: 34px;
     }
+
+    .device-frame-small img {
+      width: 150px;
+    }
+
+    .device-frame-small {
+      padding: 6px;
+      border-radius: 30px;
+    }
+
+    .device-notch-small {
+      width: 50px;
+      height: 16px;
+      top: 12px;
+    }
   }
 </style>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxClose = document.querySelector('.lightbox-close');
+  const carouselImages = document.querySelectorAll('.device-frame-small img');
+
+  // Open lightbox when clicking carousel images
+  carouselImages.forEach((img) => {
+    img.parentElement?.addEventListener('click', () => {
+      if (img instanceof HTMLImageElement) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox?.classList.add('active');
+      }
+    });
+  });
+
+  // Close lightbox when clicking the close button
+  lightboxClose?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    lightbox?.classList.remove('active');
+  });
+
+  // Close lightbox when clicking the background
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+    }
+  });
+
+  // Close lightbox on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      lightbox?.classList.remove('active');
+    }
+  });
+</script>

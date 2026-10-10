@@ -3,6 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -20,6 +21,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Check MAKONOME_READ_TOKEN
+        env:
+          MAKONOME_READ_TOKEN: ${{ secrets.MAKONOME_READ_TOKEN }}
+        run: |
+          if [ -z "$MAKONOME_READ_TOKEN" ]; then
+            echo "::error::MAKONOME_READ_TOKEN missing or expired, see README"
+            exit 1
+          fi
+
+      - name: Checkout app repo (release notes)
+        uses: actions/checkout@v4
+        with:
+          repository: mirocosic/makonome
+          token: ${{ secrets.MAKONOME_READ_TOKEN }}
+          path: app
+          sparse-checkout: docs/release-notes
+          fetch-depth: 1
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -44,6 +63,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    if: github.event_name != 'pull_request'
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

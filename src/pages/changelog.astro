@@ -11,17 +11,87 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </header>
 
     <section class="changelog">
-      <article class="version unreleased">
-        <h2>Unreleased</h2>
+      <article class="version">
+        <h2>1.0.4 <span class="date">October 2026</span></h2>
+        <p class="version-note">The Accuracy Trainer is part of Makonome Pro. Turn it on in Settings → Experimental. The Mac version is coming soon to the Mac App Store.</p>
         <div class="changes">
           <h3>Added</h3>
           <ul>
-            <li>Time-based tempo changer mode with live countdown display</li>
-            <li>Gap Trainer progressive mode: gaps automatically grow longer each cycle</li>
-            <li>Grayed-out controls in sheets when features are disabled</li>
+            <li>Accuracy Trainer: connect an electronic drum kit over MIDI and see live timing for every hit, with a per-drum breakdown, histograms and a beat map</li>
+            <li>Tightness slider to set how strict the timing bands are</li>
+            <li>Free Time mode: after a count-in the click goes silent and Makonome follows your tempo, showing your drift bar by bar</li>
+            <li>Practice mode hides the numbers while you play and reveals a short summary every 4 or 8 bars</li>
+            <li>Record trainer sessions, browse them later, and share them</li>
+            <li>Makonome now runs natively on Mac, with keyboard shortcuts (Space to play or stop, arrows for tempo), a menu bar menu, and the trainer in its own window</li>
+            <li>Choose the scoring grid (quarter, eighth, sixteenth, triplet) and focus on a single drum</li>
           </ul>
           <h3>Fixed</h3>
           <ul>
+            <li>Hits are now scored against when you actually hear the click, not when it was scheduled</li>
+            <li>The trainer reconnects to your MIDI device after the Mac wakes from sleep</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="version">
+        <h2>1.0.3 <span class="date">March 2026</span></h2>
+        <div class="changes">
+          <h3>Added</h3>
+          <ul>
+            <li>Ableton Link: sync tempo, start/stop and beat phase with other Link apps and devices on your network</li>
+            <li>Link indicator in the toolbar with a status sheet</li>
+            <li>Latency offset slider for fine-tuning Link sync per device</li>
+          </ul>
+          <h3>Fixed</h3>
+          <ul>
+            <li>Link beats no longer arrive late compared to other devices</li>
+            <li>Link stays in sync at high tempos (above 300 BPM)</li>
+            <li>Voice count accents no longer sound pitch-shifted</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="version">
+        <h2>1.0.2 <span class="date">March 2026</span></h2>
+        <div class="changes">
+          <h3>Fixed</h3>
+          <ul>
+            <li>Paywall showed a spinner on both buttons at once</li>
+            <li>"Woodblock" label was cut off on smaller screens</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="version">
+        <h2>1.0.1 <span class="date">March 2026</span></h2>
+        <div class="changes">
+          <h3>Added</h3>
+          <ul>
+            <li>Pause and resume for practice sessions</li>
+            <li>Four full-screen beat visualizations: Pendulum, Circular, Count and Line, with a swipeable carousel</li>
+            <li>Voice count sound: spoken beat numbers</li>
+            <li>Better tempo detection with two switchable engines</li>
+            <li>Optional 0.5 BPM steps (experimental)</li>
+            <li>Home Screen Quick Actions: Start Metronome and Start Practice</li>
+            <li>Collections: group presets into practice routines or setlists</li>
+            <li>Preset favorites, duplication and notes</li>
+            <li>Practice Stats widget (small and medium)</li>
+            <li>iCloud backup option</li>
+            <li>Time-based tempo changer mode with live countdown display</li>
+            <li>Gap Trainer progressive mode: gaps automatically grow longer each cycle</li>
+            <li>Sound preview when switching sounds</li>
+          </ul>
+          <h3>Changed</h3>
+          <ul>
+            <li>You can still browse, load and delete saved presets and collections after the trial ends</li>
+            <li>Trial start date now survives app reinstall</li>
+            <li>"Premium" is now called "Pro"</li>
+            <li>Sound picker and pitch slider moved into the volume sheet</li>
+            <li>Updated look for iOS 26</li>
+          </ul>
+          <h3>Fixed</h3>
+          <ul>
+            <li>Tab switching from deep links when the app was already running</li>
             <li>Tempo changer time mode not triggering correctly</li>
             <li>Crash when tapping beat indicators during time-based tempo changes</li>
           </ul>

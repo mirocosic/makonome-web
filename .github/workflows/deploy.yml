@@ -12,7 +12,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  # PR builds get their own group so they can never cancel a queued deploy.
+  group: ${{ github.event_name == 'pull_request' && format('pages-pr-{0}', github.ref) || 'pages' }}
   cancel-in-progress: false
 
 jobs:
@@ -39,6 +40,8 @@ jobs:
           path: app
           sparse-checkout: docs/release-notes
           fetch-depth: 1
+          # Don't leave the token in app/.git/config where npm install scripts could read it.
+          persist-credentials: false
 
       - name: Setup Node
         uses: actions/setup-node@v4

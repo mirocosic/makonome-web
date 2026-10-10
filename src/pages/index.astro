@@ -57,6 +57,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h3>📊 Practice Tracking</h3>
           <p>Log your sessions and track your progress over time.</p>
         </div>
+        <div class="feature">
+          <h3>🎯 Accuracy Trainer</h3>
+          <p>Play an electronic drum kit over MIDI and see live timing for every hit. Try Practice mode, which hides the numbers until a short summary, and Free Time mode, where the click goes silent and Makonome tracks your tempo drift. Part of Pro.</p>
+        </div>
+        <div class="feature">
+          <h3>💻 Runs on Mac</h3>
+          <p>Native Mac app with keyboard shortcuts and a menu bar menu. Coming soon to the Mac App Store.</p>
+        </div>
       </div>
     </section>
 
@@ -108,6 +116,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="mac" id="mac">
+      <h2>Makonome for Mac</h2>
+      <p class="mac-intro">Makonome runs natively on Mac. One Pro purchase works on iPhone, iPad and Mac.</p>
+      <div class="mac-grid">
+        <figure>
+          <img src="/screenshots/mac-metronome.png" alt="Makonome metronome window on Mac" />
+          <figcaption>The metronome, native on Mac</figcaption>
+        </figure>
+        <figure>
+          <img src="/screenshots/mac-trainer-live.png" alt="Accuracy Trainer on Mac showing live timing for each drum" />
+          <figcaption>Accuracy Trainer: live timing per drum</figcaption>
+        </figure>
+        <figure>
+          <img src="/screenshots/mac-free-time.png" alt="Free Time mode on Mac showing tempo drift bar by bar" />
+          <figcaption>Free Time: follow your own tempo</figcaption>
+        </figure>
+      </div>
+      <ul class="pricing-features mac-features">
+        <li>Keyboard shortcuts: Space to play or stop, arrow keys for tempo</li>
+        <li>A Metronome menu in the menu bar</li>
+        <li>The Accuracy Trainer in its own resizable window</li>
+        <li>Ableton Link with other music apps on your Mac</li>
+      </ul>
+      <p class="mac-note">Coming soon to the Mac App Store</p>
     </section>
 
     <section class="pricing">
@@ -271,6 +305,52 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .feature p {
     color: var(--color-text-muted);
     line-height: 1.6;
+  }
+
+  .mac {
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .mac h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .mac-intro {
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+  }
+
+  .mac-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+
+  .mac-grid img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .mac-grid figcaption {
+    margin-top: 1rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .mac-features {
+    max-width: 480px;
+    margin: 2.5rem auto 1.5rem;
+  }
+
+  .mac-note {
+    color: var(--color-accent);
+    font-weight: 600;
   }
 
   .pricing {

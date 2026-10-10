@@ -23,3 +23,6 @@ pnpm-debug.log*
 .idea/
 *.swp
 *.swo
+
+# app repo checkout (release notes source), see README
+app/

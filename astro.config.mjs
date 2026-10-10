@@ -5,5 +5,9 @@ export default defineConfig({
   site: 'https://makonome.com',
   build: {
     assets: 'assets'
+  },
+  markdown: {
+    // Keep release-note text exactly as written (no curly quotes).
+    smartypants: false
   }
 });

@@ -1,28 +1,143 @@
 ---
 title: The metronome screen
-description: The BPM dial, tap tempo, play and stop, and the beat rings that set accents and muted beats.
+description: The BPM dial, typing a tempo, tap tempo, play and stop, the beat rings that set accents and muted beats, and the ••• menu.
 order: 20
 group: Basics
 ---
 
-<ContentComing note="The text below is from the old one-page manual and is not checked against 1.1 yet." />
+The Metronome tab is where you set the tempo, start and stop, and choose which beats are accented or muted.
 
-## Basic controls
+<Screenshot name="metronome-idle" alt="The Metronome tab stopped at 120 BPM in 4/4: four beat rings at the top, the label Quarter Notes and 4/4, the BPM dial, and five buttons at the bottom" caption="The metronome screen, stopped." />
 
-The main screen shows a circular BPM dial. Drag around the dial to adjust tempo, or tap the center to type a specific BPM value.
+From top to bottom:
 
-- **BPM Range:** 40 to 400 BPM
-- **Tap Tempo:** Tap the hand icon repeatedly to set tempo by feel
-- **Play/Stop:** The large green button starts and stops the metronome
+- **Top bar:** the Presets button on the right. The Visualization and Ableton Link buttons appear on the left when you turn them on in [Experimental Features](/manual/getting-started/#experimental-features).
+- **Beat rings:** one ring for each beat of the bar. Tap a ring to accent or mute that beat.
+- **Bar and beat readout:** where you are in the bar, while the metronome plays.
+- **Settings row:** the subdivision and the time signature, for example "♩ Quarter Notes · 4/4".
+- **The BPM dial:** the tempo, with − and + buttons and the tempo name.
+- **Bottom buttons:** tap tempo, time signature, play/stop, sound, and the ••• menu.
+
+## Set the tempo
+
+The tempo goes from **20 to 400 BPM**.
+
+To set the tempo, do one of these:
+
+- **Drag around the dial.** Drag clockwise to go faster and counterclockwise to go slower. The full range takes about three turns.
+- **Tap − or +** next to the number. Each tap changes the tempo by 1 BPM.
+
+<Platform only="ios">
+On iPhone and iPad you feel a light tick as the tempo changes.
+</Platform>
+
+<Platform only="mac">
+On Mac, press <kbd>↑</kbd> or <kbd>↓</kbd> to change the tempo by one step. Hold <kbd>Shift</kbd> to change it by 5. The same commands are in the **Metronome** menu in the menu bar.
+</Platform>
+
+The tempo steps are whole numbers. To use steps of 0.5 BPM, turn on **Fine-grained BPM** in **Settings → Experimental Features**.
+
+In compound meters like 6/8, the dial shows the tempo of the dotted beat. See [Compound meters](/manual/time-signatures/#compound-meters-and-the-dotted-pulse).
+
+## Type a tempo
+
+1. Tap the tempo number in the middle of the dial.
+2. Type the tempo.
+3. Tap **Done** (or press <kbd>Return</kbd> on a keyboard).
+
+If the number is outside the range, the tempo stays as it was.
+
+<Screenshot name="metronome-bpm-typing" alt="The tempo number 120 being edited, with a number pad and a Done button below the dial" only="ios" caption="Typing a tempo on iPhone." />
+
+<Platform only="ios">
+The number pad has no decimal point, so you can only type whole numbers. With Fine-grained BPM on, use − and + for the half steps.
+</Platform>
+
+## Tap tempo
+
+Use tap tempo to set the tempo by feel, for example to match a song.
+
+1. Tap the hand button (bottom left) in time with the music.
+2. Keep tapping. Every tap makes the tempo more exact.
+3. Stop tapping. The tempo stays.
+
+Tap tempo counts a tap the moment your finger touches the screen. It ignores an accidental double tap and one stray tap. If you miss a beat, it still works. If you change speed while tapping, it follows the new tempo. If you pause for a while, the next tap starts over.
+
+## Tempo names
+
+Under the number, the dial shows the classical name for the tempo:
+
+| Tempo (BPM) | Name |
+|---|---|
+| below 40 | Grave |
+| 40 to 59 | Largo |
+| 60 to 65 | Larghetto |
+| 66 to 75 | Adagio |
+| 76 to 107 | Andante |
+| 108 to 119 | Moderato |
+| 120 to 155 | Allegro |
+| 156 to 175 | Vivace |
+| 176 to 199 | Presto |
+| 200 and faster | Prestissimo |
+
+The name follows the beat you feel. In 7/8 at 210 eighth notes a minute, that is 105 quarter notes, so the name is Andante. In compound meters like 6/8, the dial shows the eighth-note tempo in place of the name.
+
+## Start and stop
+
+Press the green **play** button to start. It turns into a **stop** button while the metronome plays.
+
+The metronome keeps playing when you switch tabs, leave the app or lock the screen. It also works with Bluetooth speakers and headphones.
+
+<Platform only="mac">
+On Mac, press <kbd>Space</kbd> to start and stop, or use **Metronome → Play / Stop** in the menu bar.
+</Platform>
 
 ## Beat accents and muting
 
-Tap any beat indicator at the top to cycle through states:
+Each beat ring has three states. Tap a ring to change it, in this order:
 
-- **Normal:** Regular click sound
-- **Accented:** Louder, higher-pitched click (filled circle)
-- **Muted:** Silent beat (dashed circle)
+1. **Normal:** an empty ring. A regular click.
+2. **Accented:** a filled ring. A stronger click.
+3. **Muted:** a dashed ring. No click on that beat.
 
-Use this to create custom accent patterns or practice specific rhythmic figures.
+The next tap goes back to normal.
 
-<ContentComing />
+<Screenshot name="metronome-beat-states" alt="Four beat rings: beat 1 and beat 3 filled (accented), beat 2 empty (normal), beat 4 dashed (muted)" only="ios" caption="Beats 1 and 3 accented, beat 2 normal, beat 4 muted." />
+
+Use accents to hear where the bar starts or how the beats are grouped. Use muted beats to practice keeping time on your own, for example on beats 2 and 4.
+
+While the metronome plays, the current beat lights up. With more than eight beats, the rings wrap to a second row. In meters like 7/8, small gaps show the beat groups. To set the accents for a group like 2+2+3 in one tap, use [accent groups](/manual/time-signatures/#accent-groups).
+
+## The bar and beat readout
+
+While the metronome plays, the line under the beat rings shows where you are:
+
+- **Bar 3, Beat 2:** the usual readout.
+- **Bar 3 of 10, Beat 2:** with [auto stop](/manual/count-in-and-auto-stop/#auto-stop) set to 10 bars.
+- **Bar 3, Beat 2 · 0:42 left:** with auto stop set to a time.
+- **Count-in 2 of 4, Beat 3:** during a [count-in](/manual/count-in-and-auto-stop/#count-in) of more than one bar. A one-bar count-in shows **Count-in, Beat 3**.
+
+<Screenshot name="metronome-main" alt="The metronome playing at 120 BPM, with beat 3 lit and the readout Bar 2, Beat 3" only="mac" caption="The readout on Mac." />
+
+When Gap Trainer or Tempo Changer is on, a second line under the readout shows its state. The settings row also shows **Gap** or **Tempo+**. See [Trainers](/manual/trainers/).
+
+## The More menu
+
+The More button (•••, bottom right) opens a menu with more options. Each entry shows whether it is on.
+
+<Screenshot name="metronome-more-menu" alt="The ••• menu open: Gap Trainer, Tempo Changer, Count-in, Auto Stop and Screen Flash, then Haptic Feedback, Tempo Detection and Accuracy Trainer" only="ios" caption="The ••• menu, with all experimental features turned on." />
+
+| Entry | What it does |
+|---|---|
+| **Gap Trainer** <Pro /> | Mutes whole bars so you practice keeping time. See [Gap Trainer](/manual/trainers/#gap-trainer). |
+| **Tempo Changer** <Pro /> | Raises the tempo step by step. See [Tempo Changer](/manual/trainers/#tempo-changer). |
+| **Count-in** | Plays bars before the music starts. See [Count-in](/manual/count-in-and-auto-stop/#count-in). |
+| **Auto Stop** | Stops after a number of bars or a time. See [Auto stop](/manual/count-in-and-auto-stop/#auto-stop). |
+| **Screen Flash** | Turns the screen flash on or off. See [Screen flash](/manual/sound-and-feel/#screen-flash). |
+| **Haptic Feedback** <Pro /> | Turns beat vibrations on or off. Experimental, iPhone and iPad only. See [Haptic feedback](/manual/sound-and-feel/#haptic-feedback). |
+| **Tempo Detection** <Pro /> | Listens through the microphone and finds the tempo. Experimental. See [Tempo detection](/manual/tempo-detection/). |
+| **Accuracy Trainer** <Pro /> | Measures your drum timing over MIDI. Experimental. See [Accuracy Trainer](/manual/accuracy-trainer/). |
+
+The last three entries appear only after you turn them on in **Settings → Experimental Features**.
+
+The other bottom buttons open [Time signatures](/manual/time-signatures/) (the notes button) and [Sound Settings](/manual/sound-and-feel/) (the speaker button). The Presets button in the top bar opens [Presets and collections](/manual/presets-and-collections/).

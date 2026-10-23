@@ -5,15 +5,124 @@ order: 40
 group: Basics
 ---
 
-<ContentComing note="The text below is from the old one-page manual and is not checked against 1.1 yet." />
+This page covers how the metronome sounds, and the other ways to follow the beat: vibration, a screen flash and visualizations.
 
-## Sounds and settings
+## Sound Settings
 
-Tap the speaker icon on the main screen to choose your click sound:
+Tap the speaker button (second from the right at the bottom of the metronome screen). The **Sound Settings** sheet opens with the volume, the sound and the pitch.
 
-- **Click sounds:** Click, Clave, Woodblock, Cowbell, Voice Count
-- **Pitch adjustment:** Raise or lower the click pitch
-- **Volume:** Tap the speaker icon on the main screen
-- **Haptic feedback:** Feel the beat (experimental feature)
+<Screenshot name="sound-settings" alt="The Sound Settings sheet: volume at 80 percent, the sounds Click, Clave, Woodblock, Cowbell and Voice, and the Pitch slider at 0" caption="Sound Settings." />
 
-<ContentComing />
+### Volume
+
+Drag the slider to set the metronome volume, from 0 to 100%. This is the metronome's own volume. The volume buttons on your device change the overall volume.
+
+At 0% the speaker button on the metronome screen turns red and shows a crossed-out speaker, so you can see at a glance why there is no sound.
+
+### Sounds
+
+Tap a sound to choose it. You hear a short preview.
+
+| Sound | |
+|---|---|
+| **Click** | Free |
+| **Clave** | <Pro /> |
+| **Woodblock** | <Pro /> |
+| **Cowbell** | <Pro /> |
+| **Voice** | <Pro /> Speaks the beat numbers: "one, two, three…" |
+
+Each sound has a stronger version for accented beats. Without Pro, tapping a Pro sound opens the upgrade screen.
+
+### Voice count
+
+**Voice** counts the beats out loud instead of clicking. It counts the beats of your meter in English, so in 7/8 it counts to seven.
+
+### Pitch
+
+<Pro />
+
+Drag the **Pitch** slider to make the sound higher or lower, from −12 to +12 semitones (one octave each way), in steps of one semitone. 0 is the original pitch. A higher or lower pitch can help the click stand out against your instrument.
+
+Without Pro, the pitch slider is dimmed. Tapping it opens the upgrade screen.
+
+## Haptic feedback
+
+<Experimental feature="Haptic Feedback" />
+
+<Pro />
+
+With haptic feedback on, your iPhone or iPad vibrates on the beat. You can feel the beat when you can't hear it well, for example with loud drums.
+
+To turn on haptic feedback:
+
+1. Open **Settings → Experimental Features** and switch on **Haptic Feedback**.
+2. On the metronome screen, tap **••• → Haptic Feedback**. The entry shows **(On)** or **(Off)**.
+
+<Screenshot name="metronome-more-menu" alt="The ••• menu with Haptic Feedback (Off) and Screen Flash (Off) among the entries" only="ios" caption="Haptic Feedback and Screen Flash in the ••• menu." />
+
+How it feels:
+
+- One pulse on each beat. In compound meters like 6/8 counted in dotted beats, one pulse on each dotted beat.
+- A stronger pulse on accented beats.
+- There is no setting for the strength.
+- At very fast tempos it stops, so the vibrations don't blur together. That is when the tempo times the clicks per beat goes above 300 a minute, for example 160 BPM with 8ths.
+
+<Platform only="mac">
+Haptic feedback is not available on Mac. The switch and the menu entry don't appear there.
+</Platform>
+
+## Screen flash
+
+Screen flash tints the whole screen softly on each beat, so you can see the beat. It is free and off at first.
+
+To turn it on or off, tap **••• → Screen Flash** on the metronome screen. The entry shows **(On)** or **(Off)**.
+
+How it works:
+
+- The flash comes at the moment you hear the click, not before it.
+- Accented beats flash stronger.
+- It flashes on the count-in and on bars that Gap Trainer mutes, too.
+- It flashes at most 3 times a second. Up to 180 beats a minute, every beat flashes. Faster than that, only the first beat of each bar flashes. At very fast tempos with short bars, it doesn't flash at all.
+- With **Reduce Motion** on (in your device's accessibility settings), the flash is softer and fades more slowly.
+
+If flashing light is a problem for you, leave screen flash off.
+
+## Visualizations
+
+<Experimental feature="Visualizations" />
+
+A visualization shows the beat in large, full-screen moving graphics. It is free.
+
+To open a visualization:
+
+1. Open **Settings → Experimental Features** and switch on **Visualizations**.
+2. On the metronome screen, tap the visualization button in the top left corner.
+3. Pick a style at the top, or swipe left and right between them.
+
+Tap anywhere to start and stop the metronome. Tap the back arrow in the top left to go back. Makonome remembers the last style you used.
+
+The four styles:
+
+- **Pendulum:** an arm swings like a classic metronome and passes the middle on each beat.
+
+  <Screenshot name="visualization-pendulum" alt="The Pendulum visualization: a green arm swinging from a pivot at the bottom" only="ios" />
+
+- **Circular:** a ring fills up over the bar, with the beat number in the middle ("3 of 4").
+
+  <Screenshot name="visualization-circular" alt="The Circular visualization in 4/4: a green ring with the number 3 and of 4 in the middle" only="ios" />
+
+  In x/8 and x/16 meters, the ring has one segment per beat, with gaps between the [accent groups](/manual/time-signatures/#accent-groups) and the groups written under the number.
+
+  <Screenshot name="visualization-circular-7-8" alt="The Circular visualization in 7/8: seven segments in groups of two, two and three" only="ios" />
+
+- **Count:** the beat number, large, bouncing on each beat.
+
+  <Screenshot name="visualization-count" alt="The Count visualization showing a large number 4" only="ios" />
+
+- **Line:** a line sweeps out to the side and back, crossing the center mark on each beat.
+
+  <Screenshot name="visualization-line" alt="The Line visualization: a green line to the right of a thin center mark" only="ios" />
+
+<Platform only="mac">
+Visualizations work the same way on Mac. Click anywhere in the window to start and stop.
+</Platform>

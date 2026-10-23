@@ -3,6 +3,135 @@ title: Settings, backup and data
 description: Every Settings section, iCloud backup and restore, and resetting your data.
 order: 130
 group: Setup and help
+platforms: [ios, mac]
 ---
 
-<ContentComing />
+The **Settings** tab holds your Pro status, the theme, practice options, experimental features, help, feedback and your data. This page goes through it from top to bottom, then explains iCloud backup and **Reset All Data**.
+
+Sound, count-in and the trainers are not in Settings. You set them on the metronome screen: see [Sound and feel](/manual/sound-and-feel/) and [Count-in and auto stop](/manual/count-in-and-auto-stop/).
+
+<Screenshot name="settings" alt="The Settings tab with Usage Statistics, the Pro section, Appearance, Practice Integration and Practice Reminders" caption="The top of the Settings tab." />
+
+## Usage Statistics
+
+**Total Usage Time** is how long the metronome has played, in all, since you installed Makonome.
+
+## Pro
+
+- With Pro, this shows **Pro** and **All features unlocked**.
+- During the trial, it shows **Upgrade to Pro** with the days left, for example **14 days left in trial**. After the trial it says **Trial expired**.
+- **Restore Purchases** unlocks Pro again on a new device or after a reinstall, without paying twice.
+
+See [The free trial and Pro](/manual/getting-started/#the-free-trial-and-pro).
+
+## Appearance
+
+**Theme:** **Light**, **Dark** or **System** (follows your device).
+
+## Practice Integration
+
+**Auto-start metronome:** when on, the **Start metronome** switch is on at first when you start a [practice session](/manual/practice-tracking/#start-a-practice-session).
+
+## Practice Reminders
+
+**Daily practice reminder** sends a notification, **Time to Practice!**, every day at the **Reminder time**. See [Practice reminders](/manual/practice-tracking/#practice-reminders).
+
+## Experimental Features
+
+Features that are new or for special setups. All are off at first.
+
+<Screenshot name="settings-experimental" alt="Settings, Experimental Features: Haptic Feedback, Tempo Detection, Accuracy Trainer, Visualizations, Fine-grained BPM and Ableton Link, each with a switch" caption="Settings → Experimental Features." />
+
+| Switch | See |
+|---|---|
+| **Haptic Feedback** <Pro /> (not on Mac) | [Haptic feedback](/manual/sound-and-feel/#haptic-feedback) |
+| **Tempo Detection** <Pro /> | [Tempo detection](/manual/tempo-detection/) |
+| **Accuracy Trainer** <Pro /> | [Accuracy Trainer](/manual/accuracy-trainer/) |
+| **Visualizations** | [Visualizations](/manual/sound-and-feel/#visualizations) |
+| **Fine-grained BPM** | Tempo steps of 0.5 BPM. When you turn it off, the tempo is rounded to a whole number. |
+| **Ableton Link** | [Ableton Link](/manual/ableton-link/) |
+
+## Help
+
+**User Manual** opens this manual.
+
+<Platform only="ios">
+On iPhone and iPad the manual opens inside the app. Close it to go back.
+</Platform>
+
+<Platform only="mac">
+On Mac the manual opens in your web browser.
+</Platform>
+
+## Feedback
+
+- **Send Feature Request:** write an email with your idea.
+- **Report a Bug:** write an email. Makonome adds your device and system version, so we can find the problem faster.
+- **Contact Support:** write an email to support (support@makonome.com) with any question.
+- **Rate on App Store:** rate Makonome.
+- **Share the App:** send a link to a friend.
+
+The email rows open your mail app. Without a mail account set up, Makonome opens an email link instead.
+
+## Data Management
+
+- **Back up to iCloud:** see [iCloud backup and restore](#icloud-backup-and-restore).
+- **Reset All Data:** see [Reset all data](#reset-all-data).
+
+At the bottom of Settings you see the app version, for example **Version 1.1.0**. Mention it when you report a problem.
+
+## iCloud backup and restore
+
+Makonome backs up your data to your iCloud account, so it comes back when you reinstall the app or move to a new device. The backup is on at first. It is free.
+
+**When it backs up:** every time you open Makonome, and every time you leave it (it goes to the background). With the backup on, Settings shows **Last backup** and the date. If a backup fails, a red line says why, for example **Not signed in to iCloud**.
+
+**What's in the backup:**
+
+- Presets and collections
+- Practice history, streaks, and a practice session that was running
+- The metronome settings: tempo, time signature, accent groups, subdivision, beat accents, sound, volume and pitch
+- Count-in, auto stop and screen flash
+- Gap Trainer and Tempo Changer settings
+- Practice reminders and **Auto-start metronome**
+- **Fine-grained BPM**, haptic feedback, the **Ableton Link** switch and the Link latency offset
+- Total usage time
+
+**Not in the backup:** the theme, the other Experimental Features switches, and your Pro purchase. Pro comes back with **Settings → Pro → Restore Purchases**.
+
+To stop backing up, turn off **Back up to iCloud**. The backup already in iCloud stays.
+
+### Restore on a new device
+
+1. Sign in to iCloud with the same Apple ID as before.
+2. Install Makonome and open it.
+
+That's it: Makonome finds the backup on the first launch and restores it. If you made presets or practiced before the restore was done, those stay: the restore adds the backup to them.
+
+- A practice session that was running at the last backup comes back **paused**, so the time while the app was gone doesn't count as practice. Resume or complete it on the Practice tab.
+- If you are not signed in to iCloud, Settings shows **Sign in to iCloud to restore your backup**. Sign in, then open Makonome again. Until the restore works, Makonome doesn't back up, so your old backup isn't replaced by an empty one.
+- If there is no network, Makonome tries again the next time you open it.
+
+The backup is not a live sync between devices. Presets you make on one device don't show up on another while both are in use. All your devices with the same Apple ID back up to the same place, so the backup holds what the device that backed up last had.
+
+## Reset all data
+
+**Settings → Data Management → Reset All Data** clears:
+
+- your presets and collections
+- your practice history and streaks
+- the total usage time
+- the pitch (back to 0)
+
+It asks first. This can't be undone. Your other settings stay, like the tempo, the sound, the theme and the trainers. If the backup is on, Makonome backs up the cleared state right away, so the old data doesn't come back when you reinstall.
+
+## Data from a newer version
+
+If you use Makonome on more than one device, a newer version of the app may save something that an older version can't read yet. The older version never throws it away:
+
+- A **preset** like that shows as **Made with a newer version of Makonome. Update the app to use it.** You can delete it, but not load or edit it. See [Presets from a newer version](/manual/presets-and-collections/#presets-from-a-newer-version).
+- **Practice sessions** like that are kept as they are. Update the app to see them.
+
+## The widget shows 0 after an update
+
+Open the app once after you update to Makonome 1.1. Before 1.1 the widget couldn't read your practice data. The first launch of 1.1 moves your data to where the widget can read it. See [The widget shows 0](/manual/practice-tracking/#the-widget-shows-0).

@@ -37,9 +37,14 @@ for (const a of oldAnchors) {
     })();
   </script>
 
-  <p>
-    Pick your platform at the top. Screenshots and the notes that differ follow your choice, and the manual
-    remembers it. Every topic has its own page.
+  <p class="intro">
+    Everything Makonome can do, one topic per page. New here? Start with
+    <a href="/manual/getting-started/">Getting started</a>: it shows what's free, what's Pro, and how to play your
+    first click in 30 seconds. Stuck? Try <a href="/manual/troubleshooting/">Troubleshooting and FAQ</a>.
+  </p>
+  <p class="intro">
+    Pick iOS, Mac or Android at the top. The screenshots and the notes that differ follow your choice, and the
+    manual remembers it.
   </p>
 
   {
@@ -78,6 +83,15 @@ for (const a of oldAnchors) {
 </ManualLayout>
 
 <style>
+  .intro {
+    max-width: 70ch;
+  }
+
+  .intro a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
   .topic-group h2 {
     border-bottom: 0;
     padding-bottom: 0;

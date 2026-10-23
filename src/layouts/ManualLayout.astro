@@ -115,6 +115,16 @@ const aboutText = `This page is about Makonome on ${platforms.map((p) => PLATFOR
   </div>
 
   <Lightbox />
+
+  <script is:inline>
+    // "On this page" entries for headings inside a platform block take that block's platforms,
+    // so the platform CSS hides them together with the heading.
+    document.querySelectorAll('.toc a[href^="#"]').forEach(function (a) {
+      var target = document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+      var block = target && target.closest('[data-only]');
+      if (block) a.parentElement.setAttribute('data-only', block.getAttribute('data-only'));
+    });
+  </script>
 </BaseLayout>
 
 <style>
@@ -500,11 +510,6 @@ const aboutText = `This page is about Makonome on ${platforms.map((p) => PLATFOR
 
   .callout-coming-soon {
     border-color: rgba(74, 222, 128, 0.45);
-  }
-
-  .callout-todo {
-    border: 1px dashed #f472b6;
-    background: rgba(244, 114, 182, 0.08);
   }
 
   .screenshot {

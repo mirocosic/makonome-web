@@ -54,7 +54,6 @@ Components, usable in any manual page without an import:
   build with the path in the message. To show a shot on one platform only, list only that one.
 - `<Pro />`: Pro badge. `<Experimental feature="Accuracy Trainer" />`: "turn it on in Settings →
   Experimental Features" box. `<ComingSoon platform="android" message="…" />`: shown only on that platform.
-- `<ContentComing note="…" />`: temporary draft marker. Remove them all before the manual goes live.
 
 **Platform switch:** `PlatformInit.astro` runs inline in `<head>` before first paint and sets
 `<html data-platform>` from `?platform=ios|mac|android`, then the remembered choice

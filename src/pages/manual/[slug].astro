@@ -2,7 +2,6 @@
 import { render } from 'astro:content';
 import ManualLayout from '../../layouts/ManualLayout.astro';
 import ComingSoon from '../../components/manual/ComingSoon.astro';
-import ContentComing from '../../components/manual/ContentComing.astro';
 import Experimental from '../../components/manual/Experimental.astro';
 import Platform from '../../components/manual/Platform.astro';
 import Pro from '../../components/manual/Pro.astro';
@@ -21,7 +20,7 @@ interface Props {
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
 // MDX pages use these without importing them.
-const components = { ComingSoon, ContentComing, Experimental, Platform, Pro, Screenshot };
+const components = { ComingSoon, Experimental, Platform, Pro, Screenshot };
 ---
 
 <ManualLayout

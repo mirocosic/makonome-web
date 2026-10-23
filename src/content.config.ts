@@ -27,4 +27,19 @@ const releaseNotes = defineCollection({
   }),
 });
 
-export const collections = { releaseNotes };
+// The user manual, one MDX file per topic. See README, "Manual".
+const manual = defineCollection({
+  loader: glob({ pattern: '*.mdx', base: './src/content/manual' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    // Reading order across the whole manual. Groups appear in the order of their first page.
+    order: z.number(),
+    // Sidebar group heading.
+    group: z.string(),
+    // Platforms the page applies to. Others see a "not on this platform" banner.
+    platforms: z.array(z.enum(['ios', 'mac', 'android'])).nonempty().default(['ios', 'mac', 'android']),
+  }),
+});
+
+export const collections = { releaseNotes, manual };

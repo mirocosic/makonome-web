@@ -15,6 +15,7 @@ const { title, description = "A precision metronome app for iOS with practice tr
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+    <slot name="head" />
   </head>
   <body>
     <slot />

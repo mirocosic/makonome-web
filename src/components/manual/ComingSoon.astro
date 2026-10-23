@@ -1,0 +1,25 @@
+---
+// <ComingSoon platform="android" />: shown only when that platform is selected.
+// ManualLayout adds one for every platform a page doesn't list in `platforms`.
+import { PLATFORM_LABELS, parsePlatforms } from '../../lib/manual';
+
+interface Props {
+  platform: string;
+  /** Overrides the default text. */
+  message?: string;
+}
+
+const { platform, message } = Astro.props;
+const [p] = parsePlatforms(platform, []);
+if (!p) throw new Error('<ComingSoon> needs a platform.');
+const text =
+  message ??
+  (p === 'android'
+    ? 'This part of Makonome isn’t in the Android app yet. Makonome for Android is coming soon.'
+    : `This isn’t available on ${PLATFORM_LABELS[p]}.`);
+---
+
+<aside class="callout callout-coming-soon platform-block" data-only={p}>
+  <span class="platform-label">On {PLATFORM_LABELS[p]}</span>
+  <p>{text}</p>
+</aside>

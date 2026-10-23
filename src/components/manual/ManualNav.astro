@@ -1,0 +1,74 @@
+---
+import { groupPages, pageUrl, type ManualEntry } from '../../lib/manual';
+
+interface Props {
+  pages: ManualEntry[];
+  current?: string;
+}
+
+const { pages, current } = Astro.props;
+const groups = groupPages(pages);
+---
+
+<a href="/manual/" class="nav-home" aria-current={current === undefined ? 'page' : undefined}>Manual home</a>
+{
+  groups.map((g) => (
+    <div class="nav-group">
+      <p class="nav-group-title">{g.group}</p>
+      <ul>
+        {g.pages.map((p) => (
+          <li>
+            <a href={pageUrl(p.id)} aria-current={p.id === current ? 'page' : undefined}>
+              {p.data.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))
+}
+
+<style>
+  .nav-home {
+    display: block;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1.25rem;
+  }
+
+  .nav-group + .nav-group {
+    margin-top: 1.25rem;
+  }
+
+  .nav-group-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    display: block;
+    color: var(--color-text-muted);
+    padding: 0.3rem 0.6rem;
+    margin-left: -0.6rem;
+    border-radius: 6px;
+    line-height: 1.35;
+  }
+
+  a:hover {
+    color: var(--color-text);
+    background: var(--color-surface);
+    text-decoration: none;
+  }
+
+  a[aria-current='page'] {
+    color: var(--color-accent);
+    background: rgba(74, 222, 128, 0.1);
+  }
+</style>

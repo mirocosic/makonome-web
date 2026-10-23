@@ -1,0 +1,72 @@
+---
+// <Screenshot name="metronome-main" alt="…" only="ios mac" />
+// Loads src/assets/manual/<platform>/<name>.png for each platform in `only`
+// (default "ios mac": Android has no screenshots before its release, plan M5).
+// A missing file for a listed platform fails the build.
+import type { ImageMetadata } from 'astro';
+import { Image, getImage } from 'astro:assets';
+import { PLATFORM_LABELS, parsePlatforms } from '../../lib/manual';
+
+interface Props {
+  name: string;
+  alt: string;
+  only?: string;
+  caption?: string;
+}
+
+const { name, alt, only = 'ios mac', caption } = Astro.props;
+const platforms = parsePlatforms(only, []);
+
+const files = import.meta.glob<{ default: ImageMetadata }>('../../assets/manual/*/*.png', { eager: true });
+
+const shots = await Promise.all(
+  platforms.map(async (platform) => {
+    const key = `../../assets/manual/${platform}/${name}.png`;
+    const file = files[key];
+    if (!file) {
+      throw new Error(
+        `Manual screenshot missing: src/assets/manual/${platform}/${name}.png ` +
+          `(<Screenshot name="${name}"> on ${Astro.url.pathname}, platform "${platform}"). ` +
+          `Add the file, or leave "${platform}" out of the "only" prop.`
+      );
+    }
+    const src = file.default;
+    const portrait = src.height > src.width;
+    // Phone shots show at 300 CSS px wide, Mac windows up to the text column.
+    const displayWidth = portrait ? 300 : 720;
+    const full = await getImage({ src, width: Math.min(src.width, portrait ? 900 : 1440), format: 'webp' });
+    return { platform, src, portrait, displayWidth, fullSrc: full.src };
+  })
+);
+---
+
+{
+  shots.map((s) => (
+    <figure
+      class:list={['screenshot', 'platform-block', s.portrait ? 'screenshot-phone' : 'screenshot-window']}
+      data-only={s.platform}
+    >
+      <span class="platform-label">On {PLATFORM_LABELS[s.platform]}</span>
+      <button
+        type="button"
+        class="screenshot-button"
+        data-lightbox
+        data-lightbox-src={s.fullSrc}
+        data-lightbox-shape={s.portrait ? 'phone' : 'window'}
+        aria-label={`Enlarge screenshot: ${alt}`}
+      >
+        <Image
+          src={s.src}
+          alt={alt}
+          width={s.displayWidth}
+          widths={[s.displayWidth, s.displayWidth * 2]}
+          sizes={`(max-width: ${s.displayWidth + 32}px) calc(100vw - 32px), ${s.displayWidth}px`}
+          format="webp"
+          loading="lazy"
+          decoding="async"
+        />
+      </button>
+      {caption && <figcaption>{caption}</figcaption>}
+    </figure>
+  ))
+}

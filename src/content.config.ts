@@ -37,8 +37,8 @@ const manual = defineCollection({
     order: z.number(),
     // Sidebar group heading.
     group: z.string(),
-    // Platforms the page applies to. Others see a "not on this platform" banner.
-    platforms: z.array(z.enum(['ios', 'mac', 'android'])).nonempty().default(['ios', 'mac', 'android']),
+    // Platforms the page applies to. Others see a "not on this platform" banner. Android is opt-in per page until its content is written.
+    platforms: z.array(z.enum(['ios', 'mac', 'android'])).nonempty().default(['ios', 'mac']),
   }),
 });
 

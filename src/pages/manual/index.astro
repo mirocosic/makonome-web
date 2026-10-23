@@ -57,7 +57,7 @@ for (const a of oldAnchors) {
               <a href={pageUrl(p.id)}>
                 <span class="topic-title">{p.data.title}</span>
                 <span class="topic-desc">{p.data.description}</span>
-                {p.data.platforms.length < 3 && (
+                {p.data.platforms.length === 1 && (
                   <span class="topic-platforms">{p.data.platforms.map((x) => PLATFORM_LABELS[x]).join(' · ')}</span>
                 )}
               </a>

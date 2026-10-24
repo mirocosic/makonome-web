@@ -14,7 +14,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="device-notch"></div>
         <img
           src="/screenshots/metronome-main.png"
-          alt="Makonome metronome app showing BPM dial at 173 Vivace"
+          alt="Makonome metronome app showing BPM dial at 120 Allegro"
           class="screenshot"
         />
       </div>
@@ -34,7 +34,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="feature-grid">
         <div class="feature">
           <h3>🎯 Sample-Accurate Timing</h3>
-          <p>Professional-grade precision using AVAudioEngine for rock-solid timing you can trust.</p>
+          <p>Professional-grade precision using AVAudioEngine for rock-solid timing you can trust, from 20 to 400 BPM.</p>
         </div>
         <div class="feature">
           <h3>🎵 Flexible Time Signatures</h3>
@@ -50,19 +50,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
         <div class="feature">
           <h3>🥁 Multiple Sounds</h3>
-          <p>Choose from click, clave, woodblock, cowbell, or a spoken voice count, with adjustable pitch.</p>
+          <p>Choose from five sounds: click, clave, woodblock, cowbell, or a spoken voice count, with adjustable pitch.</p>
+        </div>
+        <div class="feature">
+          <h3>⏱️ Count-In and Auto Stop</h3>
+          <p>Count in 1, 2 or 4 bars with a click or a voice count. Stop on its own after a number of bars or a set time, with a bar counter on screen. Turn on a soft screen flash to see every beat.</p>
+        </div>
+        <div class="feature">
+          <h3>🎼 Play a Collection</h3>
+          <p>Group presets into a setlist or practice routine, then step through them with previous and next buttons. Arrow keys, Page Up / Page Down and Bluetooth foot pedals work too.</p>
+        </div>
+        <div class="feature">
+          <h3>👀 Visualizations</h3>
+          <p>Pendulum, Circular, Count and Line views move exactly with the click you hear, at 120 Hz on ProMotion iPhones.</p>
         </div>
         <div class="feature">
           <h3>📊 Practice Tracking</h3>
-          <p>Log your sessions and track your progress over time.</p>
+          <p>Log your sessions, browse your history and keep your practice streak going. Home and lock screen widgets show your week at a glance.</p>
         </div>
         <div class="feature">
           <h3>🎯 Accuracy Trainer</h3>
-          <p>Play an electronic drum kit over MIDI and see live timing for every hit. Try Practice mode, which hides the numbers until a short summary, and Free Time mode, where the click goes silent and Makonome tracks your tempo drift. Part of Pro.</p>
+          <p>Play an electronic drum kit over MIDI and see live timing for every hit. Try Practice mode, which hides the numbers until a short summary, and Free Time mode, where the click goes silent and Makonome tracks your tempo drift. Part of Pro: turn it on in Settings → Experimental.</p>
         </div>
         <div class="feature">
           <h3>💻 Runs on Mac</h3>
-          <p>Native Mac app with keyboard shortcuts and a menu bar menu. Coming soon to the Mac App Store.</p>
+          <p>Native Mac app with keyboard shortcuts and a menu bar menu. Available on the Mac App Store.</p>
         </div>
       </div>
     </section>
@@ -102,21 +114,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="carousel-slide">
             <div class="device-frame-small">
               <div class="device-notch-small"></div>
-              <img src="/screenshots/screen-2.png" alt="Settings screen" />
+              <img src="/screenshots/playback-options.png" alt="Playback Options sheet with count-in and auto stop" />
             </div>
-            <p class="slide-caption">Customizable Settings</p>
+            <p class="slide-caption">Count-In and Auto Stop</p>
           </div>
           <div class="carousel-slide">
             <div class="device-frame-small">
               <div class="device-notch-small"></div>
-              <img src="/screenshots/screen-3.png" alt="Practice tab" />
+              <img src="/screenshots/visualization-circular.png" alt="Circular visualization in 7/8 with gaps between the accent groups" />
             </div>
-            <p class="slide-caption">Practice Tracking</p>
+            <p class="slide-caption">Visualizations</p>
           </div>
           <div class="carousel-slide">
             <div class="device-frame-small">
               <div class="device-notch-small"></div>
-              <img src="/screenshots/screen-4.png" alt="Practice history" />
+              <img src="/screenshots/collection-player.png" alt="Metronome playing a collection with previous and next buttons" />
+            </div>
+            <p class="slide-caption">Play a Collection</p>
+          </div>
+          <div class="carousel-slide">
+            <div class="device-frame-small">
+              <div class="device-notch-small"></div>
+              <img src="/screenshots/screen-4.png" alt="Practice history with sessions, total time and goals met" />
             </div>
             <p class="slide-caption">Session History</p>
           </div>
@@ -130,9 +149,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="carousel-slide">
             <div class="device-frame-small">
               <div class="device-notch-small"></div>
-              <img src="/screenshots/gap-trainer-progressive.png" alt="Gap Trainer Progressive Mode" />
+              <img src="/screenshots/gap-trainer.png" alt="Metronome with the Gap Trainer in a muted bar" />
             </div>
-            <p class="slide-caption">Progressive Gap Training</p>
+            <p class="slide-caption">Gap Trainer</p>
           </div>
         </div>
       </div>
@@ -161,7 +180,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li>The Accuracy Trainer in its own resizable window</li>
         <li>Ableton Link with other music apps on your Mac</li>
       </ul>
-      <p class="mac-note">Coming soon to the Mac App Store</p>
+      <p class="mac-note">Available on the Mac App Store</p>
     </section>
 
     <section class="pricing">
@@ -181,6 +200,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span>14-day free trial</span>
         </div>
         <p class="pricing-note">Try everything free for 14 days. Buy once, own forever.</p>
+        <p class="pricing-note">After the trial, the metronome, time signatures, count-in, auto stop, visualizations, practice history, widgets and iCloud backup stay free.</p>
         <p class="refund-note">Not happy? Get a refund through the App Store.</p>
       </div>
     </section>

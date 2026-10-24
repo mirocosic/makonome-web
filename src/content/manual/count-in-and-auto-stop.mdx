@@ -1,0 +1,119 @@
+---
+title: Count-in and auto stop
+description: Count-in bars and sounds, stopping after a number of bars or a time, and how both work with trainers and Link.
+order: 50
+group: Basics
+platforms: [ios, mac]
+---
+
+A **count-in** plays one or more bars before the music starts, so you are ready on beat 1. **Auto stop** stops the metronome by itself after a number of bars or a time. Both are free.
+
+You set both in the **Playback Options** sheet. They are not part of presets: they stay the same when you load a preset.
+
+## Open Playback Options
+
+On the metronome screen, tap **•••**, then **Count-in** or **Auto Stop**. The menu shows the current value, for example **Count-in (2 bars)** or **Auto Stop (1:30)**.
+
+The **Playback Options** sheet opens. The section you tapped is highlighted. Changes are saved at once.
+
+<Platform only="ios">
+To close the sheet, swipe it down or tap outside it. The sheet always has the same height and shows both sections. When a section is Off, its settings stay visible but dimmed.
+</Platform>
+
+<Platform only="mac">
+On Mac the sheet shows both sections. Close it with the ✕ button in its top right corner.
+</Platform>
+
+## Count-in
+
+To set a count-in:
+
+1. Tap **••• → Count-in**.
+2. Under **Count-in (bars)**, pick **1**, **2** or **4** bars. **Off** turns the count-in off.
+3. Pick a **Sound**: **Click** or **Voice**.
+
+<Screenshot name="playback-options-count-in" alt="Playback Options with Count-in (bars) highlighted: Off, 1, 2 and 4, with 2 selected, and Sound set to Click" caption="A two-bar count-in with the click." />
+
+Then press play. The count-in plays first, and the music starts on bar 1.
+
+What the count-in plays:
+
+- One click on every beat, with no subdivisions.
+- Your accents, so you hear where the bar starts.
+- Muted beats click too, so the count-in has no holes.
+- **Click** uses your metronome sound. If your metronome sound is Voice, the count-in clicks.
+- **Voice** counts the beats out loud: "one, two, three…".
+
+While the count-in plays, the readout under the beat rings shows **Count-in 2 of 4, Beat 2** (or **Count-in, Beat 2** for one bar).
+
+<Screenshot name="count-in-playing" alt="The metronome counting in at 60 BPM, with the readout Count-in 2 of 4, Beat 2 in green under the beat rings" only="ios" caption="The second bar of a four-bar count-in." />
+
+### When the count-in plays
+
+The count-in plays every time the metronome starts from stopped: with the play button, with <kbd>Space</kbd> on Mac, and when a [practice session](/manual/practice-tracking/) starts or resumes the metronome.
+
+There is no count-in when:
+
+- You load a preset while the metronome plays. It restarts at bar 1 right away. This includes the next preset in a playing collection.
+- The metronome starts again by itself after an interruption, like a phone call.
+- Other [Ableton Link](/manual/ableton-link/) devices are connected (see below).
+- You use Free Time in the [Accuracy Trainer](/manual/accuracy-trainer/), which has its own count-in.
+
+## Auto stop
+
+To stop after a number of bars:
+
+1. Tap **••• → Auto Stop**.
+2. Pick **Bars**.
+3. Set the number of bars with **−** and **+**, or tap the number and type it. You can set 1 to 999 bars.
+
+To stop after a time:
+
+1. Tap **••• → Auto Stop**.
+2. Pick **Time**.
+3. Set the time with **−** and **+**, from 0:10 to 60:00.
+
+**Off** turns auto stop off.
+
+<Screenshot name="playback-options-auto-stop" alt="Playback Options with Auto Stop highlighted: Off, Bars and Time, with Bars selected and After 16 bars" caption="Auto stop after 16 bars." />
+
+How it stops:
+
+- **Bars:** at the end of the last bar.
+- **Time:** on the first beat after the time is up. The time starts on the first beat of the music.
+- The count-in is not counted.
+
+While the metronome plays, the readout shows how far you are: **Bar 2 of 16, Beat 3**, or with a time, **Bar 2, Beat 3 · 0:42 left**.
+
+<Screenshot name="auto-stop-playing" alt="The metronome playing at 120 BPM with the readout Bar 2 of 16, Beat 3" only="ios" caption="Bar 2 of a 16-bar auto stop." />
+
+You can change auto stop while the metronome plays. If you turn it off, the metronome keeps playing.
+
+### Auto stop reference
+
+| Setting | Values |
+|---|---|
+| Mode | Off, Bars, Time |
+| Bars | 1 to 999 (8 at first) |
+| Time | 0:10 to 60:00 (1:00 at first) |
+| Time steps | 10 seconds below 1 minute, 30 seconds up to 5 minutes, then 1 minute |
+
+## With the trainers
+
+- **[Gap Trainer](/manual/trainers/#gap-trainer):** the count-in comes before the first normal bar. The muted bars count for auto stop, so 16 bars means 16 bars of music and silence together.
+- **[Tempo Changer](/manual/trainers/#tempo-changer):** the count-in plays at the start tempo. The Tempo Changer starts counting after the count-in.
+- Loading a preset while playing restarts the auto stop count, Gap Trainer and Tempo Changer from bar 1.
+
+## With practice sessions
+
+A practice session can start the metronome for you (the **Start metronome** switch when you start the session). Then the count-in plays first. Pausing the session stops the metronome, and resuming starts it again, with the count-in.
+
+Auto stop stops only the metronome. The practice session keeps its own time until you complete it. See [Practice tracking](/manual/practice-tracking/).
+
+## With Ableton Link
+
+- While other Link devices are connected, there is **no count-in**. The metronome joins the shared bar right away, so it stays in time with the others.
+- With Link on and no other devices connected, the count-in plays as usual.
+- When auto stop stops the metronome, it is a normal stop. With **Start & Stop Sync** on, the other devices stop too.
+
+See [Ableton Link](/manual/ableton-link/).

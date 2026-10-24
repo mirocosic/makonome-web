@@ -1,0 +1,157 @@
+---
+import ManualLayout from '../../layouts/ManualLayout.astro';
+import { PLATFORM_LABELS, getManualPages, groupPages, pageUrl } from '../../lib/manual';
+
+const pages = await getManualPages();
+const groups = groupPages(pages);
+
+// Anchors of the old one-page manual (/manual#basics …) and where each topic lives now (plan M8).
+const oldAnchors: { hash: string; title: string; to: string }[] = [
+  { hash: 'basics', title: 'Basic Controls', to: '/manual/metronome-screen/' },
+  { hash: 'time-signatures', title: 'Time Signatures & Subdivisions', to: '/manual/time-signatures/' },
+  { hash: 'beat-accents', title: 'Beat Accents & Muting', to: '/manual/metronome-screen/#beat-accents-and-muting' },
+  { hash: 'gap-trainer', title: 'Gap Trainer', to: '/manual/trainers/#gap-trainer' },
+  { hash: 'tempo-changer', title: 'Tempo Changer', to: '/manual/trainers/#tempo-changer' },
+  { hash: 'sounds', title: 'Sounds & Settings', to: '/manual/sound-and-feel/' },
+  { hash: 'practice', title: 'Practice Tracking', to: '/manual/practice-tracking/' },
+];
+const redirects = Object.fromEntries(oldAnchors.map((a) => [a.hash, a.to]));
+
+for (const a of oldAnchors) {
+  const slug = a.to.split('/')[2];
+  if (!pages.some((p) => p.id === slug)) throw new Error(`Old manual anchor #${a.hash} points at a missing page: ${a.to}`);
+}
+---
+
+<ManualLayout
+  title="Makonome Manual"
+  description="How to use every part of Makonome, on iPhone, iPad, Mac and (soon) Android."
+>
+  <script slot="head" is:inline define:vars={{ redirects }}>
+    // Old one-page manual links (/manual#gap-trainer) go to the page that covers that topic now.
+    (function () {
+      var to = redirects[location.hash.slice(1)];
+      if (!to) return;
+      var parts = to.split('#');
+      location.replace(parts[0] + location.search + (parts[1] ? '#' + parts[1] : ''));
+    })();
+  </script>
+
+  <p class="intro">
+    Everything Makonome can do, one topic per page. New here? Start with
+    <a href="/manual/getting-started/">Getting started</a>: it shows what's free, what's Pro, and how to play your
+    first click in 30 seconds. Stuck? Try <a href="/manual/troubleshooting/">Troubleshooting and FAQ</a>.
+  </p>
+  <p class="intro">
+    Pick iOS, Mac or Android at the top. The screenshots and the notes that differ follow your choice, and the
+    manual remembers it.
+  </p>
+
+  {
+    groups.map((g) => (
+      <section class="topic-group">
+        <h2>{g.group}</h2>
+        <ul class="topics">
+          {g.pages.map((p) => (
+            <li>
+              <a href={pageUrl(p.id)}>
+                <span class="topic-title">{p.data.title}</span>
+                <span class="topic-desc">{p.data.description}</span>
+                {p.data.platforms.length === 1 && (
+                  <span class="topic-platforms">{p.data.platforms.map((x) => PLATFORM_LABELS[x]).join(' · ')}</span>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+
+  <section class="old-links">
+    <h2 id="old-links">Looking for a section of the old manual?</h2>
+    <ul>
+      {
+        oldAnchors.map((a) => (
+          <li id={a.hash}>
+            {a.title}: now in <a href={a.to}>{pages.find((p) => p.id === a.to.split('/')[2])?.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</ManualLayout>
+
+<style>
+  .intro {
+    max-width: 70ch;
+  }
+
+  .intro a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .topic-group h2 {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .topics {
+    list-style: none;
+    margin: 0 !important;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .topics li {
+    padding: 0 !important;
+  }
+
+  .topics a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    height: 100%;
+    padding: 1.1rem 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid #333;
+    border-radius: 12px;
+    text-decoration: none !important;
+    transition: border-color 0.2s;
+  }
+
+  .topics a:hover {
+    border-color: var(--color-accent);
+  }
+
+  .topic-title {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .topic-desc {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .topic-platforms {
+    margin-top: auto;
+    font-size: 0.75rem;
+    color: var(--color-accent);
+  }
+
+  .old-links {
+    margin-top: 3rem;
+  }
+
+  .old-links h2 {
+    font-size: 1.1rem !important;
+  }
+
+  .old-links li {
+    font-size: 0.95rem;
+  }
+</style>

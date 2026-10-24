@@ -1,0 +1,22 @@
+---
+// <Platform only="ios mac">…</Platform>: content for some platforms only.
+// Hidden by CSS (ManualLayout) when the selected platform isn't listed.
+// Without JavaScript it shows, with a small "On Mac" label.
+import { PLATFORMS, PLATFORM_LABELS, parsePlatforms } from '../../lib/manual';
+
+interface Props {
+  only: string;
+  /** Inline content (a word or phrase inside a sentence) instead of a block. */
+  inline?: boolean;
+}
+
+const { only, inline = false } = Astro.props;
+const platforms = parsePlatforms(only, PLATFORMS);
+const label = 'On ' + platforms.map((p) => PLATFORM_LABELS[p]).join(' and ');
+const Tag = inline ? 'span' : 'div';
+---
+
+<Tag class:list={['platform-block', { 'platform-inline': inline }]} data-only={platforms.join(' ')}>
+  <span class="platform-label">{label}</span>
+  <slot />
+</Tag>

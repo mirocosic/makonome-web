@@ -1,0 +1,31 @@
+---
+// Runs in <head>, before first paint, so platform blocks never flash.
+// Order: ?platform= query, then the remembered choice, then a user-agent guess.
+// iPadOS Safari reports a Mac user agent, so "Mac" also needs no touch points.
+import { PLATFORMS, PLATFORM_STORAGE_KEY } from '../../lib/manual';
+const platforms = [...PLATFORMS];
+const storageKey = PLATFORM_STORAGE_KEY;
+---
+
+<script is:inline define:vars={{ platforms, storageKey }}>
+  (function () {
+    var p = null;
+    try {
+      p = new URLSearchParams(location.search).get('platform');
+    } catch (e) {}
+    if (platforms.indexOf(p) < 0) {
+      p = null;
+      try {
+        p = localStorage.getItem(storageKey);
+      } catch (e) {}
+      if (platforms.indexOf(p) < 0) p = null;
+    }
+    if (!p) {
+      var ua = navigator.userAgent || '';
+      if (/Android/i.test(ua)) p = 'android';
+      else if (/Macintosh|Mac OS X/.test(ua) && !(navigator.maxTouchPoints > 1)) p = 'mac';
+      else p = 'ios';
+    }
+    document.documentElement.dataset.platform = p;
+  })();
+</script>

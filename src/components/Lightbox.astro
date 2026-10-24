@@ -1,0 +1,112 @@
+---
+// One full-screen image viewer per page. Any element with `data-lightbox` opens it:
+// it shows `data-lightbox-src` if set, else the element's <img>. `data-lightbox-shape="window"`
+// gives the image small corners (Mac windows) instead of phone corners.
+---
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot" hidden>
+  <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+  <img class="lightbox-img" id="lightbox-img" src="data:," alt="" />
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox')!;
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const closeButton = lightbox.querySelector<HTMLButtonElement>('.lightbox-close')!;
+  let opener: HTMLElement | null = null;
+
+  function open(trigger: HTMLElement) {
+    const img = trigger.querySelector('img');
+    const src = trigger.dataset.lightboxSrc || img?.currentSrc || img?.src;
+    if (!src) return;
+    lightboxImg.src = src;
+    lightboxImg.alt = img?.alt ?? '';
+    lightboxImg.classList.toggle('lightbox-img-window', trigger.dataset.lightboxShape === 'window');
+    opener = trigger;
+    lightbox.hidden = false;
+    // Force a layout first, so the opacity transition runs from 0.
+    void lightbox.offsetWidth;
+    lightbox.classList.add('active');
+    closeButton.focus();
+  }
+
+  function close() {
+    if (lightbox.hidden) return;
+    lightbox.classList.remove('active');
+    lightbox.hidden = true;
+    opener?.focus();
+    opener = null;
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-lightbox]').forEach((el) => {
+    el.addEventListener('click', () => open(el));
+  });
+  closeButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    close();
+  });
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+</script>
+
+<style>
+  [data-lightbox] {
+    cursor: pointer;
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1000;
+    cursor: pointer;
+  }
+
+  .lightbox[hidden] {
+    display: none;
+  }
+
+  .lightbox.active {
+    opacity: 1;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    line-height: 1;
+  }
+
+  .lightbox-close:hover,
+  .lightbox-close:focus-visible {
+    opacity: 1;
+  }
+
+  .lightbox-img {
+    max-height: 90vh;
+    max-width: 90vw;
+    border-radius: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    cursor: default;
+  }
+
+  .lightbox-img.lightbox-img-window {
+    border-radius: 10px;
+  }
+</style>

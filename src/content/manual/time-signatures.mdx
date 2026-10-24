@@ -1,0 +1,136 @@
+---
+title: Time signatures
+description: Common and custom meters, accent groups like 2+2+3, compound meters with a dotted pulse, and subdivisions.
+order: 30
+group: Basics
+---
+
+The time signature (or meter) sets how many beats a bar has and which note gets the beat. All time signatures and subdivisions are free.
+
+## Open the Time Signature sheet
+
+Tap the button with the notes, second from the left at the bottom of the metronome screen. The **Time Signature** sheet opens. Every change works at once, also while the metronome plays.
+
+<Screenshot name="time-signature-sheet" alt="The Time Signature sheet with 7/8 selected: Common meter buttons, the Custom wheels at 7 over 8, Accent groups 2+2+3, 2+3+2, 3+2+2 and Downbeat, and the Subdivision choices" only="ios mac" caption="The Time Signature sheet in 7/8." />
+
+<Platform only="ios">
+To close the sheet, swipe it down or tap outside it. On iPhone, if not everything fits, the sheet opens smaller: drag it up to see the rest.
+</Platform>
+
+<Platform only="mac">
+On Mac, close the sheet with the ✕ button in its top right corner.
+</Platform>
+
+The sheet has these sections, from top to bottom:
+
+- **Common:** one-tap meters.
+- **Custom:** any meter from 1 to 16 beats.
+- **Count in:** how you count compound meters like 6/8. Only shown for those meters.
+- **Accent groups:** accents for meters with five or more beats, and for compound meters.
+- **Subdivision:** extra clicks between the beats.
+
+The **Count in** section is about what you count. It is not the [count-in](/manual/count-in-and-auto-stop/#count-in) that plays before the music.
+
+## Common meters
+
+The **Common** section has eight buttons: **2/4, 3/4, 4/4, 5/4, 6/8, 7/8, 9/8** and **12/8**. Tap one to switch to it.
+
+When you pick a meter, Makonome sets its default accents. In x/4 and x/2 meters, beat 1 is accented. In x/8 and x/16 meters, the first beat of each group is accented (see [Accent groups](#accent-groups)).
+
+## Custom meters
+
+To set any other meter, turn the two wheels in the **Custom** section:
+
+- **Top number** (beats in a bar): 1 to 16
+- **Bottom number** (the note that gets the beat): 2, 4, 8 or 16
+
+For example, 5 over 8 gives 5/8, and 3 over 2 gives 3/2.
+
+The BPM always counts the bottom note. In 7/8, the dial shows eighth notes per minute. The caption above the number tells you which note it counts.
+
+## Accent groups
+
+Odd meters are usually felt in groups of two and three beats. 7/8 can be 2+2+3, 2+3+2 or 3+2+2. The **Accent groups** section sets these groups in one tap.
+
+To set the accent groups:
+
+1. Pick a meter with five or more beats, or a compound meter like 6/8.
+2. In **Accent groups**, tap a group, for example **2+2+3**.
+
+The first beat of each group gets an accent. The dots under the buttons show the pattern. **Downbeat** accents only beat 1.
+
+<Screenshot name="metronome-7-8" alt="The metronome playing 7/8 at 210 BPM: seven beat rings in three groups, two, two and three, with beats 1, 3 and 5 accented, and the label Eighth Notes · 7/8 · 2+2+3" caption="7/8 as 2+2+3 on the metronome screen." />
+
+The groups also change how the metronome screen looks:
+
+- In x/8 and x/16 meters, small gaps between the beat rings show the groups.
+- The time signature label shows the groups, for example **7/8 · 2+2+3**.
+- The Circular [visualization](/manual/sound-and-feel/#visualizations) shows the groups too.
+
+The first button is the default for the meter. The defaults for x/8 and x/16 are:
+
+- Groups of 3 when the beats divide by 3 (6/8 is 3+3, 9/8 is 3+3+3)
+- 3+3+2 for 8 beats
+- Groups of 2 ending with a 3 for other odd numbers (5/8 is 2+3, 7/8 is 2+2+3)
+- Groups of 2 for other even numbers
+
+To fine-tune, tap single beat rings on the main screen (see [Beat accents and muting](/manual/metronome-screen/#beat-accents-and-muting)). The groups and the label stay as they are.
+
+## Compound meters and the dotted pulse
+
+In compound meters like **6/8, 9/8** and **12/8**, you usually feel the bar in dotted beats. A bar of 6/8 has six eighth notes, but you feel two dotted quarter notes. Makonome counts these meters in dotted beats by default. This works for any meter where the top number is 6, 9, 12 or 15 and the bottom number is 8 or 16.
+
+With a dotted beat:
+
+- The dial shows the dotted-beat tempo. For example "♩. BPM 80", with "♪ = 240" (the eighth-note tempo) under it.
+- The tempo range is 7 to 133 dotted beats a minute. That is the same 20 to 400 BPM, counted in eighth notes.
+- The beat rings still show every eighth note, grouped in threes.
+- Haptic feedback and screen flash follow the dotted beat.
+
+<Screenshot name="metronome-6-8" alt="The metronome playing 6/8: six beat rings in two groups of three, the dial showing dotted-quarter BPM 80 with eighth note = 240 under it" only="ios" caption="6/8 counted in dotted quarters." />
+
+To count every eighth note instead:
+
+1. Pick the compound meter.
+2. In the **Count in** section, tap **♪ Eighths** (for example "♪ Eighths · 6"). **♩. Dotted quarters** goes back to the dotted beat.
+
+In x/16 meters the choices are **Sixteenths** and **Dotted eighths**.
+
+**Click on the pulse only** mutes the beats between the dotted beats, so you hear only the pulse. It works only with the dotted beat.
+
+<Screenshot name="time-signature-sheet-6-8" alt="The Time Signature sheet with 6/8 selected in the Common section and the Custom wheels at 6 over 8" only="ios" caption="Picking 6/8." />
+
+## Subdivisions
+
+A subdivision adds quieter clicks between the beats, so you can hear the eighth notes or triplets inside each beat.
+
+To set a subdivision, tap one in the **Subdivision** section at the bottom of the sheet. **None** plays only the beats.
+
+The choices depend on the bottom number of the meter:
+
+| Meter | Subdivisions |
+|---|---|
+| x/2 | None, Quarters, 8ths, Triplets |
+| x/4 | None, 8ths, 16ths, Triplets |
+| x/8 | None, 16ths, Triplets, 32nds |
+| x/16 | None, 32nds, Triplets |
+
+**Triplets** plays three clicks for each beat. In compound meters, the section is called **Subdivision per ♪**, because it divides each eighth note.
+
+If you switch to a meter that doesn't offer your subdivision, it goes back to None. For example, 16ths in 4/4 become None when you switch to an x/16 meter.
+
+## How the meter label reads
+
+The settings row above the dial shows your subdivision and meter. For example:
+
+- **♩ Quarter Notes · 4/4:** quarter notes, no subdivision.
+- **♪ Eighth Notes · 7/8 · 2+2+3:** 7/8 in groups of 2+2+3.
+- **♩. Dotted-quarter pulse · 6/8 · 3+3:** 6/8 counted in dotted quarters.
+
+With a subdivision, the first part names the notes you hear, for example **Sixteenth Notes** for 16ths in 4/4. The groups are not shown for **Downbeat**.
+
+<Screenshot name="time-signature-sheet-ipad" alt="The Time Signature sheet on iPad, centered over the metronome screen, with 7/8 and all sections visible at once" only="ios" caption="On iPad the sheet shows all sections at once." />
+
+## Ableton Link and meters
+
+Ableton Link always counts quarter notes. In x/8 and x/16 meters, the tempo in the Link sheet is different from the dial: 7/8 at 280 eighth notes a minute is 140 on Link. See [Ableton Link](/manual/ableton-link/).

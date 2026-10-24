@@ -1,0 +1,93 @@
+---
+title: Ableton Link
+description: Play in time with other apps and devices on the same network.
+order: 110
+group: Setup and help
+platforms: [ios, mac]
+---
+
+Ableton Link keeps apps and devices on the same network in time with each other. With Link on, Makonome shares its tempo with Ableton Live, other Link apps, and other devices running Makonome. When one of them changes the tempo, all of them follow. With **Start & Stop Sync** on, they also start and stop together.
+
+<Experimental feature="Ableton Link" />
+
+Ableton Link is free.
+
+## Turn on Link
+
+1. Show the Link button: **Settings → Experimental Features → Ableton Link**. This adds a Link button (a chain link) to the top left of the metronome screen. It doesn't turn Link on yet.
+2. On the metronome screen, tap the Link button. The **Ableton Link** sheet opens.
+3. Tap **Open Link Settings**. This is Ableton's own Link screen.
+4. Turn on **Ableton Link**. To start and stop together with the others, turn on **Start & Stop Sync** too.
+
+<Platform only="ios">
+The first time, iOS asks to let Makonome find devices on your local network. Tap **Allow**. Link can't find anyone without it.
+</Platform>
+
+<Platform only="mac">
+On Mac, macOS may ask to let Makonome find devices on your local network, and a firewall may ask about incoming connections. Allow both. Link can't find anyone without them.
+</Platform>
+
+<Screenshot name="link-sheet" alt="The Ableton Link sheet: Sync tempo with other apps and devices, an Open Link Settings button, the Status and Tempo rows, and a Latency Offset slider" only="ios" caption="The Ableton Link sheet." />
+
+To stop using Link, turn it off in **Open Link Settings**. The switch in Experimental Features only shows or hides the Link button. It doesn't turn Link off.
+
+## The Link button and sheet
+
+The Link button is grey while no one else is connected. It turns green when Makonome is connected to at least one other Link app or device.
+
+The **Ableton Link** sheet shows:
+
+- **Status:** **Disabled** (Link is off), **Searching...** (Link is on, no one else found yet) or **Connected**.
+- **Tempo:** the tempo of the Link session in quarter notes, for example **♩ 120**.
+- **Latency Offset:** see [Latency offset](#latency-offset).
+
+## What Link syncs
+
+- **Tempo, both ways.** When you change the tempo in Makonome, the others follow. When another app changes the tempo, Makonome follows.
+- **Start and stop**, with **Start & Stop Sync** on. When you press play in Makonome, the other apps start. When another app starts, Makonome starts. Stopping works the same way.
+- **The beat.** While others are connected, Makonome waits for the next beat of the shared beat before it starts, so you are in time from the first click. It also starts at the right beat of the bar, so your accents fall where the shared bar has them.
+
+Link doesn't share the time signature, the sound or anything else. Each app keeps its own meter.
+
+With Link on and no one else connected, Makonome starts at once, as without Link.
+
+## Link and time signatures
+
+Ableton Link always counts **quarter notes**. Makonome's dial counts the note of your time signature (the bottom number). So in x/8 and x/16 meters the two numbers differ:
+
+| Meter | Dial | Tempo on Link |
+|---|---|---|
+| 4/4 | 120 | 120 |
+| 7/8 | 180 (eighth notes) | 90 |
+| 7/8 | 280 (eighth notes) | 140 |
+| 12/16 | 240 (sixteenth notes) | 60 |
+
+The **Tempo** row in the Link sheet shows the quarter-note tempo, for example **♩ 90** while the dial shows 180 in 7/8.
+
+**The lowest tempo.** Link doesn't go below 20 quarter notes a minute. So while Link is on, the lowest tempo on the dial depends on the meter: 20 in x/4 and x/2, 40 in x/8, and 80 in x/16. If your tempo is lower when you turn on Link or change the meter, Makonome raises it to that lowest tempo.
+
+**Changing the meter.** When you change to a meter with another bottom number while Link is on, Makonome keeps the Link tempo and works out the new dial tempo. Going from 4/4 at 120 to 7/8, for example, gives 240 on the dial, still 120 on Link. A change of the top number only (4/4 to 3/4) doesn't change the tempo. A meter change never changes the tempo of the others.
+
+**Bar lines.** Link also uses the bar length in quarter notes: 4 in 4/4, 3.5 in 7/8. Apps on the same meter share the bar lines. Apps on different meters share the beat, but their bars don't start together.
+
+## Latency offset
+
+Every device has a small delay between playing a sound and you hearing it. Bluetooth speakers and headphones add more. If Makonome's click sounds early or late against the other Link devices, move **Latency Offset** in the Ableton Link sheet.
+
+- The range is **-200 to +200 ms**, in steps of 10 ms. It starts at 0.
+- A **positive** value plays the click later. A **negative** value plays it earlier. If the click sounds late on Bluetooth headphones, try a negative value.
+- The change applies when you let go of the slider, also while the metronome plays.
+
+The slider works only while Link is on.
+
+## Count-in and auto stop with Link
+
+- While other Link devices are connected, there is **no [count-in](/manual/count-in-and-auto-stop/#count-in)**. Makonome joins the shared beat right away. This includes a start from another app with Start & Stop Sync.
+- With Link on and no one else connected, the count-in plays as usual.
+- When [auto stop](/manual/count-in-and-auto-stop/#auto-stop) stops the metronome, it is a normal stop. With Start & Stop Sync on, the other devices stop too.
+
+## If Link finds no one
+
+- All devices must be on the **same network**. Guest networks and some public or office networks keep devices from seeing each other.
+- Link must be on in every app. In Makonome, the **Status** row should say **Searching...** or **Connected**, not **Disabled**.
+- Makonome needs access to the local network. <Platform only="ios" inline>On iPhone and iPad, check **Settings → Privacy & Security → Local Network → Makonome**.</Platform><Platform only="mac" inline>On Mac, check **System Settings → Privacy & Security → Local Network**, and that no firewall blocks Makonome.</Platform>

@@ -1,0 +1,62 @@
+---
+title: Tempo detection
+description: Let Makonome listen through the microphone and find the tempo of the music.
+order: 100
+group: Practice
+---
+
+Tempo detection listens to music through the microphone and finds its tempo. Use it to set the metronome to a song you want to play along with, or to check how fast a band or a recording really is.
+
+<Experimental feature="Tempo Detection" />
+
+<Pro /> Tempo detection needs Makonome Pro.
+
+## Find the tempo of music
+
+1. Turn it on: **Settings → Experimental Features → Tempo Detection**.
+2. On the metronome screen, tap **••• → Tempo Detection**. The **Tempo Detection** sheet opens.
+3. Pick a method: **Spectral Flux** or **BTT** (see below).
+4. Tap **Start Detection**. The first time, allow Makonome to use the microphone.
+5. Play the music, or hold your device near the speaker. The sheet shows **Listening...**, then the tempo it hears, for example **118 BPM**.
+6. When the result is steady, tap **Apply 118 BPM**. The metronome takes the tempo and the sheet closes.
+
+<Screenshot name="tempo-detection" alt="The Tempo Detection sheet: Detect tempo from audio input, the methods Spectral Flux and BTT with Spectral Flux selected, FFT-based spectral analysis (built-in), 0 BPM, five confidence dots, an Audio Level meter and a Start Detection button" caption="The Tempo Detection sheet before it starts." />
+
+To stop listening, tap **Stop Detection**.
+
+<Platform only="ios">
+To close the sheet without applying, swipe it down or tap outside it.
+</Platform>
+
+<Platform only="mac">
+On Mac, close the sheet with the ✕ button in its top right corner.
+</Platform>
+
+For a clean result, stop the metronome before you start, so the microphone hears only the music.
+
+## Confidence and audio level
+
+- **Confidence** has five dots. The more dots are lit, the more sure Makonome is of the tempo. Give it a few bars of music: the number often changes at first, then settles.
+- The **Apply** button shows only when Makonome is fairly sure (a bit more than one dot). If it doesn't show, play the music louder or come closer to the speaker.
+- **Audio Level** shows how loud the microphone hears the music. Aim for the middle of the meter.
+
+## Spectral Flux or BTT
+
+Both methods listen for the beats in the music, in different ways.
+
+- **Spectral Flux** is built into Makonome. It looks for sudden changes in the sound, like drum hits, and finds how often they repeat. It searches from 40 to 400 BPM. Start with this one.
+- **BTT** uses the Beat-and-Tempo-Tracking library, a beat tracker made for music. It searches from 40 to 300 BPM. Try it when Spectral Flux jumps around, or gives half or double the tempo you hear.
+
+Music with a clear beat, like drums, works best for both. Quiet or very free music is harder.
+
+## The result and the tempo range
+
+- Detection only finds tempos from **40 BPM** up, even though the dial goes down to 20. For a very slow song, it may find double the tempo: halve it on the dial.
+- If the result is outside the metronome's range, it is set to the nearest tempo in the range.
+- The result sets the BPM number of your meter. In x/8 meters, that is the eighth-note tempo, so the dial may show a different number than you expect. It fits x/4 meters best.
+
+## Microphone access
+
+Tempo detection needs the microphone. Makonome listens from **Start Detection** until you tap **Stop Detection** or **Apply**. Closing the sheet always stops it.
+
+If you said no when asked, Makonome shows **Microphone Permission Required**. Tap **Settings** to open the system settings and allow the microphone for Makonome, then try again.

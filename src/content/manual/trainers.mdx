@@ -1,0 +1,132 @@
+---
+title: Trainers
+description: The Gap Trainer (including progressive mode) and the Tempo Changer.
+order: 60
+group: Practice
+---
+
+Makonome has two trainers. The **Gap Trainer** mutes the click for some bars, so you learn to keep time on your own. The **Tempo Changer** makes the tempo faster as you play, so you can build speed step by step.
+
+<Pro /> Both trainers need Makonome Pro. You find both in the **•••** menu on the metronome screen. Their settings stay the same when you load a preset: they are not part of presets.
+
+## Gap Trainer
+
+The Gap Trainer plays some bars with the click (normal bars), then some bars without it (muted bars), and repeats. Keep playing through the silence. When the click comes back, you hear at once if you were still in time.
+
+To set up the Gap Trainer:
+
+1. On the metronome screen, tap **••• → Gap Trainer**.
+2. Turn on the **Gap Trainer** switch at the top.
+3. Set **Normal Bars** (1 to 16): the bars with the click.
+4. Set **Muted Bars** (1 to 16): the bars of silence.
+5. Close the sheet and press play.
+
+The line under the switch sums up the pattern, for example **4 normal → 4 muted → repeat**.
+
+<Screenshot name="gap-trainer-sheet" alt="The Gap Trainer sheet with the switch on, the summary 4 normal → 2 muted (+1/cycle, max 8), Normal Bars 4, Starting Muted 2, and Progressive Mode on with Add Bars +1 and Max Muted 8" caption="The Gap Trainer with progressive mode on." />
+
+<Platform only="ios">
+To close the sheet, swipe it down or tap outside it.
+</Platform>
+
+<Platform only="mac">
+On Mac, close the sheet with the ✕ button in its top right corner.
+</Platform>
+
+To turn the Gap Trainer off, tap **••• → Gap Trainer** and turn the switch off. The menu shows the state: **Gap Trainer (On)** or **Gap Trainer (Off)**.
+
+### Progressive mode
+
+In progressive mode the silence gets longer each time. Use it to stretch how long you can keep time alone.
+
+1. In the Gap Trainer sheet, turn on **Progressive Mode** ("Gaps grow longer each cycle").
+2. **Starting Muted** (the Muted Bars wheel) sets the first gap.
+3. **Add Bars** (+1 to +4) sets how many muted bars are added after each cycle.
+4. **Max Muted** (2 to 32) sets the longest gap.
+
+For example, 4 normal bars, starting with 2 muted, +1, max 8: the gaps are 2, 3, 4, 5, 6, 7 and 8 bars, then they stay at 8. When you start the metronome again, the gaps start at 2 again.
+
+### While the Gap Trainer plays
+
+- A small **Gap** tag shows in the line above the dial while the Gap Trainer is on.
+- Under the bar and beat readout, a line shows where you are: **Normal (2/4)**, or **Muted (1/4)** in orange.
+- The beat rings keep moving in the muted bars, so you can check yourself. Look away if you want a real test.
+
+<Screenshot name="gap-trainer-playing" alt="The metronome playing with the readout Bar 6, Beat 1 and Muted (2/4) in orange under it, and a Gap tag next to Quarter Notes · 4/4" only="ios" caption="The second of four muted bars." />
+
+### Gap Trainer reference
+
+| Setting | Values |
+|---|---|
+| Normal Bars | 1 to 16 |
+| Muted Bars (Starting Muted in progressive mode) | 1 to 16 |
+| Progressive Mode | On or off |
+| Add Bars | +1 to +4 per cycle |
+| Max Muted | 2 to 32 bars |
+
+## Tempo Changer
+
+The Tempo Changer raises the tempo by a few BPM after a number of bars or seconds. You start slow and finish faster, without stopping to turn the dial.
+
+To set up the Tempo Changer:
+
+1. On the metronome screen, tap **••• → Tempo Changer**.
+2. Turn on the **Tempo Changer** switch at the top.
+3. Pick **Bars** or **Time**.
+4. Set **BPM Increment** (+1 to +10): how much faster each step is.
+5. Set how often it changes: **Bar Interval** (1 to 20 bars), or with Time, **Seconds** (5 to 120 seconds).
+6. To stop at a tempo, turn on **Stop at Target BPM** and pick the **Target BPM** (60 to 400, in steps of 10).
+7. Close the sheet, set your start tempo on the dial, and press play.
+
+The line under the switch sums it up, for example **Increase by 2 BPM every 4 bars until 160 BPM**.
+
+<Screenshot name="tempo-changer-sheet" alt="The Tempo Changer sheet with the switch on, the summary Increase by 2 BPM every 4 bars until 160 BPM, Bars selected, BPM Increment +2, Bar Interval 4, and Stop at Target BPM on at 160 BPM" caption="+2 BPM every 4 bars, up to 160." />
+
+### While the Tempo Changer plays
+
+- The tempo goes up by the increment at each step. The dial follows, so you always see the current tempo.
+- A **Tempo+** tag shows in the line above the dial while the Tempo Changer is on.
+- Under the bar and beat readout, a line counts down to the next step: **Tempo +2 in 3 bars**, or with Time, **Tempo +2 every 30s**.
+- When you stop the metronome, the dial stays at the tempo you reached. Set the start tempo again before the next run.
+
+<Screenshot name="tempo-changer-playing" alt="The metronome playing at 120 BPM with the readout Bar 2, Beat 3 and the line Tempo +2 in 3 bars under it, and a Tempo+ tag next to Quarter Notes · 4/4" only="ios" caption="Three bars to the next step." />
+
+### At the target
+
+With **Stop at Target BPM** on, the tempo stops going up at the target. The metronome keeps playing at that tempo, and the line shows **Target reached: 160 BPM 👍**. A step never goes past the target: if it would, the tempo goes to the target exactly.
+
+Without a target, the tempo keeps going up until the top of the range (400 BPM).
+
+The Tempo Changer only goes up. If you start above the target, the first step brings the tempo down to the target, and it stays there.
+
+### Compound meters
+
+In meters with a dotted beat, like 6/8, the increment and the target count dotted beats, like the dial. The top of the range is still 400 eighth notes a minute (133 dotted beats). See [Compound meters](/manual/time-signatures/#compound-meters-and-the-dotted-pulse).
+
+### Tempo Changer reference
+
+| Setting | Values |
+|---|---|
+| Interval mode | Bars or Time |
+| BPM Increment | +1 to +10 (+2 at first). With Fine-grained BPM on, also +0.5, +1.5 and +2.5 |
+| Bar Interval | 1 to 20 bars (4 at first) |
+| Seconds | 5, 10, 15, 20, 30, 45, 60, 90 or 120 (30 at first) |
+| Stop at Target BPM | On or off |
+| Target BPM | 60 to 400, in steps of 10 (160 at first) |
+
+## Using both together
+
+You can turn on the Gap Trainer and the Tempo Changer at the same time. The tempo keeps going up in the muted bars too, so when the click comes back it may be faster.
+
+## With count-in, auto stop and collections
+
+- **Count-in:** the count-in plays first, at the start tempo. The Gap Trainer starts with its normal bars after it, and the Tempo Changer starts counting after it.
+- **Auto stop:** muted bars count. 16 bars means 16 bars of click and silence together.
+- **Loading a preset while playing:** the run starts again at bar 1. The Gap Trainer goes back to its first normal bar (and its first gap in progressive mode), and the Tempo Changer starts counting again from the new preset's tempo. The same happens when you go to the next or previous preset in a [playing collection](/manual/presets-and-collections/#play-a-collection).
+- **Accuracy Trainer Free Time:** the Tempo Changer pauses while a Free Time run plays. See [Accuracy Trainer](/manual/accuracy-trainer/#free-time).
+
+See [Count-in and auto stop](/manual/count-in-and-auto-stop/) for more.
+
+## Without Pro
+
+When the trial ends without Pro, the Gap Trainer and the Tempo Changer turn off the next time you open Makonome. In the **•••** menu they show a sparkle icon. Tap one to see the upgrade screen. Your trainer settings are kept, so they are ready if you buy Pro later.

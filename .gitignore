@@ -25,4 +25,4 @@ pnpm-debug.log*
 *.swo
 
 # app repo checkout (release notes source), see README
-app/
+/app

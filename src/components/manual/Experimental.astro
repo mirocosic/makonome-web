@@ -1,0 +1,15 @@
+---
+// <Experimental feature="Accuracy Trainer" />: the feature is off until turned on.
+interface Props {
+  feature: string;
+}
+const { feature } = Astro.props;
+---
+
+<aside class="callout callout-experimental">
+  <p>
+    <span class="badge badge-experimental">Experimental</span>
+    <strong>{feature}</strong> is an experimental feature, off by default. Turn it on in
+    <strong>Settings → Experimental Features</strong>.
+  </p>
+</aside>

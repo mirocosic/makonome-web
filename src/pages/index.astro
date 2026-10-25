@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Lightbox from '../components/Lightbox.astro';
 ---
 
 <BaseLayout title="Makonome - Precision Metronome for iOS">
@@ -26,6 +27,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </svg>
           Download on the App Store
         </a>
+        <a href="/manual/" class="manual-link">Read the manual →</a>
       </div>
     </section>
 
@@ -205,11 +207,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- Lightbox modal -->
-    <div class="lightbox" id="lightbox">
-      <button class="lightbox-close" aria-label="Close">&times;</button>
-      <img class="lightbox-img" id="lightbox-img" src="" alt="" />
-    </div>
+    <Lightbox />
 
     <footer>
       <p>&copy; {new Date().getFullYear()} Makonome. Built with ♥ for musicians.</p>
@@ -560,49 +558,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     transform: scale(1.02);
   }
 
-  .lightbox {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
-    z-index: 1000;
-    cursor: pointer;
+  .manual-link {
+    display: block;
+    margin-top: 1.25rem;
+    text-align: center;
+    color: var(--color-text-muted);
   }
 
-  .lightbox.active {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .lightbox-close {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2.5rem;
-    cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-    line-height: 1;
-  }
-
-  .lightbox-close:hover {
-    opacity: 1;
-  }
-
-  .lightbox-img {
-    max-height: 90vh;
-    max-width: 90vw;
-    border-radius: 40px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    cursor: default;
+  .manual-link:hover {
+    color: var(--color-accent);
   }
 
   footer {
@@ -656,41 +620,3 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
   }
 </style>
-
-<script>
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
-  const lightboxClose = document.querySelector('.lightbox-close');
-  const carouselImages = document.querySelectorAll('.device-frame-small img');
-
-  // Open lightbox when clicking carousel images
-  carouselImages.forEach((img) => {
-    img.parentElement?.addEventListener('click', () => {
-      if (img instanceof HTMLImageElement) {
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightbox?.classList.add('active');
-      }
-    });
-  });
-
-  // Close lightbox when clicking the close button
-  lightboxClose?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    lightbox?.classList.remove('active');
-  });
-
-  // Close lightbox when clicking the background
-  lightbox?.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      lightbox.classList.remove('active');
-    }
-  });
-
-  // Close lightbox on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      lightbox?.classList.remove('active');
-    }
-  });
-</script>

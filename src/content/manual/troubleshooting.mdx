@@ -1,0 +1,75 @@
+---
+title: Troubleshooting and FAQ
+description: No sound, a widget that shows 0, Link without peers, a MIDI device that isn't found, and more.
+order: 140
+group: Setup and help
+platforms: [ios, mac]
+---
+
+Short answers to common problems. Each one links to the page with the details. If your problem isn't here, [contact support](#contact-support).
+
+## There is no sound
+
+Makonome plays like a music app: <Platform only="ios" inline>the Ring/Silent switch (or the silent mode of the Action button) doesn't mute it.</Platform><Platform only="mac" inline>it plays through the sound output you picked in macOS.</Platform> Check these:
+
+- **The volume.** <Platform only="ios" inline>Press the volume buttons while the metronome plays.</Platform><Platform only="mac" inline>Check the volume, and the output device in **System Settings → Sound**.</Platform> Then open **Sound Settings** on the metronome screen (the speaker button): the Makonome volume should not be at 0%. At 0% the speaker button is red and crossed out. See [Volume](/manual/sound-and-feel/#volume).
+- **Headphones or a speaker.** Makonome plays to the connected Bluetooth or wired device. Check where the sound goes in <Platform only="ios" inline>Control Center</Platform><Platform only="mac" inline>the menu bar's sound menu</Platform>.
+- **Muted beats.** A dashed beat ring is muted. Tap it to turn it back to normal. See [Beat accents and muting](/manual/metronome-screen/#beat-accents-and-muting).
+- **The Gap Trainer.** It mutes whole bars on purpose. Check **••• → Gap Trainer**. See [Gap Trainer](/manual/trainers/#gap-trainer).
+- **A call or another app.** A phone call, an alarm, or another app that takes over the sound stops the metronome. It often starts again by itself afterwards. If not, press play.
+
+## The click is late on Bluetooth headphones
+
+Bluetooth headphones and speakers play every sound a little late, often a tenth of a second or more. Makonome can't remove that delay. When you practice alone it matters little, because you play to what you hear.
+
+- The [Accuracy Trainer](/manual/accuracy-trainer/) knows the delay and scores your hits against the moment you hear the click.
+- With [Ableton Link](/manual/ableton-link/), if your click is late against the other devices, set a negative **Latency Offset** in the Link sheet. See [Latency offset](/manual/ableton-link/#latency-offset).
+- For the tightest timing, use wired headphones or the built-in speaker.
+
+## The widget shows 0
+
+Open Makonome once after you update to version 1.1. Before 1.1 the widget couldn't read your practice data, and the first launch of 1.1 fixes that. The widget also shows 0 until you complete your first session, and at the start of each week. See [The widget shows 0](/manual/practice-tracking/#the-widget-shows-0).
+
+## Link finds no other devices
+
+- Put all devices on the **same network**. Guest and some office networks keep devices apart.
+- Turn on Link in every app. In Makonome: tap the Link button, then **Open Link Settings**. The **Status** should say **Searching...** or **Connected**, not **Disabled**.
+- Allow local network access: <Platform only="ios" inline>**Settings → Privacy & Security → Local Network → Makonome**.</Platform><Platform only="mac" inline>**System Settings → Privacy & Security → Local Network**, and check that no firewall blocks Makonome.</Platform>
+- No Link button on the metronome screen? Turn on **Settings → Experimental Features → Ableton Link** first.
+
+See [Ableton Link](/manual/ableton-link/#if-link-finds-no-one).
+
+## My MIDI drum kit isn't found
+
+- Connect the kit before you open the trainer, or tap the round arrow at the top of the Accuracy Trainer to scan again.
+- A USB kit must work without a driver ("class compliant"). <Platform only="ios" inline>On an iPhone or iPad with a Lightning port you need a USB adapter, such as Apple's Lightning to USB Camera Adapter.</Platform>
+- A Bluetooth MIDI device must be paired first, <Platform only="ios" inline>in the app that came with it or in another MIDI app</Platform><Platform only="mac" inline>in **Audio MIDI Setup → Window → Show MIDI Studio → Bluetooth**</Platform>. Makonome has no pairing screen.
+- Check that the kit sends MIDI notes on its USB or MIDI output (see the kit's manual).
+
+See [Connect your drum kit](/manual/accuracy-trainer/#connect-your-drum-kit).
+
+## A preset says "Made with a newer version"
+
+The preset came from a newer version of Makonome on another device (through the iCloud backup). This version can't read it, so it keeps it safe and doesn't load it. Update Makonome on this device to use it. See [Presets from a newer version](/manual/presets-and-collections/#presets-from-a-newer-version).
+
+## Restore my data on a new phone
+
+Sign in to iCloud with the same Apple ID, install Makonome and open it. The backup comes back on the first launch, as long as **Back up to iCloud** was on on the old device. Then open **Settings → Pro → Restore Purchases** to unlock Pro. See [Restore on a new device](/manual/settings-and-data/#restore-on-a-new-device).
+
+## The count-in doesn't play
+
+The count-in plays only when the metronome starts from stopped. It doesn't play:
+
+- while other [Ableton Link](/manual/ableton-link/#count-in-and-auto-stop-with-link) devices are connected,
+- in the Accuracy Trainer's Free Time, which has its own count-in,
+- when you load a preset while the metronome plays, or the next preset of a collection.
+
+Check that it is on: **••• → Count-in**. See [When the count-in plays](/manual/count-in-and-auto-stop/#when-the-count-in-plays).
+
+## Where are haptics, tempo detection and the Accuracy Trainer?
+
+They are experimental features, off at first. Turn them on in **Settings → Experimental Features**. Then they show in the **•••** menu on the metronome screen. Visualizations and Ableton Link add a button to the top left of the metronome screen instead. See [Experimental features](/manual/getting-started/#experimental-features).
+
+## Contact support
+
+Open **Settings → Feedback → Contact Support** to write an email to support@makonome.com. To report a problem, use **Report a Bug**: it adds your device and system version, so we can find the problem faster. See [Feedback](/manual/settings-and-data/#feedback).

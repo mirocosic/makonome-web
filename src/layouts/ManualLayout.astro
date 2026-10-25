@@ -1,0 +1,562 @@
+---
+import type { MarkdownHeading } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+import Lightbox from '../components/Lightbox.astro';
+import ComingSoon from '../components/manual/ComingSoon.astro';
+import ManualNav from '../components/manual/ManualNav.astro';
+import PlatformInit from '../components/manual/PlatformInit.astro';
+import PlatformSwitch from '../components/manual/PlatformSwitch.astro';
+import { PLATFORMS, PLATFORM_LABELS, getManualPages, pageUrl, type Platform } from '../lib/manual';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Id of the manual page shown; omitted on the start page. */
+  current?: string;
+  headings?: MarkdownHeading[];
+  /** Platforms the page applies to; the others get a banner. */
+  platforms?: readonly Platform[];
+}
+
+const { title, description, current, headings = [], platforms = PLATFORMS } = Astro.props;
+const pages = await getManualPages();
+const index = current === undefined ? -1 : pages.findIndex((p) => p.id === current);
+const prev = index > 0 ? pages[index - 1] : undefined;
+const next = index >= 0 && index < pages.length - 1 ? pages[index + 1] : undefined;
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const missing = PLATFORMS.filter((p) => !platforms.includes(p));
+const aboutText = `This page is about Makonome on ${platforms.map((p) => PLATFORM_LABELS[p]).join(' and ')}.`;
+---
+
+<BaseLayout title={current === undefined ? title : `${title} - Makonome Manual`} description={description}>
+  <PlatformInit slot="head" />
+  <slot name="head" slot="head" />
+
+  <div class="manual">
+    <header class="topbar">
+      <div class="topbar-links">
+        <a href="/" class="brand">Makonome</a>
+        <span aria-hidden="true">/</span>
+        <a href="/manual/">Manual</a>
+      </div>
+      <PlatformSwitch />
+    </header>
+
+    <details class="nav-mobile">
+      <summary>All topics</summary>
+      <nav aria-label="Manual topics"><ManualNav pages={pages} current={current} /></nav>
+    </details>
+
+    <div class:list={['grid', { 'has-toc': toc.length > 0 }]}>
+      <nav class="sidebar" aria-label="Manual topics">
+        <ManualNav pages={pages} current={current} />
+      </nav>
+
+      <div class="page-head">
+        <h1>{title}</h1>
+        <p class="lede">{description}</p>
+        {
+          missing.map((p) => (
+            <ComingSoon platform={p} message={p === 'android' ? `${aboutText} Makonome for Android is coming soon.` : aboutText} />
+          ))
+        }
+      </div>
+
+      {
+        toc.length > 0 && (
+          <aside class="toc" aria-labelledby="toc-title">
+            <p id="toc-title" class="toc-title">On this page</p>
+            <ul>
+              {toc.map((h) => (
+                <li class:list={{ 'toc-sub': h.depth === 3 }}>
+                  <a href={`#${h.slug}`}>{h.text}</a>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )
+      }
+
+      <main class="manual-prose">
+        <slot />
+
+        {
+          (prev || next) && (
+            <nav class="pager" aria-label="Previous and next page">
+              {prev ? (
+                <a href={pageUrl(prev.id)} class="pager-prev" rel="prev">
+                  <span>Previous</span>
+                  {prev.data.title}
+                </a>
+              ) : (
+                <span />
+              )}
+              {next && (
+                <a href={pageUrl(next.id)} class="pager-next" rel="next">
+                  <span>Next</span>
+                  {next.data.title}
+                </a>
+              )}
+            </nav>
+          )
+        }
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; {new Date().getFullYear()} Makonome. Built with ♥ for musicians.</p>
+      <nav>
+        <a href="/manual/">Manual</a>
+        <a href="/changelog">Changelog</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </nav>
+    </footer>
+  </div>
+
+  <Lightbox />
+
+  <script is:inline>
+    // "On this page" entries for headings inside a platform block take that block's platforms,
+    // so the platform CSS hides them together with the heading.
+    document.querySelectorAll('.toc a[href^="#"]').forEach(function (a) {
+      var target = document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+      var block = target && target.closest('[data-only]');
+      if (block) a.parentElement.setAttribute('data-only', block.getAttribute('data-only'));
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .manual {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #333;
+  }
+
+  .topbar-links {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--color-text-muted);
+  }
+
+  .topbar-links a {
+    color: var(--color-text-muted);
+  }
+
+  .topbar-links .brand {
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  .nav-mobile {
+    display: none;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    grid-template-areas:
+      'nav head'
+      'nav toc'
+      'nav main';
+    grid-template-rows: auto auto 1fr;
+    column-gap: 3rem;
+    padding-top: 2.5rem;
+  }
+
+  .sidebar {
+    grid-area: nav;
+    position: sticky;
+    top: 1.5rem;
+    align-self: start;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    padding-bottom: 2rem;
+  }
+
+  .page-head {
+    grid-area: head;
+    max-width: 70ch;
+  }
+
+  .toc {
+    grid-area: toc;
+    max-width: 70ch;
+    margin-bottom: 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid #333;
+    border-radius: 12px;
+  }
+
+  .manual-prose {
+    grid-area: main;
+    max-width: 70ch;
+    min-width: 0;
+    padding-bottom: 3rem;
+  }
+
+  @media (min-width: 1200px) {
+    .grid.has-toc {
+      grid-template-columns: 220px minmax(0, 1fr) 200px;
+      grid-template-areas:
+        'nav head toc'
+        'nav main toc';
+      grid-template-rows: auto 1fr;
+    }
+
+    .has-toc .toc {
+      position: sticky;
+      top: 1.5rem;
+      align-self: start;
+      background: none;
+      border: 0;
+      border-left: 1px solid #333;
+      border-radius: 0;
+      padding: 0 0 0 1rem;
+    }
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+
+  .lede {
+    color: var(--color-text-muted);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .toc-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .toc ul {
+    list-style: none;
+  }
+
+  .toc li {
+    padding: 0.2rem 0;
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .toc .toc-sub {
+    padding-left: 0.9rem;
+  }
+
+  .toc a {
+    color: var(--color-text-muted);
+  }
+
+  .toc a:hover {
+    color: var(--color-accent);
+  }
+
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3.5rem;
+  }
+
+  .pager a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid #333;
+    border-radius: 12px;
+    color: var(--color-text);
+    max-width: 48%;
+  }
+
+  .pager a:hover {
+    border-color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .pager span {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .pager-next {
+    margin-left: auto;
+    text-align: right;
+  }
+
+  footer {
+    border-top: 1px solid #333;
+    padding: 3rem 0;
+    text-align: center;
+    color: var(--color-text-muted);
+  }
+
+  footer nav {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+  }
+
+  @media (max-width: 800px) {
+    .manual {
+      padding: 0 1rem;
+    }
+
+    .grid,
+    .grid.has-toc {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: 'head' 'toc' 'main';
+      grid-template-rows: auto;
+      padding-top: 1.5rem;
+    }
+
+    .sidebar {
+      display: none;
+    }
+
+    .nav-mobile {
+      display: block;
+      margin-top: 1rem;
+      border: 1px solid #333;
+      border-radius: 12px;
+      background: var(--color-surface);
+    }
+
+    .nav-mobile summary {
+      cursor: pointer;
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+    }
+
+    .nav-mobile nav {
+      padding: 0 1rem 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .pager {
+      flex-direction: column;
+    }
+
+    .pager a {
+      max-width: none;
+    }
+
+    .pager-next {
+      margin-left: 0;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Platform blocks (Platform, Screenshot, ComingSoon). PlatformInit sets data-platform before paint. */
+  html[data-platform='ios'] [data-only]:not([data-only~='ios']),
+  html[data-platform='mac'] [data-only]:not([data-only~='mac']),
+  html[data-platform='android'] [data-only]:not([data-only~='android']) {
+    display: none !important;
+  }
+
+  .platform-label {
+    display: none;
+  }
+
+  /* No JavaScript: every block shows, labelled with its platform. */
+  html:not([data-platform]) .platform-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #0a0a0a;
+    background: var(--color-text-muted);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    margin: 0 0.4rem 0.4rem 0;
+  }
+
+  html:not([data-platform]) .platform-block:not(.platform-inline):not(.screenshot):not(.callout) {
+    border-left: 2px solid #444;
+    padding-left: 1rem;
+  }
+
+  .manual-prose h2 {
+    font-size: 1.6rem;
+    margin: 2.75rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #333;
+    scroll-margin-top: 1.5rem;
+  }
+
+  .manual-prose h3 {
+    font-size: 1.2rem;
+    margin: 2rem 0 0.75rem;
+    scroll-margin-top: 1.5rem;
+  }
+
+  .manual-prose > :first-child,
+  .manual-prose > .platform-block:first-child > :nth-child(2) {
+    margin-top: 0;
+  }
+
+  .manual-prose p,
+  .manual-prose li {
+    color: #c8c8c8;
+    line-height: 1.7;
+  }
+
+  .manual-prose p {
+    margin-bottom: 1rem;
+  }
+
+  .manual-prose ul,
+  .manual-prose ol {
+    margin: 0 0 1rem 1.25rem;
+  }
+
+  .manual-prose li {
+    padding: 0.2rem 0 0.2rem 0.25rem;
+  }
+
+  .manual-prose li::marker {
+    color: var(--color-accent);
+  }
+
+  .manual-prose strong {
+    color: var(--color-text);
+  }
+
+  .manual-prose code {
+    font-size: 0.9em;
+    background: var(--color-surface);
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 0.05rem 0.3rem;
+  }
+
+  .manual-prose a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .manual-prose .pager a {
+    text-decoration: none;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-radius: 999px;
+    padding: 0.1rem 0.5rem;
+    vertical-align: 0.15em;
+    line-height: 1.5;
+  }
+
+  .badge-pro {
+    color: #0a0a0a;
+    background: linear-gradient(90deg, var(--color-accent), #22d3ee);
+  }
+
+  .badge-experimental {
+    color: #fbbf24;
+    border: 1px solid #fbbf24;
+    margin-right: 0.4rem;
+  }
+
+  .callout {
+    margin: 1.5rem 0;
+    padding: 0.9rem 1.1rem;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background: var(--color-surface);
+  }
+
+  .callout p {
+    margin: 0;
+  }
+
+  .callout-experimental {
+    border-color: rgba(251, 191, 36, 0.45);
+  }
+
+  .callout-coming-soon {
+    border-color: rgba(74, 222, 128, 0.45);
+  }
+
+  .screenshot {
+    margin: 1.75rem 0;
+  }
+
+  .screenshot-button {
+    display: block;
+    padding: 0;
+    border: 0;
+    background: none;
+    max-width: 100%;
+  }
+
+  .screenshot-button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+    border-radius: 12px;
+  }
+
+  .screenshot img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s;
+  }
+
+  .screenshot-button:hover img {
+    transform: scale(1.02);
+  }
+
+  .screenshot-phone img {
+    width: 300px;
+    border-radius: 34px;
+    border: 6px solid #1c1c1e;
+  }
+
+  .screenshot-window img {
+    width: 720px;
+    border-radius: 10px;
+    border: 1px solid #333;
+  }
+
+  .screenshot figcaption {
+    margin-top: 0.75rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+</style>

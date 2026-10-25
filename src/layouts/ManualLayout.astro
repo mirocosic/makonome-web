@@ -57,7 +57,7 @@ const aboutText = `This page is about Makonome on ${platforms.map((p) => PLATFOR
         <p class="lede">{description}</p>
         {
           missing.map((p) => (
-            <ComingSoon platform={p} message={p === 'android' ? `${aboutText} Makonome for Android is coming soon.` : aboutText} />
+            <ComingSoon platform={p} message={p === 'android' ? `${aboutText} It doesn’t cover the Android app yet.` : aboutText} />
           ))
         }
       </div>

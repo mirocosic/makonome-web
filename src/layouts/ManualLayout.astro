@@ -1,6 +1,7 @@
 ---
 import type { MarkdownHeading } from 'astro';
 import BaseLayout from './BaseLayout.astro';
+import Footer from '../components/Footer.astro';
 import Lightbox from '../components/Lightbox.astro';
 import ComingSoon from '../components/manual/ComingSoon.astro';
 import ManualNav from '../components/manual/ManualNav.astro';
@@ -103,16 +104,7 @@ const aboutText = `This page is about Makonome on ${platforms.map((p) => PLATFOR
       </main>
     </div>
 
-    <footer>
-      <p>&copy; {new Date().getFullYear()} Makonome. Built with ♥ for musicians.</p>
-      <nav>
-        <a href="/manual/">Manual</a>
-        <a href="/changelog">Changelog</a>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/terms">Terms of Service</a>
-        <a href="https://www.reddit.com/r/makonome/" target="_blank" rel="noopener">Reddit</a>
-      </nav>
-    </footer>
+    <Footer />
   </div>
 
   <Lightbox />
@@ -306,21 +298,6 @@ const aboutText = `This page is about Makonome on ${platforms.map((p) => PLATFOR
   .pager-next {
     margin-left: auto;
     text-align: right;
-  }
-
-  footer {
-    border-top: 1px solid #333;
-    padding: 3rem 0;
-    text-align: center;
-    color: var(--color-text-muted);
-  }
-
-  footer nav {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem 2rem;
   }
 
   @media (max-width: 800px) {

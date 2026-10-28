@@ -43,7 +43,7 @@ A preset saves:
 
 - The tempo
 - The time signature, with its beat unit (for example dotted beats in 6/8) and accent groups
-- The subdivision
+- The subdivision, with its [rests](/manual/time-signatures/#rests-inside-the-beat)
 - Which beats are accented and which are muted
 - The name and notes
 
@@ -59,7 +59,7 @@ On Android a preset also saves the sound. Loading a preset sets its sound, puts 
 
 Tap <Platform only="ios mac" inline>the green load button on the right of the preset</Platform><Platform only="android" inline>the preset's row</Platform>. Makonome goes back to the metronome screen with the preset's settings. If the metronome is playing, it switches at once and starts again at bar 1.
 
-Each row shows the tempo, meter and subdivision<Platform only="ios mac" inline>, the accented and muted beats (for example **Beats 1, 3, 5 accented**), and the notes</Platform>.
+Each row shows the tempo, meter and subdivision (with dots for the rests, if it has any)<Platform only="ios mac" inline>, the accented and muted beats (for example **Beats 1, 3, 5 accented**), and the notes</Platform>.
 
 ## Favorites
 
@@ -91,6 +91,8 @@ On Mac, right-click a preset to see Edit, Duplicate, Favorite and Delete.
 ### Presets from a newer version
 
 If you use Makonome on more than one device, a newer version of the app may save a preset that an older version can't read. The older version keeps it safe and shows a row **Made with a newer version of Makonome. Update the app to use it.** You can't load or edit it there, only delete it. Update the app to use it. Collections skip these presets when they play.
+
+A preset with quintuplets, sextuplets, septuplets or rests works differently. An older version loads it, but plays it with no subdivision. The pattern stays in the preset, and the newer version plays it again. If you change the preset's subdivision in the older version, the pattern is gone.
 
 <Platform only="android">
 This is about iPhone, iPad and Mac. Android has no iCloud backup, so it doesn't get presets from other devices.

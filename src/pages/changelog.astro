@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
 
 // Newest first. A prerelease ("1.0.0-beta") sorts below its release ("1.0.0").
 function compareVersions(a: string, b: string): number {
@@ -57,9 +58,7 @@ const versions = await Promise.all(
       ))}
     </section>
 
-    <footer>
-      <p>&copy; {new Date().getFullYear()} Makonome. Built with ♥ for musicians.</p>
-    </footer>
+    <Footer />
   </main>
 </BaseLayout>
 
@@ -96,6 +95,8 @@ const versions = await Promise.all(
   }
 
   .changelog {
+    /* Space above the shared footer. */
+    margin-bottom: 4rem;
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -163,13 +164,5 @@ const versions = await Promise.all(
     position: absolute;
     left: 0;
     color: var(--color-accent);
-  }
-
-  footer {
-    border-top: 1px solid #333;
-    margin-top: 4rem;
-    padding: 2rem 0;
-    text-align: center;
-    color: var(--color-text-muted);
   }
 </style>

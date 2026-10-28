@@ -59,15 +59,17 @@ For a clean result, stop the metronome before you start, so the microphone hears
 
 ## Spectral Flux or BTT
 
+<Platform only="ios mac">
 Both methods listen for the beats in the music, in different ways.
 
 - **Spectral Flux** is built into Makonome. It looks for sudden changes in the sound, like drum hits, and finds how often they repeat. It searches from 40 to 400 BPM. Start with this one.
 - **BTT** uses the Beat-and-Tempo-Tracking library, a beat tracker made for music. It searches from 40 to 300 BPM. Try it when Spectral Flux jumps around, or gives half or double the tempo you hear.
 
 Music with a clear beat, like drums, works best for both. Quiet or very free music is harder.
+</Platform>
 
 <Platform only="android">
-The Android app has one method, built in, and no choice to make. It listens for sudden changes in loudness, like drum hits, and searches from 40 to 300 BPM. For a song faster than 300 BPM, it finds half the tempo.
+The Android app has one method, built in, and no choice to make. It listens for sudden changes in loudness, like drum hits, and searches from 40 to 300 BPM. For a song faster than 300 BPM, it finds half the tempo. Music with a clear beat, like drums, works best. Quiet or very free music is harder.
 </Platform>
 
 ## The result and the tempo range

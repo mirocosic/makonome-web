@@ -55,7 +55,7 @@ On Mac, press <kbd>↑</kbd> or <kbd>↓</kbd> to change the tempo by one step. 
 The tempo steps are whole numbers. <Platform only="ios mac" inline>To use steps of 0.5 BPM, turn on **Fine-grained BPM** in **Settings → Experimental Features**.</Platform>
 
 <Platform only="android">
-**Fine-grained BPM** in **Settings → Experimental** lets you type a tempo like 120.5, and lets tap tempo and the Tempo Changer use steps of 0.5 BPM. The dial and the − and + buttons still move in whole steps, and the dial shows the whole number.
+**Fine-grained BPM** in **Settings → Experimental** lets you type a tempo like 120.5 (not in dotted meters like 6/8), and lets tap tempo and the Tempo Changer use steps of 0.5 BPM. The dial and the − and + buttons still move in whole steps, and the dial shows the whole number.
 </Platform>
 
 In compound meters like 6/8, the dial shows the tempo of the dotted beat. See [Compound meters](/manual/time-signatures/#compound-meters-and-the-dotted-pulse).
@@ -77,7 +77,7 @@ The number pad has no decimal point, so you can only type whole numbers. With Fi
 </Platform>
 
 <Platform only="android">
-On Android a **Set Tempo** box opens. If the number is outside the range, it says **Enter a BPM from 20 to 400** and stays open, so you can fix the number. With Fine-grained BPM on, you can type a decimal, like 120.5.
+On Android a **Set Tempo** box opens. If the number is outside the range, it says **Enter a BPM from 20 to 400** and stays open, so you can fix the number. With Fine-grained BPM on, you can type a decimal, like 120.5, except in dotted meters like 6/8.
 </Platform>
 
 ## Tap tempo
@@ -125,7 +125,7 @@ Under the number, the dial shows the classical name for the tempo:
 | 200 and faster | Prestissimo |
 </Platform>
 
-The name follows the beat you feel. In 7/8 at 210 eighth notes a minute, that is 105 quarter notes, so the name is Andante. In compound meters like 6/8, the dial shows the eighth-note tempo in place of the name.
+The name follows the beat you feel. In 7/8 at 210 eighth notes a minute, that is 105 quarter notes, so the name is <Platform only="ios mac" inline>Andante</Platform><Platform only="android" inline>Allegretto</Platform>. In compound meters like 6/8, the dial shows the eighth-note tempo in place of the name.
 
 ## Start and stop
 
@@ -138,7 +138,7 @@ On Mac, press <kbd>Space</kbd> to start and stop, or use **Metronome → Play / 
 </Platform>
 
 <Platform only="android">
-While the metronome plays, Android shows a Makonome notification with **Pause** and **Stop**. Use it to stop the metronome from another app or the lock screen.
+While the metronome plays, Android shows a Makonome notification with **Pause**, so you can pause it from another app or the lock screen. When a phone call pauses the metronome, the notification also has **Stop**.
 </Platform>
 
 ## Beat accents and muting
@@ -192,7 +192,7 @@ The last three entries appear only after you turn them on in **Settings → Expe
 </Platform>
 
 <Platform only="android">
-On Android the button is ⋮ (**More options**), and the menu has, in this order: **Tempo Changer**, **Gap Trainer**, **Count-in**, **Auto Stop**, **Screen Flash**, then **Haptic Feedback** and **Tempo Detection** when you turn them on in **Settings → Experimental**. Count-in, Auto Stop and Screen Flash show their setting, for example **Count-in (2 bars)**. The others show a colored icon when they are on. There is no Accuracy Trainer.
+On Android the button is ⋮ (**More options**), and the menu has, in this order: **Tempo Changer**, **Gap Trainer**, **Count-in**, **Auto Stop**, **Screen Flash**, then **Haptic Feedback** and **Tempo Detection** when you turn them on in **Settings → Experimental**. Count-in, Auto Stop and Screen Flash show their setting, for example **Count-in (2 bars)**. Tempo Changer, Gap Trainer and Haptic Feedback show a colored icon when they are on. There is no Accuracy Trainer.
 
 See [Trainers](/manual/trainers/), [Count-in and auto stop](/manual/count-in-and-auto-stop/), [Screen flash](/manual/sound-and-feel/#screen-flash), [Haptic feedback](/manual/sound-and-feel/#haptic-feedback) and [Tempo detection](/manual/tempo-detection/).
 </Platform>

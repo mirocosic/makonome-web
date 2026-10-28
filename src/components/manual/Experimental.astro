@@ -1,15 +1,17 @@
 ---
 // <Experimental feature="Accuracy Trainer" />: the feature is off until turned on.
+// `where` names the switch's place when it differs (Android: "Settings → Experimental").
 interface Props {
   feature: string;
+  where?: string;
 }
-const { feature } = Astro.props;
+const { feature, where = 'Settings → Experimental Features' } = Astro.props;
 ---
 
 <aside class="callout callout-experimental">
   <p>
     <span class="badge badge-experimental">Experimental</span>
     <strong>{feature}</strong> is an experimental feature, off by default. Turn it on in
-    <strong>Settings → Experimental Features</strong>.
+    <strong>{where}</strong>.
   </p>
 </aside>

@@ -3,7 +3,7 @@ title: Count-in and auto stop
 description: Count-in bars and sounds, stopping after a number of bars or a time, and how both work with trainers and Link.
 order: 50
 group: Basics
-platforms: [ios, mac]
+platforms: [ios, mac, android]
 ---
 
 A **count-in** plays one or more bars before the music starts, so you are ready on beat 1. **Auto stop** stops the metronome by itself after a number of bars or a time. Both are free.
@@ -12,11 +12,11 @@ You set both in the **Playback Options** sheet. They are not part of presets: th
 
 ## Open Playback Options
 
-On the metronome screen, tap **•••**, then **Count-in** or **Auto Stop**. The menu shows the current value, for example **Count-in (2 bars)** or **Auto Stop (1:30)**.
+On the metronome screen, tap **•••**<Platform only="android" inline> (⋮ on Android)</Platform>, then **Count-in** or **Auto Stop**. The menu shows the current value, for example **Count-in (2 bars)** or **Auto Stop (1:30)**.
 
 The **Playback Options** sheet opens. The section you tapped is highlighted. Changes are saved at once.
 
-<Platform only="ios">
+<Platform only="ios android">
 To close the sheet, swipe it down or tap outside it. The sheet always has the same height and shows both sections. When a section is Off, its settings stay visible but dimmed.
 </Platform>
 
@@ -32,7 +32,7 @@ To set a count-in:
 2. Under **Count-in (bars)**, pick **1**, **2** or **4** bars. **Off** turns the count-in off.
 3. Pick a **Sound**: **Click** or **Voice**.
 
-<Screenshot name="playback-options-count-in" alt="Playback Options with Count-in (bars) highlighted: Off, 1, 2 and 4, with 2 selected, and Sound set to Click" caption="A two-bar count-in with the click." />
+<Screenshot name="playback-options-count-in" alt="Playback Options with Count-in (bars) highlighted: Off, 1, 2 and 4, with 2 selected, and Sound set to Click" only="ios mac android" caption="A two-bar count-in with the click." />
 
 Then press play. The count-in plays first, and the music starts on bar 1.
 
@@ -43,6 +43,10 @@ What the count-in plays:
 - Muted beats click too, so the count-in has no holes.
 - **Click** uses your metronome sound. If your metronome sound is Voice, the count-in clicks.
 - **Voice** counts the beats out loud: "one, two, three…".
+
+<Platform only="android">
+On Android the spoken count uses your phone's text-to-speech, in English. If text-to-speech isn't ready, the count-in clicks instead.
+</Platform>
 
 While the count-in plays, the readout under the beat rings shows **Count-in 2 of 4, Beat 2** (or **Count-in, Beat 2** for one bar).
 
@@ -106,7 +110,7 @@ You can change auto stop while the metronome plays. If you turn it off, the metr
 
 ## With practice sessions
 
-A practice session can start the metronome for you (the **Start metronome** switch when you start the session). Then the count-in plays first. Pausing the session stops the metronome, and resuming starts it again, with the count-in.
+A practice session can start the metronome for you (the <Platform only="ios mac" inline>**Start metronome**</Platform><Platform only="android" inline>**Auto-start metronome**</Platform> switch when you start the session). Then the count-in plays first. Pausing the session stops the metronome, and resuming starts it again, with the count-in.
 
 Auto stop stops only the metronome. The practice session keeps its own time until you complete it. See [Practice tracking](/manual/practice-tracking/).
 
@@ -117,3 +121,7 @@ Auto stop stops only the metronome. The practice session keeps its own time unti
 - When auto stop stops the metronome, it is a normal stop. With **Start & Stop Sync** on, the other devices stop too.
 
 See [Ableton Link](/manual/ableton-link/).
+
+<Platform only="android">
+Ableton Link is not in the Android app yet.
+</Platform>

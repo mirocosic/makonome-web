@@ -3,10 +3,14 @@ title: Settings, backup and data
 description: Every Settings section, iCloud backup and restore, and resetting your data.
 order: 130
 group: Setup and help
-platforms: [ios, mac]
+platforms: [ios, mac, android]
 ---
 
 The **Settings** tab holds your Pro status, the theme, practice options, experimental features, help, feedback and your data. This page goes through it from top to bottom, then explains iCloud backup and **Reset All Data**.
+
+<Platform only="android">
+On Android the sections are, from top to bottom: the **Makonome Pro** card, **Appearance**, **General**, **Practice Reminders**, **Practice**, **Experimental**, **Help**, **Feedback** and **Data**. The notes on this page say where Android differs. Android has no iCloud backup: see [iCloud backup and restore](#icloud-backup-and-restore) for what Android does instead.
+</Platform>
 
 Sound, count-in and the trainers are not in Settings. You set them on the metronome screen: see [Sound and feel](/manual/sound-and-feel/) and [Count-in and auto stop](/manual/count-in-and-auto-stop/).
 
@@ -14,13 +18,25 @@ Sound, count-in and the trainers are not in Settings. You set them on the metron
 
 ## Usage Statistics
 
+<Platform only="ios mac">
 **Total Usage Time** is how long the metronome has played, in all, since you installed Makonome.
+</Platform>
+
+<Platform only="android">
+The Android app has no Usage Statistics.
+</Platform>
 
 ## Pro
 
+<Platform only="ios mac">
 - With Pro, this shows **Pro** and **All features unlocked**.
 - During the trial, it shows **Upgrade to Pro** with the days left, for example **14 days left in trial**. After the trial it says **Trial expired**.
 - **Restore Purchases** unlocks Pro again on a new device or after a reinstall, without paying twice.
+</Platform>
+
+<Platform only="android">
+On Android this is the **Makonome Pro** card at the top of Settings. It shows **Pro** after you buy it. Before that it shows the days left, for example **14 days left in trial**, or **Trial expired**, with the buttons **Upgrade to Pro** and **Restore**.
+</Platform>
 
 See [The free trial and Pro](/manual/getting-started/#the-free-trial-and-pro).
 
@@ -28,13 +44,31 @@ See [The free trial and Pro](/manual/getting-started/#the-free-trial-and-pro).
 
 **Theme:** **Light**, **Dark** or **System** (follows your device).
 
+<Platform only="android">
+On Android, **General** comes next, with **Keep Screen On**: while Makonome is open, the screen doesn't turn off by itself.
+</Platform>
+
 ## Practice Integration
 
+<Platform only="ios mac">
 **Auto-start metronome:** when on, the **Start metronome** switch is on at first when you start a [practice session](/manual/practice-tracking/#start-a-practice-session).
+</Platform>
+
+<Platform only="android">
+On Android this section is called **Practice**, and it comes after Practice Reminders. **Auto-start Metronome** turns on the **Auto-start metronome** switch when you start a session.
+</Platform>
 
 ## Practice Reminders
 
-**Daily practice reminder** sends a notification, **Time to Practice!**, every day at the **Reminder time**. See [Practice reminders](/manual/practice-tracking/#practice-reminders).
+<Platform only="ios mac">
+**Daily practice reminder** sends a notification, **Time to Practice!**, every day at the **Reminder time**.
+</Platform>
+
+<Platform only="android">
+**Daily Reminder** sends a notification, **Time to practice!**, every day at the **Reminder Time**.
+</Platform>
+
+See [Practice reminders](/manual/practice-tracking/#practice-reminders).
 
 ## Experimental Features
 
@@ -42,6 +76,7 @@ Features that are new or for special setups. All are off at first.
 
 <Screenshot name="settings-experimental" alt="Settings, Experimental Features: Haptic Feedback, Tempo Detection, Accuracy Trainer, Visualizations, Fine-grained BPM and Ableton Link, each with a switch" caption="Settings → Experimental Features." />
 
+<Platform only="ios mac">
 | Switch | See |
 |---|---|
 | **Haptic Feedback** <Pro /> (not on Mac) | [Haptic feedback](/manual/sound-and-feel/#haptic-feedback) |
@@ -50,6 +85,17 @@ Features that are new or for special setups. All are off at first.
 | **Visualizations** | [Visualizations](/manual/sound-and-feel/#visualizations) |
 | **Fine-grained BPM** | Tempo steps of 0.5 BPM. When you turn it off, the tempo is rounded to a whole number. |
 | **Ableton Link** | [Ableton Link](/manual/ableton-link/) |
+</Platform>
+
+<Platform only="android">
+On Android the section is called **Experimental**, and it has three switches:
+
+| Switch | See |
+|---|---|
+| **Haptic Feedback** <Pro /> | [Haptic feedback](/manual/sound-and-feel/#haptic-feedback) |
+| **Tempo Detection** <Pro /> | [Tempo detection](/manual/tempo-detection/) |
+| **Fine-grained BPM** | Lets you type a tempo like 120.5, and lets tap tempo and the Tempo Changer use steps of 0.5 BPM. See [Set the tempo](/manual/metronome-screen/#set-the-tempo). |
+</Platform>
 
 ## Help
 
@@ -63,8 +109,13 @@ On iPhone and iPad the manual opens inside the app. Close it to go back.
 On Mac the manual opens in your web browser.
 </Platform>
 
+<Platform only="android">
+On Android the manual opens in a browser tab inside the app.
+</Platform>
+
 ## Feedback
 
+<Platform only="ios mac">
 - **Send Feature Request:** write an email with your idea.
 - **Report a Bug:** write an email. Makonome adds your device and system version, so we can find the problem faster.
 - **Contact Support:** write an email to support (support@makonome.com) with any question.
@@ -72,15 +123,36 @@ On Mac the manual opens in your web browser.
 - **Share the App:** send a link to a friend.
 
 The email rows open your mail app. Without a mail account set up, Makonome opens an email link instead.
+</Platform>
+
+<Platform only="android">
+- **Rate on Play Store:** rate Makonome on Google Play.
+- **Share the App:** send a link to a friend.
+- **Contact Support:** write an email to support (support@makonome.com) with any question or problem.
+
+Contact Support opens your email app. Without one, Makonome says **No email app found**.
+</Platform>
 
 ## Data Management
 
+<Platform only="ios mac">
 - **Back up to iCloud:** see [iCloud backup and restore](#icloud-backup-and-restore).
 - **Reset All Data:** see [Reset all data](#reset-all-data).
+</Platform>
+
+<Platform only="android">
+On Android this section is called **Data**, and it has only **Reset All Data**: see [Reset all data](#reset-all-data).
+</Platform>
 
 At the bottom of Settings you see the app version, for example **Version 1.1.0**. Mention it when you report a problem.
 
 ## iCloud backup and restore
+
+<Platform only="android">
+There is no iCloud backup on Android, and no backup setting in Makonome. Android's own backup keeps Makonome's data: your presets, collections, practice history and settings. When you set up a new phone from a backup of your old one, the data comes back with the app. Your Pro purchase is not in the backup: open the **Makonome Pro** card and tap **Restore**.
+
+The rest of this section is about iPhone, iPad and Mac.
+</Platform>
 
 Makonome backs up your data to your iCloud account, so it comes back when you reinstall the app or move to a new device. The backup is on at first. It is free.
 
@@ -116,6 +188,7 @@ The backup is not a live sync between devices. Presets you make on one device do
 
 ## Reset all data
 
+<Platform only="ios mac">
 **Settings → Data Management → Reset All Data** clears:
 
 - your presets and collections
@@ -124,8 +197,24 @@ The backup is not a live sync between devices. Presets you make on one device do
 - the pitch (back to 0)
 
 It asks first. This can't be undone. Your other settings stay, like the tempo, the sound, the theme and the trainers. If the backup is on, Makonome backs up the cleared state right away, so the old data doesn't come back when you reinstall.
+</Platform>
+
+<Platform only="android">
+**Settings → Data → Reset All Data** clears:
+
+- your presets and collections
+- your practice history and streaks
+- your daily goal
+- the daily reminder (it turns off)
+
+It asks first (**Reset All Data?**, then **Reset**). This can't be undone. Your other settings stay, like the tempo, the sound, the pitch and the theme.
+</Platform>
 
 ## Data from a newer version
+
+<Platform only="android">
+This section is about iPhone, iPad and Mac. Without iCloud, the Android app doesn't get data from other devices.
+</Platform>
 
 If you use Makonome on more than one device, a newer version of the app may save something that an older version can't read yet. The older version never throws it away:
 
@@ -133,5 +222,9 @@ If you use Makonome on more than one device, a newer version of the app may save
 - **Practice sessions** like that are kept as they are. Update the app to see them.
 
 ## The widget shows 0 after an update
+
+<Platform only="android">
+This section is about iPhone, iPad and Mac. On Android, see [The widget shows 0](/manual/practice-tracking/#the-widget-shows-0).
+</Platform>
 
 Open the app once after you update to Makonome 1.1. Before 1.1 the widget couldn't read your practice data. The first launch of 1.1 moves your data to where the widget can read it. See [The widget shows 0](/manual/practice-tracking/#the-widget-shows-0).

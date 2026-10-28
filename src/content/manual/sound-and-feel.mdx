@@ -3,25 +3,30 @@ title: Sound and feel
 description: Sounds, volume, pitch, voice count, haptics, screen flash and visualizations.
 order: 40
 group: Basics
+platforms: [ios, mac, android]
 ---
 
 This page covers how the metronome sounds, and the other ways to follow the beat: vibration, a screen flash and visualizations.
 
 ## Sound Settings
 
-Tap the speaker button (second from the right at the bottom of the metronome screen). The **Sound Settings** sheet opens with the volume, the sound and the pitch.
+Tap the speaker button (<Platform only="ios mac" inline>second from the right</Platform><Platform only="android" inline>second from the left</Platform> at the bottom of the metronome screen). The **Sound Settings** sheet opens with the volume, the sound and the pitch.
 
 <Screenshot name="sound-settings" alt="The Sound Settings sheet: volume at 80 percent, the sounds Click, Clave, Woodblock, Cowbell and Voice, and the Pitch slider at 0" caption="Sound Settings." />
+
+<Screenshot name="sound-settings" alt="The Sound Settings sheet on Android: volume at 79%, Pitch at 0 (original), and the sounds Click, Clave, Wood, Cowbell and Voice, with Wood selected" only="android" caption="Sound Settings on Android: volume, pitch, then the sounds." />
 
 ### Volume
 
 Drag the slider to set the metronome volume, from 0 to 100%. This is the metronome's own volume. The volume buttons on your device change the overall volume.
 
+<Platform only="ios mac">
 At 0% the speaker button on the metronome screen turns red and shows a crossed-out speaker, so you can see at a glance why there is no sound.
+</Platform>
 
 ### Sounds
 
-Tap a sound to choose it. You hear a short preview.
+Tap a sound to choose it.<Platform only="ios mac" inline> You hear a short preview.</Platform>
 
 | Sound | |
 |---|---|
@@ -33,9 +38,17 @@ Tap a sound to choose it. You hear a short preview.
 
 Each sound has a stronger version for accented beats. Without Pro, tapping a Pro sound opens the upgrade screen.
 
+<Platform only="android">
+On Android, Woodblock is called **Wood**.
+</Platform>
+
 ### Voice count
 
 **Voice** counts the beats out loud instead of clicking. It counts the beats of your meter in English, so in 7/8 it counts to seven.
+
+<Platform only="android">
+On Android the pitch doesn't work with Voice: picking Voice sets the pitch back to 0.
+</Platform>
 
 ### Pitch
 
@@ -43,20 +56,33 @@ Each sound has a stronger version for accented beats. Without Pro, tapping a Pro
 
 Drag the **Pitch** slider to make the sound higher or lower, from −12 to +12 semitones (one octave each way), in steps of one semitone. 0 is the original pitch. A higher or lower pitch can help the click stand out against your instrument.
 
-Without Pro, the pitch slider is dimmed. Tapping it opens the upgrade screen.
+Without Pro, the pitch slider is dimmed.<Platform only="ios mac" inline> Tapping it opens the upgrade screen.</Platform>
 
 ## Haptic feedback
 
+<Platform only="ios mac">
 <Experimental feature="Haptic Feedback" />
+</Platform>
+
+<Platform only="android">
+<Experimental feature="Haptic Feedback" where="Settings → Experimental" />
+</Platform>
 
 <Pro />
 
-With haptic feedback on, your iPhone or iPad vibrates on the beat. You can feel the beat when you can't hear it well, for example with loud drums.
+With haptic feedback on, your <Platform only="ios mac" inline>iPhone or iPad</Platform><Platform only="android" inline>phone</Platform> vibrates on the beat. You can feel the beat when you can't hear it well, for example with loud drums.
 
 To turn on haptic feedback:
 
+<Platform only="ios mac">
 1. Open **Settings → Experimental Features** and switch on **Haptic Feedback**.
 2. On the metronome screen, tap **••• → Haptic Feedback**. The entry shows **(On)** or **(Off)**.
+</Platform>
+
+<Platform only="android">
+1. Open **Settings → Experimental** and switch on **Haptic Feedback**.
+2. On the metronome screen, tap **⋮ → Haptic Feedback**. While it is on, the entry's icon is colored and the ⋮ button is highlighted.
+</Platform>
 
 <Screenshot name="metronome-more-menu" alt="The ••• menu with Haptic Feedback (Off) and Screen Flash (Off) among the entries" only="ios" caption="Haptic Feedback and Screen Flash in the ••• menu." />
 
@@ -67,6 +93,10 @@ How it feels:
 - There is no setting for the strength.
 - At very fast tempos it stops, so the vibrations don't blur together. That is when the tempo times the clicks per beat goes above 300 a minute, for example 160 BPM with 8ths.
 
+<Platform only="android">
+On Android the phone vibrates only while Makonome is on screen. It uses Android's touch feedback setting: if touch feedback is off in your phone's sound and vibration settings, the beat doesn't vibrate.
+</Platform>
+
 <Platform only="mac">
 Haptic feedback is not available on Mac. The switch and the menu entry don't appear there.
 </Platform>
@@ -75,7 +105,7 @@ Haptic feedback is not available on Mac. The switch and the menu entry don't app
 
 Screen flash tints the whole screen softly on each beat, so you can see the beat. It is free and off at first.
 
-To turn it on or off, tap **••• → Screen Flash** on the metronome screen. The entry shows **(On)** or **(Off)**.
+To turn it on or off, tap **••• → Screen Flash**<Platform only="android" inline> (⋮ on Android)</Platform> on the metronome screen. The entry shows **(On)** or **(Off)**.
 
 How it works:
 
@@ -83,12 +113,31 @@ How it works:
 - Accented beats flash stronger.
 - It flashes on the count-in and on bars that Gap Trainer mutes, too.
 - It flashes at most 3 times a second. Up to 180 beats a minute, every beat flashes. Faster than that, only the first beat of each bar flashes. At very fast tempos with short bars, it doesn't flash at all.
-- With **Reduce Motion** on (in your device's accessibility settings), the flash is softer and fades more slowly.
+- With <Platform only="ios mac" inline>**Reduce Motion**</Platform><Platform only="android" inline>**Remove animations**</Platform> on (in your device's accessibility settings), the flash is softer and fades more slowly.
 
 If flashing light is a problem for you, leave screen flash off.
 
 ## Visualizations
 
+<Platform only="android">
+Visualizations work differently on Android. They are free and not experimental:
+
+1. On the metronome screen, tap the Visualization button in the top left corner. The **Visualization** sheet opens.
+2. Under **Mode**, pick **Pendulum**, **Circular**, **Count** or **Line**. Makonome remembers your choice.
+
+Start and stop the metronome on the metronome screen. To close the sheet, swipe it down or tap outside it.
+
+The four styles:
+
+- **Pendulum:** an arm swings from side to side with the beat.
+- **Circular:** a ring fills up over the bar, with a dot for each beat.
+- **Count:** the beat number, large.
+- **Line:** a dot jumps from beat to beat along a line.
+</Platform>
+
+<Screenshot name="visualization-pendulum" alt="The Visualization sheet on Android with the Pendulum: an arm with a green dot at its end, and the Mode choices Pendulum, Circular, Count and Line" only="android" caption="The Pendulum on Android." />
+
+<Platform only="ios mac">
 <Experimental feature="Visualizations" />
 
 A visualization shows the beat in large, full-screen moving graphics. It is free. Everything you see moves with the click you hear, not ahead of it. On iPhones with a 120 Hz screen, the motion is extra smooth.
@@ -125,4 +174,5 @@ The four styles:
 
 <Platform only="mac">
 Visualizations work the same way on Mac. Click anywhere in the window to start and stop.
+</Platform>
 </Platform>

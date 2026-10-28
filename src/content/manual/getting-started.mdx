@@ -3,6 +3,7 @@ title: Getting started
 description: Install Makonome, see what's free and what's Pro, and play your first click in 30 seconds.
 order: 10
 group: Basics
+platforms: [ios, mac, android]
 ---
 
 Makonome is a metronome for practice. It runs on iPhone, iPad, Mac and Android. This page shows you how to get it, what is free, and how to play your first click.
@@ -19,9 +20,15 @@ When you open Makonome for the first time, a **14-day free trial** starts. Durin
 
 After the trial, the basic metronome stays free. The extra tools need **Makonome Pro**. Pro is a one-time purchase with lifetime access. There is no subscription.
 
-After the trial, features that need Pro show a small sparkle icon. Tap one to see the upgrade screen.
+After the trial, features that need Pro show a small sparkle icon<Platform only="android" inline> or a **PRO** badge</Platform>. Tap one to see the upgrade screen.
 
+<Platform only="ios mac">
 To check your trial or buy Pro, open **Settings → Pro**. It shows how many days are left in your trial, **Upgrade to Pro** and **Restore Purchases**. On a new device, use Restore Purchases to unlock Pro again without paying twice. Reinstalling the app does not restart the trial.
+</Platform>
+
+<Platform only="android">
+To check your trial or buy Pro, look at the **Makonome Pro** card at the top of Settings. It shows how many days are left in your trial, **Upgrade to Pro** and **Restore**. On a new device, use Restore to unlock Pro again without paying twice. Pro on Android is a purchase in Google Play, separate from Pro on iPhone, iPad and Mac.
+</Platform>
 
 <Screenshot name="settings" alt="The Settings tab with Usage Statistics, the Pro section, Appearance, Practice Integration and Practice Reminders" caption="Settings → Pro shows your trial or Pro status." />
 
@@ -33,21 +40,26 @@ To check your trial or buy Pro, open **Settings → Pro**. It shows how many day
 - The Click sound and the volume
 - Count-in, auto stop and screen flash
 - Loading, favoriting and deleting presets and collections
-- Practice history, stats, streaks, reminders and widgets
-- iCloud backup
-- Visualizations and Ableton Link (both experimental, see below)
+- Practice history, stats, streaks, reminders and widgets<Platform only="ios mac" inline>, and iCloud backup</Platform>
+- Visualizations<Platform only="ios mac" inline> and Ableton Link (both experimental, see below)</Platform>
 
 ### What needs Pro
 
 <Pro />
 
-- The sounds Clave, Woodblock, Cowbell and Voice, and the pitch setting
+- The sounds Clave, <Platform only="ios mac" inline>Woodblock</Platform><Platform only="android" inline>Wood</Platform>, Cowbell and Voice, and the pitch setting
 - Gap Trainer and Tempo Changer
-- Creating, editing and duplicating presets and collections, and playing a collection
+- Creating<Platform only="ios mac" inline>, editing and duplicating</Platform> presets and collections, and playing a collection
 - Starting practice sessions
-- Haptic feedback, tempo detection and the Accuracy Trainer (all experimental)
+- Haptic feedback<Platform only="ios mac" inline>, tempo detection and the Accuracy Trainer (all experimental)</Platform><Platform only="android" inline> and tempo detection (both experimental)</Platform>
 
+<Platform only="ios mac">
 If the trial ends and you don't buy Pro, Makonome turns the Pro settings back the next time you open it. A Pro sound goes back to Click, pitch goes back to 0, and Gap Trainer, Tempo Changer and haptic feedback turn off. Your presets, collections and history stay.
+</Platform>
+
+<Platform only="android">
+On Android, editing a preset is free too. See [Presets and collections](/manual/presets-and-collections/) for what else differs.
+</Platform>
 
 ## The three tabs
 
@@ -55,7 +67,7 @@ Makonome has three tabs:
 
 - **Metronome:** the dial, the beats and the play button. See [The metronome screen](/manual/metronome-screen/).
 - **Practice:** timed practice sessions, history and streaks. See [Practice tracking](/manual/practice-tracking/).
-- **Settings:** theme, reminders, experimental features, backup, help and feedback. See [Settings, backup and data](/manual/settings-and-data/).
+- **Settings:** theme, reminders, experimental features, <Platform only="ios mac" inline>backup, </Platform>help and feedback. See [Settings, backup and data](/manual/settings-and-data/).
 
 <Platform only="ios">
 On iPhone the tabs are at the bottom of the screen. On iPad they are at the top.
@@ -63,6 +75,10 @@ On iPhone the tabs are at the bottom of the screen. On iPad they are at the top.
 
 <Platform only="mac">
 The tabs are at the top of the window.
+</Platform>
+
+<Platform only="android">
+On a phone the tabs are at the bottom of the screen. In a wide window, like a tablet in landscape, they move to a bar on the left.
 </Platform>
 
 ## Your first click in 30 seconds
@@ -78,12 +94,13 @@ The tabs are at the top of the window.
 On Mac, press <kbd>Space</kbd> to start and stop. Press <kbd>↑</kbd> or <kbd>↓</kbd> to change the tempo by one step. Hold <kbd>Shift</kbd> to change it by 5.
 </Platform>
 
-To change the time signature, tap the button with the notes, second from the left. See [Time signatures](/manual/time-signatures/).
+To change the time signature, tap <Platform only="ios mac" inline>the button with the notes, second from the left</Platform><Platform only="android" inline>the button that shows the meter, for example **4/4**, right of the play button</Platform>. See [Time signatures](/manual/time-signatures/).
 
 ## Experimental features
 
 Some features are hidden until you turn them on. Some are still new, and some are for special setups. All of them are **off** at first.
 
+<Platform only="ios mac">
 To turn one on, open **Settings → Experimental Features** and switch the feature on.
 
 <Screenshot name="settings-experimental" alt="Settings, Experimental Features: Haptic Feedback, Tempo Detection, Accuracy Trainer, Visualizations, Fine-grained BPM and Ableton Link, each with a switch" caption="Settings → Experimental Features." />
@@ -96,9 +113,22 @@ To turn one on, open **Settings → Experimental Features** and switch the featu
 | **Visualizations** | Adds a visualization button to the top left of the metronome screen. See [Visualizations](/manual/sound-and-feel/#visualizations). |
 | **Fine-grained BPM** | Lets you set the tempo in steps of 0.5 BPM. |
 | **Ableton Link** | Adds a Link button to the top left of the metronome screen. You turn Link itself on from there. See [Ableton Link](/manual/ableton-link/). |
+</Platform>
 
 <Platform only="mac">
 On Mac there is no Haptic Feedback switch.
+</Platform>
+
+<Platform only="android">
+On Android the section is called **Settings → Experimental**, and it has three switches:
+
+| Feature | What it does when on |
+|---|---|
+| **Haptic Feedback** <Pro /> | Adds Haptic Feedback to the ⋮ menu on the metronome screen. See [Haptic feedback](/manual/sound-and-feel/#haptic-feedback). |
+| **Tempo Detection** <Pro /> | Adds Tempo Detection to the ⋮ menu. See [Tempo detection](/manual/tempo-detection/). |
+| **Fine-grained BPM** | Lets you type a tempo like 120.5 (not in dotted meters like 6/8), and lets tap tempo and the Tempo Changer use steps of 0.5 BPM. |
+
+Visualizations are not experimental on Android: their button is always in the top left of the metronome screen. The Accuracy Trainer and Ableton Link are not in the Android app yet.
 </Platform>
 
 ## Open this manual from the app
@@ -113,6 +143,16 @@ On iPhone and iPad the manual opens inside the app. Close it to go back.
 On Mac the manual opens in your web browser.
 </Platform>
 
+<Platform only="android">
+On Android the manual opens in a browser tab inside the app.
+</Platform>
+
 <Screenshot name="settings-help" alt="Settings, the Help section with the User Manual row, above the Feedback section" only="ios" caption="Settings → Help → User Manual." />
 
+<Platform only="ios mac">
 In **Settings → Feedback** you can send a feature request, report a bug or contact support.
+</Platform>
+
+<Platform only="android">
+In **Settings → Feedback** you can rate Makonome on Google Play, share the app or contact support.
+</Platform>

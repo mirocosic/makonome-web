@@ -3,15 +3,16 @@ title: Time signatures
 description: Common and custom meters, accent groups like 2+2+3, compound meters with a dotted pulse, and subdivisions.
 order: 30
 group: Basics
+platforms: [ios, mac, android]
 ---
 
 The time signature (or meter) sets how many beats a bar has and which note gets the beat. All time signatures and subdivisions are free.
 
 ## Open the Time Signature sheet
 
-Tap the button with the notes, second from the left at the bottom of the metronome screen. The **Time Signature** sheet opens. Every change works at once, also while the metronome plays.
+Tap <Platform only="ios mac" inline>the button with the notes, second from the left at the bottom of the metronome screen</Platform><Platform only="android" inline>the button that shows the meter, for example **4/4**, right of the play button. You can also tap the meter label above the dial</Platform>. The **Time Signature** sheet opens. Every change works at once, also while the metronome plays.
 
-<Screenshot name="time-signature-sheet" alt="The Time Signature sheet with 7/8 selected: Common meter buttons, the Custom wheels at 7 over 8, Accent groups 2+2+3, 2+3+2, 3+2+2 and Downbeat, and the Subdivision choices" only="ios mac" caption="The Time Signature sheet in 7/8." />
+<Screenshot name="time-signature-sheet" alt="The Time Signature sheet with 7/8 selected: Common meter buttons, the Custom wheels at 7 over 8, Accent groups 2+2+3, 2+3+2, 3+2+2 and Downbeat, and the Subdivision choices" only="ios mac android" caption="The Time Signature sheet in 7/8." />
 
 <Platform only="ios">
 To close the sheet, swipe it down or tap outside it. On iPhone, if not everything fits, the sheet opens smaller: drag it up to see the rest.
@@ -19,6 +20,10 @@ To close the sheet, swipe it down or tap outside it. On iPhone, if not everythin
 
 <Platform only="mac">
 On Mac, close the sheet with the ✕ button in its top right corner.
+</Platform>
+
+<Platform only="android">
+On Android the sheet opens at full height and scrolls if not everything fits. To close it, swipe it down, tap outside it, or use the back gesture.
 </Platform>
 
 The sheet has these sections, from top to bottom:
@@ -65,7 +70,7 @@ The groups also change how the metronome screen looks:
 
 - In x/8 and x/16 meters, small gaps between the beat rings show the groups.
 - The time signature label shows the groups, for example **7/8 · 2+2+3**.
-- The Circular [visualization](/manual/sound-and-feel/#visualizations) shows the groups too.
+- <Platform only="ios mac" inline>The Circular [visualization](/manual/sound-and-feel/#visualizations) shows the groups too.</Platform><Platform only="android" inline>The [visualizations](/manual/sound-and-feel/#visualizations) don't show the groups.</Platform>
 
 The first button is the default for the meter. The defaults for x/8 and x/16 are:
 
@@ -129,8 +134,18 @@ The settings row above the dial shows your subdivision and meter. For example:
 
 With a subdivision, the first part names the notes you hear, for example **Sixteenth Notes** for 16ths in 4/4. The groups are not shown for **Downbeat**.
 
+<Platform only="android">
+On Android the meter comes first and the notes second, for example **7/8 · 2+2+3 ♪ Eighth Notes**. The label sits above the dial, and while the metronome plays, the bar and beat readout takes its place.
+</Platform>
+
 <Screenshot name="time-signature-sheet-ipad" alt="The Time Signature sheet on iPad, centered over the metronome screen, with 7/8 and all sections visible at once" only="ios" caption="On iPad the sheet shows all sections at once." />
 
 ## Ableton Link and meters
 
+<Platform only="android">
+Ableton Link is not in the Android app yet.
+</Platform>
+
+<Platform only="ios mac">
 Ableton Link always counts quarter notes. In x/8 and x/16 meters, the tempo in the Link sheet is different from the dial: 7/8 at 280 eighth notes a minute is 140 on Link. See [Ableton Link](/manual/ableton-link/).
+</Platform>

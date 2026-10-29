@@ -2,6 +2,50 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Lightbox from '../components/Lightbox.astro';
 import Footer from '../components/Footer.astro';
+import { Image, getImage } from 'astro:assets';
+import metronomeMain from '../assets/screenshots/metronome-main.png';
+import meter78 from '../assets/screenshots/meter-7-8.png';
+import timeSignatureSheet from '../assets/screenshots/time-signature-sheet.png';
+import meter68Dotted from '../assets/screenshots/meter-6-8-dotted.png';
+import playbackOptions from '../assets/screenshots/playback-options.png';
+import visualizationCircular from '../assets/screenshots/visualization-circular.png';
+import collectionPlayer from '../assets/screenshots/collection-player.png';
+import sessionHistory from '../assets/screenshots/screen-4.png';
+import tempoChanger from '../assets/screenshots/screen-5.png';
+import gapTrainer from '../assets/screenshots/gap-trainer.png';
+import macMetronome from '../assets/screenshots/mac-metronome.png';
+import macTrainerLive from '../assets/screenshots/mac-trainer-live.png';
+import macFreeTime from '../assets/screenshots/mac-free-time.png';
+
+// Sizes follow the CSS below: hero 280 px (220 px under 640 px), gallery 180 px (150 px),
+// Mac grid one to three columns of the 1136 px content width. Hero and gallery get 1x, 2x and 3x
+// (most iPhones are 3x); the Mac grid tops out at the 1440 px source.
+const heroWidths = [220, 280, 440, 560, 660, 840];
+const heroSizes = '(max-width: 640px) 220px, 280px';
+const galleryWidths = [150, 180, 300, 360, 450, 540];
+const gallerySizes = '(max-width: 640px) 150px, 180px';
+const macWidths = [480, 720, 1080, 1440];
+const macSizes = '(max-width: 775px) calc(100vw - 64px), (max-width: 1147px) calc(50vw - 48px), 357px';
+
+const gallery = [
+  { src: metronomeMain, alt: 'Metronome main screen', caption: 'Precision BPM Control' },
+  { src: meter78, alt: 'Metronome in 7/8 with beats grouped 2+2+3', caption: 'Odd Meters in Groups' },
+  { src: timeSignatureSheet, alt: 'Time signature sheet with common meters, custom picker and accent groups', caption: 'Any Time Signature' },
+  { src: meter68Dotted, alt: 'Metronome in 6/8 counting the dotted-quarter beat at 80 BPM', caption: '6/8 on the Dotted Beat' },
+  { src: playbackOptions, alt: 'Playback Options sheet with count-in and auto stop', caption: 'Count-In and Auto Stop' },
+  { src: visualizationCircular, alt: 'Circular visualization in 7/8 with gaps between the accent groups', caption: 'Visualizations' },
+  { src: collectionPlayer, alt: 'Metronome playing a collection with previous and next buttons', caption: 'Play a Collection' },
+  { src: sessionHistory, alt: 'Practice history with sessions, total time and goals met', caption: 'Session History' },
+  { src: tempoChanger, alt: 'Tempo Changer', caption: 'Tempo Changer' },
+  { src: gapTrainer, alt: 'Metronome with the Gap Trainer in a muted bar', caption: 'Gap Trainer' },
+];
+// The lightbox shows a larger copy than the 180 px slide (same as the manual's screenshots).
+const gallerySlides = await Promise.all(
+  gallery.map(async (shot) => {
+    const full = await getImage({ src: shot.src, width: Math.min(shot.src.width, 900), format: 'webp' });
+    return { ...shot, fullSrc: full.src };
+  })
+);
 ---
 
 <BaseLayout title="Makonome - Precision Metronome for iPhone, iPad, Mac and Android">
@@ -14,10 +58,16 @@ import Footer from '../components/Footer.astro';
     <section class="hero">
       <div class="device-frame">
         <div class="device-notch"></div>
-        <img
-          src="/screenshots/metronome-main.png"
+        <Image
+          src={metronomeMain}
           alt="Makonome metronome app showing BPM dial at 120 Allegro"
           class="screenshot"
+          width={280}
+          widths={heroWidths}
+          sizes={heroSizes}
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
         />
       </div>
       
@@ -92,76 +142,24 @@ import Footer from '../components/Footer.astro';
       <h2>See It in Action</h2>
       <div class="carousel">
         <div class="carousel-track">
-          <div class="carousel-slide">
-            <div class="device-frame-small" data-lightbox>
-              <div class="device-notch-small"></div>
-              <img src="/screenshots/metronome-main.png" alt="Metronome main screen" />
+          {gallerySlides.map((shot) => (
+            <div class="carousel-slide">
+              <div class="device-frame-small" data-lightbox data-lightbox-src={shot.fullSrc}>
+                <div class="device-notch-small"></div>
+                <Image
+                  src={shot.src}
+                  alt={shot.alt}
+                  width={180}
+                  widths={galleryWidths}
+                  sizes={gallerySizes}
+                  format="webp"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <p class="slide-caption">{shot.caption}</p>
             </div>
-            <p class="slide-caption">Precision BPM Control</p>
-          </div>
-          <div class="carousel-slide">
-            <div class="device-frame-small" data-lightbox>
-              <div class="device-notch-small"></div>
-              <img src="/screenshots/meter-7-8.png" alt="Metronome in 7/8 with beats grouped 2+2+3" />
-            </div>
-            <p class="slide-caption">Odd Meters in Groups</p>
-          </div>
-          <div class="carousel-slide">
-            <div class="device-frame-small" data-lightbox>
-              <div class="device-notch-small"></div>
-              <img src="/screenshots/time-signature-sheet.png" alt="Time signature sheet with common meters, custom picker and accent groups" />
-            </div>
-            <p class="slide-caption">Any Time Signature</p>
-          </div>
-          <div class="carousel-slide">
-            <div class="device-frame-small" data-lightbox>
-              <div class="device-notch-small"></div>
-              <img src="/screenshots/meter-6-8-dotted.png" alt="Metronome in 6/8 counting the dotted-quarter beat at 80 BPM" />
-            </div>
-            <p class="slide-caption">6/8 on the Dotted Beat</p>
-          </div>
-          <div class="carousel-slide">
-            <div class="device-frame-small" data-lightbox>
-              <div class="device-notch-small"></div>
-              <img src="/screenshots/playback-options.png" alt="Playback Options sheet with count-in and auto stop" />
-            </div>
-            <p class="slide-caption">Count-In and Auto Stop</p>
-          </div>
-          <div class="carousel-slide">
-            <div class="device-frame-small" data-lightbox>
-              <div class="device-notch-small"></div>
-              <img src="/screenshots/visualization-circular.png" alt="Circular visualization in 7/8 with gaps between the accent groups" />
-            </div>
-            <p class="slide-caption">Visualizations</p>
-          </div>
-          <div class="carousel-slide">
-            <div class="device-frame-small" data-lightbox>
-              <div class="device-notch-small"></div>
-              <img src="/screenshots/collection-player.png" alt="Metronome playing a collection with previous and next buttons" />
-            </div>
-            <p class="slide-caption">Play a Collection</p>
-          </div>
-          <div class="carousel-slide">
-            <div class="device-frame-small" data-lightbox>
-              <div class="device-notch-small"></div>
-              <img src="/screenshots/screen-4.png" alt="Practice history with sessions, total time and goals met" />
-            </div>
-            <p class="slide-caption">Session History</p>
-          </div>
-          <div class="carousel-slide">
-            <div class="device-frame-small" data-lightbox>
-              <div class="device-notch-small"></div>
-              <img src="/screenshots/screen-5.png" alt="Tempo Changer" />
-            </div>
-            <p class="slide-caption">Tempo Changer</p>
-          </div>
-          <div class="carousel-slide">
-            <div class="device-frame-small" data-lightbox>
-              <div class="device-notch-small"></div>
-              <img src="/screenshots/gap-trainer.png" alt="Metronome with the Gap Trainer in a muted bar" />
-            </div>
-            <p class="slide-caption">Gap Trainer</p>
-          </div>
+          ))}
         </div>
       </div>
     </section>
@@ -171,15 +169,15 @@ import Footer from '../components/Footer.astro';
       <p class="mac-intro">Makonome runs natively on Mac. One Pro purchase works on iPhone, iPad and Mac.</p>
       <div class="mac-grid">
         <figure>
-          <img src="/screenshots/mac-metronome.png" alt="Makonome metronome window on Mac" />
+          <Image src={macMetronome} alt="Makonome metronome window on Mac" width={720} widths={macWidths} sizes={macSizes} format="webp" loading="lazy" decoding="async" />
           <figcaption>The metronome, native on Mac</figcaption>
         </figure>
         <figure>
-          <img src="/screenshots/mac-trainer-live.png" alt="Accuracy Trainer on Mac showing live timing for each drum" />
+          <Image src={macTrainerLive} alt="Accuracy Trainer on Mac showing live timing for each drum" width={720} widths={macWidths} sizes={macSizes} format="webp" loading="lazy" decoding="async" />
           <figcaption>Accuracy Trainer: live timing per drum</figcaption>
         </figure>
         <figure>
-          <img src="/screenshots/mac-free-time.png" alt="Free Time mode on Mac showing tempo drift bar by bar" />
+          <Image src={macFreeTime} alt="Free Time mode on Mac showing tempo drift bar by bar" width={720} widths={macWidths} sizes={macSizes} format="webp" loading="lazy" decoding="async" />
           <figcaption>Free Time: follow your own tempo</figcaption>
         </figure>
       </div>
@@ -466,7 +464,7 @@ import Footer from '../components/Footer.astro';
     color: var(--color-text-muted);
     font-size: 0.75rem;
     margin-top: 0.75rem;
-    opacity: 0.7;
+    opacity: 0.8;
   }
 
   .gallery {

@@ -8,7 +8,8 @@ Website for Makonome (https://makonome.com). Astro 5, deployed to GitHub Pages.
   [mirocosic/makonome](https://github.com/mirocosic/makonome). The build reads them through an Astro
   content collection (`src/content.config.ts`). Never edit the changelog here.
 - **Features and screenshots:** still maintained by hand in this repo. The source for screenshots is
-  `docs/screenshots/vX.Y.Z/` in the app repo.
+  `docs/screenshots/vX.Y.Z/` in the app repo. The home page's shots live in `src/assets/screenshots/`
+  and are imported in `src/pages/index.astro`, so the build resizes them to WebP.
 
 ## Deploys
 

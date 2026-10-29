@@ -38,7 +38,7 @@ const features: Feature[] = [
   {
     icon: 'meter',
     title: 'Odd meters, subdivisions and rests',
-    text: 'Any meter from 1 to 16 beats over 2, 4, 8 or 16. Split the beat into eighths, sixteenths, triplets up to septuplets, and tap a note to make it a rest. Odd meters show their accent groups (7/8 · 2+2+3).',
+    text: 'Any meter from 1 to 16 beats over 2, 4, 8 or 16. Split the beat into eighths, sixteenths, triplets up to septuplets, and tap a note to make it a rest. Odd meters show their accent groups (7/8 · 2+2+3), and 6/8, 9/8 and 12/8 can count the dotted beat or every eighth.',
     phones: [
       { src: meter78, alt: 'Metronome in 7/8 with beats grouped 2+2+3' },
       { src: timeSignatureSheet, alt: 'Time signature sheet with Septuplets picked and rests on notes 3 and 6' },
@@ -56,8 +56,8 @@ const features: Feature[] = [
   {
     icon: 'target',
     title: 'Accuracy Trainer',
-    text: 'Play an electronic drum kit over MIDI and see live timing for every hit. Free Time mode silences the click and tracks your tempo drift. Part of Pro.',
-    note: 'Shown on Mac. Works with a MIDI drum kit.',
+    text: 'On iPhone, iPad and Mac, play an electronic drum kit over MIDI and see live timing for every hit. Practice mode hides the numbers until a short summary, and Free Time mode silences the click and tracks your tempo drift. Part of Pro.',
+    note: 'Experimental: turn it on in Settings → Experimental Features. Shown on Mac.',
     mac: { src: macTrainerLive, alt: 'Accuracy Trainer on Mac showing live timing for each drum' },
   },
   {
@@ -74,11 +74,12 @@ const more: { icon: IconName; title: string; text: string }[] = [
   {
     icon: 'timer',
     title: 'Count-in and auto stop',
-    text: 'Count in 1, 2 or 4 bars. Stop after a number of bars or a set time. Soft screen flash on every beat.',
+    text: 'Count in 1, 2 or 4 bars with a click or a voice count. Stop after a number of bars or a set time, with a bar counter on screen. A soft screen flash to see the beat.',
   },
   { icon: 'list', title: 'Play a collection', text: 'Step through a setlist with buttons, arrow keys or a Bluetooth foot pedal.' },
-  { icon: 'chart', title: 'Practice tracking', text: 'Session history, streaks, and home and lock screen widgets.' },
-  { icon: 'laptop', title: 'Native on Mac', text: 'Keyboard shortcuts, a menu bar menu and Ableton Link. On the Mac App Store.' },
+  { icon: 'chart', title: 'Practice tracking', text: 'Session history and streaks. Widgets on the home and lock screen on iPhone and iPad, the desktop on Mac and the home screen on Android.' },
+  { icon: 'laptop', title: 'Native on Mac', text: 'Space plays and stops, the arrow keys change the tempo, and the Accuracy Trainer opens in its own resizable window. A menu bar menu and Ableton Link. On the Mac App Store.',
+   },
 ];
 
 const freeForever = [
@@ -89,13 +90,12 @@ const freeForever = [
   'Visualizations',
   'Practice history and streaks',
   'Widgets',
-  'iCloud backup',
+  'iCloud backup (iPhone, iPad and Mac)',
 ];
 
 const proIncludes = [
-  'Everything else, including the Accuracy Trainer',
+  'Everything else, including the Accuracy Trainer (iPhone, iPad and Mac)',
   'All future upgrades',
-  'One purchase on iPhone, iPad and Mac',
   'No subscription, no ads',
 ];
 
@@ -227,6 +227,9 @@ const macFull = await getImage({ src: macTrainerLive, width: 1440, format: 'webp
               ))
             }
           </ul>
+          <p class="platform-note">
+            One Pro purchase covers iPhone, iPad and Mac. Pro on Android is a separate purchase in Google Play.
+          </p>
           <p class="trial">14-day free trial of everything</p>
           <p class="refund">Not happy? Get a refund through the App Store or Google Play.</p>
         </div>
@@ -489,6 +492,12 @@ const macFull = await getImage({ src: macTrainerLive, width: 1440, format: 'webp
     color: var(--color-text-muted);
     font-size: 0.8rem;
     margin-top: 0.25rem;
+  }
+
+  .platform-note {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
   }
 
   .trial {

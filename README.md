@@ -42,8 +42,8 @@ APP_REPO_PATH=../makonome npm run build
 Two checks in the build job keep new screenshots from slowing the site down:
 
 - **Image check** (`scripts/check-images.mjs`), on every run, including deploys from `main`. Fails
-  when a served image in `dist/` is over 150 KB, or when a page has an `<img>` with a PNG/JPG from
-  `public/` (it skipped the WebP pipeline). Lighthouse does not load lazy images below the fold, so
+  when a served image in `dist/` is over 150 KB, or when a page links a PNG/JPG from
+  `public/` in any attribute or inline `<style>` (it skipped the WebP pipeline; only `og-image.png` in `<meta>` is allowed). Lighthouse does not load lazy images below the fold, so
   this is the check that sees every screenshot. The original PNGs Astro copies into `dist/assets/`
   are skipped because no page links them. A short allowlist in the script covers `og-image.png` and
   the unused `screenshots/screen-1.png`.

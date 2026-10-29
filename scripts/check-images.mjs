@@ -6,19 +6,25 @@
 //
 // Fails (exit 1) when:
 // 1. an image file the site serves is over MAX_BYTES, or
-// 2. a built page has an <img> whose src is a PNG/JPG/JPEG outside /assets/, i.e. a raw
-//    file from public/ that skipped the astro:assets pipeline (no WebP, no resizing).
+// 2. a built page links a PNG/JPG/JPEG outside /assets/ from any attribute (src, srcset,
+//    data-lightbox-src, href, style url(...)) or an inline <style>, i.e. a raw file from
+//    public/ that skipped the astro:assets pipeline (no WebP, no resizing).
 
 import { readdir, readFile, stat } from 'node:fs/promises';
 import { join, relative, sep } from 'node:path';
 
-const DIST = 'dist';
+// Optional first argument: another build folder (used to test this script on a copy).
+const DIST = process.argv[2] ?? 'dist';
 // Astro's build output folder for processed images (`build.assets` in astro.config.mjs).
 const ASSETS_DIR = 'assets';
 // Largest image today is ~64 KB (a Mac settings shot, lightbox copy). 150 KB leaves room.
 const MAX_BYTES = 150 * 1024;
 const IMAGE_EXT = /\.(webp|avif|png|jpe?g|gif)$/i;
 const RAW_IMG_EXT = /\.(png|jpe?g)$/i;
+// PNG/JPG URLs inside an attribute value or CSS: plain src, each srcset candidate, url(...).
+const RAW_IMG_URL = /[^\s,'"()]+\.(?:png|jpe?g)(?:[?#][^\s,'"()]*)?(?=[\s,'"()]|$)/gi;
+// Rule 2's only exception: the link preview image in <meta content> (og:image, twitter:image).
+const RAW_IMG_ALLOWED = (attr, path) => attr === 'content' && path === '/og-image.png';
 
 // Files in dist/ (paths relative to dist/) that pages don't render as content.
 const ALLOWLIST = new Set([
@@ -67,16 +73,25 @@ for (const file of files.filter((f) => IMAGE_EXT.test(f))) {
   }
 }
 
-// 2. Raw PNG/JPG <img> that bypasses astro:assets.
+// 2. Raw PNG/JPG linked from any attribute or inline <style>. Matches attribute values
+// directly, not whole tags, so a `>` inside another attribute can't hide a URL.
 for (const [file, html] of texts.filter(([f]) => f.endsWith('.html'))) {
-  for (const [, src] of html.matchAll(/<img\b[^>]*?\ssrc=["']([^"']+)["']/gi)) {
-    const path = src.split(/[?#]/)[0];
-    if (!RAW_IMG_EXT.test(path)) continue;
-    if (path.startsWith(`/${ASSETS_DIR}/`)) continue;
-    errors.push(
-      `dist/${file} has <img src="${src}">: a raw PNG/JPG from public/. ` +
-        `Import it from src/assets/ and use <Image> (or <Screenshot> in the manual) so it is resized to WebP.`
-    );
+  const values = [];
+  for (const m of html.matchAll(/\s([\w:.-]+)\s*=\s*(?:"([^"]*)"|'([^']*)')/g)) {
+    values.push([m[1].toLowerCase(), m[2] ?? m[3]]);
+  }
+  for (const m of html.matchAll(/<style\b[^]*?<\/style>/gi)) values.push(['<style>', m[0]]);
+  for (const [attr, value] of values) {
+    for (const [url] of value.matchAll(RAW_IMG_URL)) {
+      const path = new URL(url, 'https://makonome.com/').pathname;
+      if (!RAW_IMG_EXT.test(path)) continue;
+      if (path.startsWith(`/${ASSETS_DIR}/`)) continue;
+      if (RAW_IMG_ALLOWED(attr, path)) continue;
+      errors.push(
+        `dist/${file} links ${url} (in ${attr}): a raw PNG/JPG from public/. ` +
+          `Import it from src/assets/ and use <Image> (or <Screenshot> in the manual) so it is resized to WebP.`
+      );
+    }
   }
 }
 

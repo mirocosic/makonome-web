@@ -2,213 +2,237 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Lightbox from '../components/Lightbox.astro';
 import Footer from '../components/Footer.astro';
+import Icon, { type IconName } from '../components/home/Icon.astro';
+import Phone from '../components/home/Phone.astro';
+import StoreButtons from '../components/home/StoreButtons.astro';
+import { GOOGLE_PLAY_URL } from '../lib/stores';
 import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import metronomeMain from '../assets/screenshots/metronome-main.png';
 import meter78 from '../assets/screenshots/meter-7-8.png';
 import timeSignatureSheet from '../assets/screenshots/time-signature-sheet.png';
-import meter68Dotted from '../assets/screenshots/meter-6-8-dotted.png';
-import playbackOptions from '../assets/screenshots/playback-options.png';
 import visualizationCircular from '../assets/screenshots/visualization-circular.png';
-import collectionPlayer from '../assets/screenshots/collection-player.png';
-import sessionHistory from '../assets/screenshots/screen-4.png';
 import tempoChanger from '../assets/screenshots/screen-5.png';
 import gapTrainer from '../assets/screenshots/gap-trainer.png';
-import macMetronome from '../assets/screenshots/mac-metronome.png';
 import macTrainerLive from '../assets/screenshots/mac-trainer-live.png';
-import macFreeTime from '../assets/screenshots/mac-free-time.png';
 
-// Sizes follow the CSS below: hero 280 px (220 px under 640 px), gallery 180 px (150 px),
-// Mac grid one to three columns of the 1136 px content width. Hero and gallery get 1x, 2x and 3x
-// (most iPhones are 3x); the Mac grid tops out at 1440 px (the source is 2880 px wide).
-const heroWidths = [220, 280, 440, 560, 660, 840];
-const heroSizes = '(max-width: 640px) 220px, 280px';
-const galleryWidths = [150, 180, 300, 360, 450, 540];
-const gallerySizes = '(max-width: 640px) 150px, 180px';
-const macWidths = [480, 720, 1080, 1440];
-const macSizes = '(max-width: 775px) calc(100vw - 64px), (max-width: 1147px) calc(50vw - 48px), 357px';
+// The one place the Pro price lives.
+const PRO_PRICE = '€4.99 / $4.99';
 
-const gallery = [
-  { src: metronomeMain, alt: 'Metronome main screen', caption: 'Precision BPM Control' },
-  { src: meter78, alt: 'Metronome in 7/8 with beats grouped 2+2+3', caption: 'Odd Meters in Groups' },
-  { src: timeSignatureSheet, alt: 'Time signature sheet in 4/4 with Septuplets picked and rests on notes 3 and 6', caption: 'Subdivisions and Rests' },
-  { src: meter68Dotted, alt: 'Metronome in 6/8 counting the dotted-quarter beat at 80 BPM', caption: '6/8 on the Dotted Beat' },
-  { src: playbackOptions, alt: 'Playback Options sheet with count-in and auto stop', caption: 'Count-In and Auto Stop' },
-  { src: visualizationCircular, alt: 'Circular visualization in 7/8 with gaps between the accent groups', caption: 'Visualizations' },
-  { src: collectionPlayer, alt: 'Metronome playing a collection with previous and next buttons', caption: 'Play a Collection' },
-  { src: sessionHistory, alt: 'Practice history with sessions, total time and goals met', caption: 'Session History' },
-  { src: tempoChanger, alt: 'Tempo Changer', caption: 'Tempo Changer' },
-  { src: gapTrainer, alt: 'Metronome with the Gap Trainer in a muted bar', caption: 'Gap Trainer' },
+interface Shot {
+  src: ImageMetadata;
+  alt: string;
+}
+
+interface Feature {
+  icon: IconName;
+  title: string;
+  text: string;
+  note?: string;
+  // Phone screenshots, or one Mac window shown wide.
+  phones?: Shot[];
+  mac?: Shot;
+}
+
+const features: Feature[] = [
+  {
+    icon: 'meter',
+    title: 'Odd meters, subdivisions and rests',
+    text: 'Any meter from 1 to 16 beats over 2, 4, 8 or 16. Split the beat into eighths, sixteenths, triplets up to septuplets, and tap a note to make it a rest. Odd meters show their accent groups (7/8 · 2+2+3), and 6/8, 9/8 and 12/8 can count the dotted beat or every eighth.',
+    phones: [
+      { src: meter78, alt: 'Metronome in 7/8 with beats grouped 2+2+3' },
+      { src: timeSignatureSheet, alt: 'Time signature sheet with Septuplets picked and rests on notes 3 and 6' },
+    ],
+  },
+  {
+    icon: 'mute',
+    title: 'Gap Trainer and Tempo Changer',
+    text: 'Build your internal clock with periodic silent intervals. Then raise the tempo gradually, over time or over bars, to push your limits.',
+    phones: [
+      { src: gapTrainer, alt: 'Metronome with the Gap Trainer in a muted bar' },
+      { src: tempoChanger, alt: 'Tempo Changer' },
+    ],
+  },
+  {
+    icon: 'target',
+    title: 'Accuracy Trainer',
+    text: 'On iPhone, iPad and Mac, play an electronic drum kit over MIDI and see live timing for every hit. Practice mode hides the numbers until a short summary, and Free Time mode silences the click and tracks your tempo drift. Part of Pro.',
+    note: 'Experimental: turn it on in Settings → Experimental Features. Shown on Mac.',
+    mac: { src: macTrainerLive, alt: 'Accuracy Trainer on Mac showing live timing for each drum' },
+  },
+  {
+    icon: 'eye',
+    title: 'Visualizations',
+    text: 'Pendulum, Circular, Count and Line views move exactly with the click you hear, at 120 Hz on ProMotion iPhones.',
+    phones: [{ src: visualizationCircular, alt: 'Circular visualization in 7/8 with gaps between the accent groups' }],
+  },
 ];
-// The lightbox shows a larger copy than the 180 px slide (same as the manual's screenshots).
-const gallerySlides = await Promise.all(
-  gallery.map(async (shot) => {
-    const full = await getImage({ src: shot.src, width: Math.min(shot.src.width, 900), format: 'webp' });
-    return { ...shot, fullSrc: full.src };
-  })
-);
+
+const more: { icon: IconName; title: string; text: string }[] = [
+  { icon: 'clock', title: 'Sample-accurate timing', text: 'Rock-solid timing from 20 to 400 BPM, on every platform.' },
+  { icon: 'wave', title: 'Five sounds', text: 'Click, clave, woodblock, cowbell or a spoken count, with adjustable pitch.' },
+  {
+    icon: 'timer',
+    title: 'Count-in and auto stop',
+    text: 'Count in 1, 2 or 4 bars with a click or a voice count. Stop after a number of bars or a set time, with a bar counter on screen. A soft screen flash to see the beat.',
+  },
+  { icon: 'list', title: 'Play a collection', text: 'Step through a setlist with buttons, arrow keys or a Bluetooth foot pedal.' },
+  { icon: 'chart', title: 'Practice tracking', text: 'Session history and streaks. Widgets on the home and lock screen on iPhone and iPad, the desktop on Mac and the home screen on Android.' },
+  { icon: 'laptop', title: 'Native on Mac', text: 'Space plays and stops, the arrow keys change the tempo, and the Accuracy Trainer opens in its own resizable window. A menu bar menu and Ableton Link. On the Mac App Store.',
+   },
+];
+
+const freeForever = [
+  'Metronome',
+  'Time signatures',
+  'Count-in and auto stop',
+  'Screen flash',
+  'Visualizations',
+  'Practice history and streaks',
+  'Widgets',
+  'iCloud backup (iPhone, iPad and Mac)',
+];
+
+const proIncludes = [
+  'Everything else, including the Accuracy Trainer (iPhone, iPad and Mac)',
+  'All future upgrades',
+  'No subscription, no ads',
+];
+
+// Mac window in a feature row: half of the 1056 px content width minus the gap on wide
+// screens, full width (less the 20 px gutters) under 860 px. The source is 2880 px wide.
+const macWidths = [400, 496, 800, 992, 1488];
+const macSizes = '(max-width: 860px) calc(100vw - 40px), 496px';
+const macFull = await getImage({ src: macTrainerLive, width: 1440, format: 'webp' });
 ---
 
 <BaseLayout title="Makonome - Precision Metronome for iPhone, iPad, Mac and Android">
   <main>
-    <header>
-      <h1>Makonome</h1>
-      <p class="tagline">A precision metronome for serious musicians</p>
-    </header>
-
     <section class="hero">
-      <div class="device-frame">
-        <div class="device-notch"></div>
-        <Image
+      <div class="hero-text">
+        <p class="brand">Makonome</p>
+        <h1>Count odd meters exactly. Then train your inner clock.</h1>
+        <p class="lede">
+          A metronome for 7/8, septuplets and subdivisions with rests, with a Gap Trainer that mutes bars so you keep
+          the time yourself. The core metronome is free.
+        </p>
+        <StoreButtons />
+        <p class="platforms">iPhone, iPad, Mac and Android · <a href="/manual/">Read the manual →</a></p>
+      </div>
+      <div class="hero-phone">
+        <Phone
           src={metronomeMain}
           alt="Makonome metronome app showing BPM dial at 120 Allegro"
-          class="screenshot"
-          width={280}
-          widths={heroWidths}
-          sizes={heroSizes}
-          format="webp"
-          loading="eager"
-          fetchpriority="high"
+          width={260}
+          mobileWidth={220}
+          eager
         />
       </div>
-      
-      <div class="cta">
-        <a href="https://apps.apple.com/app/makonome/id6747674877" class="download-btn" target="_blank" rel="noopener">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-          </svg>
-          Download on the App Store
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=com.makonome.app" class="download-btn" target="_blank" rel="noopener">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M5 2.6v18.8a.8.8 0 0 0 1.2.7l15-9.4a.8.8 0 0 0 0-1.4L6.2 1.9A.8.8 0 0 0 5 2.6z"/>
-          </svg>
-          Get it on Google Play
-        </a>
-        <a href="/manual/" class="manual-link">Read the manual →</a>
-      </div>
     </section>
 
-    <section class="features">
-      <h2>Features</h2>
-      <div class="feature-grid">
-        <div class="feature">
-          <h3>🎯 Sample-Accurate Timing</h3>
-          <p>Professional-grade precision using AVAudioEngine for rock-solid timing you can trust, from 20 to 400 BPM.</p>
-        </div>
-        <div class="feature">
-          <h3>🎵 Flexible Time Signatures</h3>
-          <p>Pick a common meter in one tap, or any meter from 1 to 16 beats over 2, 4, 8 or 16. Split the beat into eighths, sixteenths, triplets, quintuplets, sextuplets or septuplets, and tap a note to make it a rest: sixteenths with the second note silent make a gallop. Odd meters show their accent groups (7/8 · 2+2+3), and 6/8, 9/8 and 12/8 can count the dotted beat or every eighth.</p>
-        </div>
-        <div class="feature">
-          <h3>🔇 Gap Trainer</h3>
-          <p>Build your internal clock by practicing with periodic silence intervals.</p>
-        </div>
-        <div class="feature">
-          <h3>📈 Tempo Changer</h3>
-          <p>Gradually increase tempo over time or bars to push your limits progressively.</p>
-        </div>
-        <div class="feature">
-          <h3>🥁 Multiple Sounds</h3>
-          <p>Choose from five sounds: click, clave, woodblock, cowbell, or a spoken voice count, with adjustable pitch.</p>
-        </div>
-        <div class="feature">
-          <h3>⏱️ Count-In and Auto Stop</h3>
-          <p>Count in 1, 2 or 4 bars with a click or a voice count. Stop on its own after a number of bars or a set time, with a bar counter on screen. Turn on a soft screen flash to see every beat.</p>
-        </div>
-        <div class="feature">
-          <h3>🎼 Play a Collection</h3>
-          <p>Group presets into a setlist or practice routine, then step through them with previous and next buttons. Arrow keys, Page Up / Page Down and Bluetooth foot pedals work too.</p>
-        </div>
-        <div class="feature">
-          <h3>👀 Visualizations</h3>
-          <p>Pendulum, Circular, Count and Line views move exactly with the click you hear, at 120 Hz on ProMotion iPhones.</p>
-        </div>
-        <div class="feature">
-          <h3>📊 Practice Tracking</h3>
-          <p>Log your sessions, browse your history and keep your practice streak going. Home and lock screen widgets show your week at a glance.</p>
-        </div>
-        <div class="feature">
-          <h3>🎯 Accuracy Trainer</h3>
-          <p>Play an electronic drum kit over MIDI and see live timing for every hit. Try Practice mode, which hides the numbers until a short summary, and Free Time mode, where the click goes silent and Makonome tracks your tempo drift. Part of Pro: turn it on in Settings → Experimental.</p>
-        </div>
-        <div class="feature">
-          <h3>💻 Runs on Mac</h3>
-          <p>Native Mac app with keyboard shortcuts and a menu bar menu. Available on the Mac App Store.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="gallery">
-      <h2>See It in Action</h2>
-      <div class="carousel">
-        <div class="carousel-track">
-          {gallerySlides.map((shot) => (
-            <div class="carousel-slide">
-              <div class="device-frame-small" data-lightbox data-lightbox-src={shot.fullSrc}>
-                <div class="device-notch-small"></div>
-                <Image
-                  src={shot.src}
-                  alt={shot.alt}
-                  width={180}
-                  widths={galleryWidths}
-                  sizes={gallerySizes}
-                  format="webp"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <p class="slide-caption">{shot.caption}</p>
+    <section class="rows" aria-label="Features">
+      {
+        features.map((f, i) => (
+          <article class:list={['row', { flip: i % 2 === 1 }]}>
+            <div class="row-text">
+              <span class="row-icon">
+                <Icon name={f.icon} />
+              </span>
+              <h2>{f.title}</h2>
+              <p>{f.text}</p>
+              {f.note && <p class="note">{f.note}</p>}
             </div>
-          ))}
-        </div>
-      </div>
+            <div class="row-media">
+              {f.mac && (
+                <div class="mac-shot" data-lightbox data-lightbox-src={macFull.src} data-lightbox-shape="window">
+                  <Image
+                    src={f.mac.src}
+                    alt={f.mac.alt}
+                    width={496}
+                    widths={macWidths}
+                    sizes={macSizes}
+                    format="webp"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              )}
+              {f.phones?.map((shot) => (
+                <Phone src={shot.src} alt={shot.alt} width={200} mobileWidth={150} lightbox />
+              ))}
+            </div>
+          </article>
+        ))
+      }
     </section>
 
-    <section class="mac" id="mac">
-      <h2>Makonome for Mac</h2>
-      <p class="mac-intro">Makonome runs natively on Mac. One Pro purchase works on iPhone, iPad and Mac.</p>
-      <div class="mac-grid">
-        <figure>
-          <Image src={macMetronome} alt="Makonome metronome window on Mac" width={720} widths={macWidths} sizes={macSizes} format="webp" loading="lazy" decoding="async" />
-          <figcaption>The metronome, native on Mac</figcaption>
-        </figure>
-        <figure>
-          <Image src={macTrainerLive} alt="Accuracy Trainer on Mac showing live timing for each drum" width={720} widths={macWidths} sizes={macSizes} format="webp" loading="lazy" decoding="async" />
-          <figcaption>Accuracy Trainer: live timing per drum</figcaption>
-        </figure>
-        <figure>
-          <Image src={macFreeTime} alt="Free Time mode on Mac showing tempo drift bar by bar" width={720} widths={macWidths} sizes={macSizes} format="webp" loading="lazy" decoding="async" />
-          <figcaption>Free Time: follow your own tempo</figcaption>
-        </figure>
-      </div>
-      <ul class="pricing-features mac-features">
-        <li>Keyboard shortcuts: Space to play or stop, arrow keys for tempo</li>
-        <li>A Metronome menu in the menu bar</li>
-        <li>The Accuracy Trainer in its own resizable window</li>
-        <li>Ableton Link with other music apps on your Mac</li>
+    <section class="more">
+      <h2>Also in the box</h2>
+      <ul>
+        {
+          more.map((m) => (
+            <li>
+              <Icon name={m.icon} size={22} />
+              <div>
+                <strong>{m.title}</strong>
+                <span>{m.text}</span>
+              </div>
+            </li>
+          ))
+        }
+        <li>
+          <Icon name="phone" size={22} />
+          <div>
+            <strong>On Android too</strong>
+            <span
+              >Same metronome on Android phones. <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener"
+                >Get it on Google Play</a
+              >.</span
+            >
+          </div>
+        </li>
       </ul>
-      <p class="mac-note">Available on the Mac App Store</p>
     </section>
 
     <section class="pricing">
-      <h2>Simple Pricing</h2>
-      <div class="pricing-card">
-        <div class="pricing-header">
-          <h3>Makonome</h3>
-          <p class="pricing-model">One-time purchase</p>
+      <h2>Pricing</h2>
+      <div class="card">
+        <div class="tier free">
+          <h3>Free forever</h3>
+          <p class="tier-sub">No account, no ads. These stay free after the trial:</p>
+          <ul>
+            {
+              freeForever.map((item) => (
+                <li>
+                  <Icon name="check" size={18} />
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
         </div>
-        <ul class="pricing-features">
-          <li>All features included</li>
-          <li>All future upgrades included</li>
-          <li>No subscriptions</li>
-          <li>No ads, ever</li>
-        </ul>
-        <div class="trial-badge">
-          <span>14-day free trial</span>
+        <div class="tier pro">
+          <div class="pro-head">
+            <h3>Pro</h3>
+            <p class="price">{PRO_PRICE} <span>one-time</span></p>
+          </div>
+          <p class="price-note">Other countries: your app store shows your local price.</p>
+          <ul>
+            {
+              proIncludes.map((item) => (
+                <li>
+                  <Icon name="check" size={18} />
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+          <p class="platform-note">
+            One Pro purchase covers iPhone, iPad and Mac. Pro on Android is a separate purchase in Google Play.
+          </p>
+          <p class="trial">14-day free trial of everything</p>
+          <p class="refund">Not happy? Get a refund through the App Store or Google Play.</p>
         </div>
-        <p class="pricing-note">Try everything free for 14 days. Buy once, own forever.</p>
-        <p class="pricing-note">After the trial, the metronome, time signatures, count-in, auto stop, screen flash, visualizations, practice history and streaks, widgets and iCloud backup stay free.</p>
-        <p class="refund-note">Not happy? Get a refund through the App Store or Google Play.</p>
       </div>
     </section>
 
@@ -220,154 +244,124 @@ const gallerySlides = await Promise.all(
 
 <style>
   main {
-    max-width: 1200px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 2rem;
-  }
-
-  header {
-    text-align: center;
-    padding: 4rem 0;
-  }
-
-  h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
-  }
-
-  .tagline {
-    font-size: 1.25rem;
-    color: var(--color-text-muted);
+    padding: 0 2rem;
   }
 
   .hero {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
     align-items: center;
     gap: 3rem;
-    padding: 2rem 0 4rem;
+    min-height: min(720px, 100vh);
+    padding: 2rem 0;
   }
 
-  .device-frame {
-    position: relative;
-    padding: 12px;
-    background: #1c1c1e;
-    border-radius: 52px;
-    box-shadow:
-      0 20px 60px rgba(0, 0, 0, 0.5),
-      inset 0 0 0 2px #333,
-      inset 0 0 0 4px #1c1c1e;
+  .brand {
+    color: var(--color-accent);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
   }
 
-  .device-notch {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90px;
-    height: 28px;
-    background: #000;
-    border-radius: 20px;
-    z-index: 10;
+  h1 {
+    font-size: clamp(2rem, 4.2vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
   }
 
-  .screenshot {
-    display: block;
-    width: 280px;
-    height: auto;
-    border-radius: 40px;
+  .lede {
+    color: var(--color-text-muted);
+    font-size: 1.15rem;
+    line-height: 1.55;
+    margin-bottom: 1.75rem;
+    max-width: 34rem;
   }
 
-  .cta {
-    text-align: center;
-  }
-
-  .cta .download-btn {
-    margin: 0 0.4rem 0.8rem;
-  }
-
-  .download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: var(--color-text);
-    color: var(--color-bg);
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .download-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
-    text-decoration: none;
-  }
-
-  .coming-soon {
+  .platforms {
     margin-top: 1rem;
     color: var(--color-text-muted);
     font-size: 0.9rem;
   }
 
-  .features {
+  /* Links inside running text get an underline, not just the accent colour. */
+  .platforms a,
+  .more span a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .hero-phone {
+    display: flex;
+    justify-content: center;
+  }
+
+  .rows {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
     padding: 4rem 0;
   }
 
-  .features h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 3rem;
-  }
-
-  .feature-grid {
+  .row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
   }
 
-  .feature {
-    background: var(--color-surface);
-    padding: 2rem;
-    border-radius: 16px;
-    border: 1px solid #333;
+  .row.flip .row-text {
+    order: 2;
   }
 
-  .feature h3 {
-    font-size: 1.25rem;
+  .row-icon {
+    display: inline-flex;
+    padding: 0.6rem;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .row h2 {
+    font-size: 1.9rem;
+    line-height: 1.15;
     margin-bottom: 0.75rem;
   }
 
-  .feature p {
+  .row p {
     color: var(--color-text-muted);
     line-height: 1.6;
+    font-size: 1.05rem;
   }
 
-  .mac {
-    padding: 4rem 0;
-    text-align: center;
+  .row .note {
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
   }
 
-  .mac h2 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+  .row-media {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 0;
   }
 
-  .mac-intro {
-    color: var(--color-text-muted);
-    margin-bottom: 3rem;
+  /* Two phones overlap, the second one lower. */
+  .row-media :global(.phone + .phone) {
+    margin-left: -40px;
+    margin-top: 60px;
   }
 
-  .mac-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 2rem;
+  .mac-shot {
+    width: 100%;
   }
 
-  .mac-grid img {
+  .mac-shot img {
     display: block;
     width: 100%;
     height: auto;
@@ -376,236 +370,183 @@ const gallerySlides = await Promise.all(
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
   }
 
-  .mac-grid figcaption {
-    margin-top: 1rem;
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
+  .more {
+    padding: 3rem 0;
   }
 
-  .mac-features {
-    max-width: 480px;
-    margin: 2.5rem auto 1.5rem;
+  .more h2,
+  .pricing h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
   }
 
-  .mac-note {
+  .more ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 1.25rem 2rem;
+  }
+
+  .more li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
     color: var(--color-accent);
-    font-weight: 600;
+  }
+
+  .more li :global(.icon) {
+    flex: none;
+  }
+
+  .more li div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .more strong {
+    color: var(--color-text);
+  }
+
+  .more span {
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
   }
 
   .pricing {
     padding: 4rem 0;
-    text-align: center;
   }
 
-  .pricing h2 {
-    font-size: 2rem;
-    margin-bottom: 3rem;
-  }
-
-  .pricing-card {
-    max-width: 400px;
-    margin: 0 auto;
-    background: var(--color-surface);
+  .card {
+    max-width: 560px;
     border-radius: 24px;
-    border: 2px solid var(--color-accent-dim);
-    padding: 2.5rem;
-  }
-
-  .pricing-header h3 {
-    font-size: 1.75rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .pricing-model {
-    color: var(--color-accent);
-    font-weight: 600;
-    font-size: 1.1rem;
-  }
-
-  .pricing-features {
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0;
-    text-align: left;
-  }
-
-  .pricing-features li {
-    padding: 0.6rem 0;
-    padding-left: 2rem;
-    position: relative;
-    color: var(--color-text-muted);
-  }
-
-  .pricing-features li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--color-accent);
-    font-weight: bold;
-  }
-
-  .trial-badge {
-    background: var(--color-accent);
-    color: var(--color-bg);
-    padding: 0.75rem 1.5rem;
-    border-radius: 50px;
-    display: inline-block;
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-  }
-
-  .pricing-note {
-    color: var(--color-text-muted);
-    font-size: 0.95rem;
-  }
-
-  .refund-note {
-    color: var(--color-text-muted);
-    font-size: 0.75rem;
-    margin-top: 0.75rem;
-    opacity: 0.8;
-  }
-
-  .gallery {
-    padding: 4rem 0;
-  }
-
-  .gallery h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 3rem;
-  }
-
-  .carousel {
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding: 1rem 0 1.5rem;
-  }
-
-  .carousel::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .carousel::-webkit-scrollbar-track {
+    border: 1px solid #333;
+    overflow: hidden;
     background: var(--color-surface);
-    border-radius: 3px;
-    margin: 0 30%;
   }
 
-  .carousel::-webkit-scrollbar-thumb {
-    background: var(--color-accent-dim);
-    border-radius: 3px;
+  .tier {
+    padding: 2rem;
   }
 
-  .carousel::-webkit-scrollbar-thumb:hover {
-    background: var(--color-accent);
+  .tier h3 {
+    font-size: 1.4rem;
   }
 
-  .carousel-track {
-    display: inline-flex;
-    gap: 1.5rem;
-    padding: 0 calc(50% - 100px);
+  .pro {
+    border-top: 1px solid #333;
+    background: color-mix(in srgb, var(--color-accent) 5%, transparent);
   }
 
-  .carousel-slide {
-    flex: 0 0 auto;
-    scroll-snap-align: center;
-    text-align: center;
-  }
-
-  .device-frame-small {
-    position: relative;
-    padding: 8px;
-    background: #1c1c1e;
-    border-radius: 36px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-  }
-
-  .device-notch-small {
-    position: absolute;
-    top: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 20px;
-    background: #000;
-    border-radius: 14px;
-    z-index: 10;
-  }
-
-  .device-frame-small img {
-    display: block;
-    width: 180px;
-    height: auto;
-    border-radius: 28px;
-  }
-
-  .slide-caption {
-    margin-top: 1rem;
+  .tier-sub {
     color: var(--color-text-muted);
+    margin: 0.25rem 0 1rem;
+  }
+
+  .card ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1rem;
+  }
+
+  .pro ul {
+    grid-template-columns: 1fr;
+    margin: 1rem 0;
+  }
+
+  .card li {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: var(--color-text-muted);
+  }
+
+  .card li :global(.icon) {
+    color: var(--color-accent);
+    flex: none;
+  }
+
+  .pro-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+  }
+
+  .price {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+
+  .price span {
+    color: var(--color-text-muted);
+    font-weight: 500;
     font-size: 0.9rem;
   }
 
-  .device-frame-small {
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-
-  .device-frame-small:hover {
-    transform: scale(1.02);
-  }
-
-  .manual-link {
-    display: block;
-    margin-top: 1.25rem;
-    text-align: center;
+  .price-note {
     color: var(--color-text-muted);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
   }
 
-  .manual-link:hover {
-    color: var(--color-accent);
+  .platform-note {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
   }
 
+  .trial {
+    display: inline-block;
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-weight: 700;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+  }
 
+  .refund {
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    margin-top: 0.75rem;
+  }
 
-  @media (max-width: 640px) {
-    h1 {
-      font-size: 2.5rem;
+  @media (max-width: 860px) {
+    main {
+      padding: 0 1.25rem;
     }
 
-    .device-frame {
-      padding: 10px;
-      border-radius: 44px;
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: 0;
+      gap: 2rem;
+      padding-top: 1.5rem;
     }
 
-    .device-notch {
-      width: 70px;
-      height: 22px;
-      top: 16px;
+    .lede {
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
     }
 
-    .screenshot {
-      width: 220px;
-      border-radius: 34px;
+    .rows {
+      gap: 4rem;
     }
 
-    .device-frame-small img {
-      width: 150px;
+    .row {
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
 
-    .device-frame-small {
-      padding: 6px;
-      border-radius: 30px;
+    .row.flip .row-text {
+      order: 0;
     }
 
-    .device-notch-small {
-      width: 50px;
-      height: 16px;
-      top: 12px;
+    .card ul {
+      grid-template-columns: 1fr;
     }
   }
 </style>

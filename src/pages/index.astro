@@ -18,10 +18,11 @@ import macTrainerLive from '../assets/screenshots/mac-trainer-live.png';
 import macFreeTime from '../assets/screenshots/mac-free-time.png';
 
 // Sizes follow the CSS below: hero 280 px (220 px under 640 px), gallery 180 px (150 px),
-// Mac grid one to three columns of the 1136 px content width. 1x and 2x of each.
-const heroWidths = [220, 280, 440, 560];
+// Mac grid one to three columns of the 1136 px content width. Hero and gallery get 1x, 2x and 3x
+// (most iPhones are 3x); the Mac grid tops out at the 1440 px source.
+const heroWidths = [220, 280, 440, 560, 660, 840];
 const heroSizes = '(max-width: 640px) 220px, 280px';
-const galleryWidths = [150, 180, 300, 360];
+const galleryWidths = [150, 180, 300, 360, 450, 540];
 const gallerySizes = '(max-width: 640px) 150px, 180px';
 const macWidths = [480, 720, 1080, 1440];
 const macSizes = '(max-width: 775px) calc(100vw - 64px), (max-width: 1147px) calc(50vw - 48px), 357px';

@@ -19,7 +19,7 @@ import macFreeTime from '../assets/screenshots/mac-free-time.png';
 
 // Sizes follow the CSS below: hero 280 px (220 px under 640 px), gallery 180 px (150 px),
 // Mac grid one to three columns of the 1136 px content width. Hero and gallery get 1x, 2x and 3x
-// (most iPhones are 3x); the Mac grid tops out at the 1440 px source.
+// (most iPhones are 3x); the Mac grid tops out at 1440 px (the source is 2880 px wide).
 const heroWidths = [220, 280, 440, 560, 660, 840];
 const heroSizes = '(max-width: 640px) 220px, 280px';
 const galleryWidths = [150, 180, 300, 360, 450, 540];
@@ -30,7 +30,7 @@ const macSizes = '(max-width: 775px) calc(100vw - 64px), (max-width: 1147px) cal
 const gallery = [
   { src: metronomeMain, alt: 'Metronome main screen', caption: 'Precision BPM Control' },
   { src: meter78, alt: 'Metronome in 7/8 with beats grouped 2+2+3', caption: 'Odd Meters in Groups' },
-  { src: timeSignatureSheet, alt: 'Time signature sheet with common meters, custom picker and accent groups', caption: 'Any Time Signature' },
+  { src: timeSignatureSheet, alt: 'Time signature sheet in 4/4 with Septuplets picked and rests on notes 3 and 6', caption: 'Subdivisions and Rests' },
   { src: meter68Dotted, alt: 'Metronome in 6/8 counting the dotted-quarter beat at 80 BPM', caption: '6/8 on the Dotted Beat' },
   { src: playbackOptions, alt: 'Playback Options sheet with count-in and auto stop', caption: 'Count-In and Auto Stop' },
   { src: visualizationCircular, alt: 'Circular visualization in 7/8 with gaps between the accent groups', caption: 'Visualizations' },
@@ -97,7 +97,7 @@ const gallerySlides = await Promise.all(
         </div>
         <div class="feature">
           <h3>🎵 Flexible Time Signatures</h3>
-          <p>Pick a common meter in one tap, or any meter from 1 to 16 beats over 2, 4, 8 or 16, with eighth, sixteenth and triplet subdivisions. Odd meters show their accent groups (7/8 · 2+2+3), and 6/8, 9/8 and 12/8 can count the dotted beat or every eighth.</p>
+          <p>Pick a common meter in one tap, or any meter from 1 to 16 beats over 2, 4, 8 or 16. Split the beat into eighths, sixteenths, triplets, quintuplets, sextuplets or septuplets, and tap a note to make it a rest: sixteenths with the second note silent make a gallop. Odd meters show their accent groups (7/8 · 2+2+3), and 6/8, 9/8 and 12/8 can count the dotted beat or every eighth.</p>
         </div>
         <div class="feature">
           <h3>🔇 Gap Trainer</h3>

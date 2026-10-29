@@ -1,0 +1,66 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "./dist",
+      "url": [
+        "http://localhost/",
+        "http://localhost/manual/",
+        "http://localhost/manual/accuracy-trainer/?platform=ios",
+        "http://localhost/manual/practice-tracking/?platform=ios"
+      ],
+      "numberOfRuns": 3,
+      "settings": {
+        "onlyCategories": [
+          "performance"
+        ]
+      }
+    },
+    "assert": {
+      "aggregationMethod": "median-run",
+      "assertions": {
+        "categories:performance": [
+          "error",
+          {
+            "minScore": 0.95
+          }
+        ],
+        "cumulative-layout-shift": [
+          "error",
+          {
+            "maxNumericValue": 0.05
+          }
+        ],
+        "largest-contentful-paint": [
+          "error",
+          {
+            "maxNumericValue": 2500
+          }
+        ],
+        "unsized-images": [
+          "error",
+          {
+            "minScore": 1
+          }
+        ],
+        "modern-image-formats": [
+          "error",
+          {
+            "maxLength": 0
+          }
+        ],
+        "uses-responsive-images": [
+          "error",
+          {
+            "maxLength": 0
+          }
+        ],
+        "offscreen-images": [
+          "error",
+          {
+            "maxLength": 0
+          }
+        ]
+      }
+    }
+  }
+}

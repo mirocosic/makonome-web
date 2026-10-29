@@ -37,6 +37,30 @@ Without `APP_REPO_PATH` the build looks in `./app` (gitignored), so a symlink wo
 APP_REPO_PATH=../makonome npm run build
 ```
 
+## Performance checks
+
+Two checks in the build job keep new screenshots from slowing the site down:
+
+- **Image check** (`scripts/check-images.mjs`), on every run, including deploys from `main`. Fails
+  when a served image in `dist/` is over 150 KB, or when a page links a PNG/JPG from
+  `public/` in any attribute or inline `<style>` (it skipped the WebP pipeline; only `og-image.png` in `<meta>` is allowed). Lighthouse does not load lazy images below the fold, so
+  this is the check that sees every screenshot. The original PNGs Astro copies into `dist/assets/`
+  are skipped because no page links them. A short allowlist in the script covers `og-image.png` and
+  the unused `screenshots/screen-1.png`.
+- **Lighthouse CI** (`lighthouserc.json`, `@lhci/cli` 0.15.1), on pull requests only, so a flaky
+  score never blocks a deploy. Mobile, 3 runs per page, median: performance ≥ 0.95, CLS ≤ 0.05,
+  LCP ≤ 2.5 s, and no findings for unsized images, modern image formats, responsive images or
+  offscreen images. Pages: `/`, `/manual/`, and `/manual/accuracy-trainer/` and
+  `/manual/practice-tracking/` with `?platform=ios`. Lighthouse runs with an Android user agent,
+  so without the parameter the manual shows only the few Android shots.
+
+Run both locally after a build (Lighthouse needs Chrome):
+
+```bash
+npm run check:images
+npx @lhci/cli@0.15.1 autorun
+```
+
 ## Manual
 
 The user manual lives at `/manual/`: one MDX page per topic in `src/content/manual/<slug>.mdx`

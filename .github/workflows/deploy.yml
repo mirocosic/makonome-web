@@ -55,6 +55,16 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Byte limit on every served image, and no raw PNG/JPG <img> from public/. Cheap and
+      # deterministic, so it runs on every event, including deploys from main.
+      - name: Check image sizes
+        run: npm run check:images
+
+      # Lighthouse on a few pages (lighthouserc.json). PRs only, so a flaky score never blocks a deploy.
+      - name: Lighthouse CI
+        if: github.event_name == 'pull_request'
+        run: npx --yes @lhci/cli@0.15.1 autorun
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

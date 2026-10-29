@@ -26,3 +26,6 @@ pnpm-debug.log*
 
 # app repo checkout (release notes source), see README
 /app
+
+# Lighthouse CI output
+.lighthouseci/

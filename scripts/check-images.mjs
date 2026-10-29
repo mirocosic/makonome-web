@@ -25,8 +25,11 @@ const IMAGE_EXT = /\.(webp|avif|png|jpe?g|gif)$/i;
 const RAW_IMG_EXT = /\.(png|jpe?g)$/i;
 // PNG/JPG URLs inside an attribute value or CSS: plain src, each srcset candidate, url(...).
 const RAW_IMG_URL = /[^\s,'"()]+\.(?:png|jpe?g)(?:[?#][^\s,'"()]*)?(?=[\s,'"()]|$)/gi;
-// Rule 3's only exception: the link preview image in <meta content> (og:image, twitter:image).
-const RAW_IMG_ALLOWED = (attr, path) => attr === 'content' && path === '/og-image.png';
+// Rule 3's exceptions: the link preview image in <meta content> (og:image, twitter:image),
+// and the PNG favicon and Apple touch icon in <link href>.
+const RAW_IMG_ALLOWED = (attr, path) =>
+  (attr === 'content' && path === '/og-image.png') ||
+  (attr === 'href' && (path === '/favicon-32.png' || path === '/apple-touch-icon.png'));
 
 // Files in dist/ (paths relative to dist/) that pages don't render as content.
 const ALLOWLIST = new Set([

@@ -4,6 +4,7 @@
 // opens a larger copy in the page's <Lightbox />.
 import { Image, getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import { imageSize } from '../../lib/images';
 
 interface Props {
   src: ImageMetadata;
@@ -16,11 +17,12 @@ interface Props {
 
 const { src, alt, width, mobileWidth, eager = false, lightbox = false } = Astro.props;
 
+const original = imageSize(src);
 const widths = [...new Set([1, 2, 3].flatMap((x) => [mobileWidth * x, width * x]))]
-  .filter((w) => w <= src.width)
+  .filter((w) => w <= original.width)
   .sort((a, b) => a - b);
 const sizes = `(max-width: 860px) ${mobileWidth}px, ${width}px`;
-const full = lightbox ? await getImage({ src, width: Math.min(src.width, 900), format: 'webp' }) : undefined;
+const full = lightbox ? await getImage({ src, width: Math.min(original.width, 900), format: 'webp' }) : undefined;
 ---
 
 <div

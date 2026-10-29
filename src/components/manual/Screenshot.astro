@@ -4,9 +4,12 @@
 // (default "ios mac"). Android shots are the 1.1.0 Play Store screenshots, so only a
 // few scenes have one: list "android" in `only` where a file exists.
 // A missing file for a listed platform fails the build.
+// The eager glob below ships every file it matches to dist/, used or not, so shots no page
+// uses live in src/assets/manual/unused/<platform>/, which the pattern skips.
 import type { ImageMetadata } from 'astro';
 import { Image, getImage } from 'astro:assets';
 import { PLATFORM_LABELS, parsePlatforms } from '../../lib/manual';
+import { imageSize } from '../../lib/images';
 
 interface Props {
   name: string;
@@ -32,10 +35,11 @@ const shots = await Promise.all(
       );
     }
     const src = file.default;
-    const portrait = src.height > src.width;
+    const size = imageSize(src);
+    const portrait = size.height > size.width;
     // Phone shots show at 300 CSS px wide, Mac windows up to the text column.
     const displayWidth = portrait ? 300 : 720;
-    const full = await getImage({ src, width: Math.min(src.width, portrait ? 900 : 1440), format: 'webp' });
+    const full = await getImage({ src, width: Math.min(size.width, portrait ? 900 : 1440), format: 'webp' });
     return { platform, src, portrait, displayWidth, fullSrc: full.src };
   })
 );

@@ -16,7 +16,7 @@ From top to bottom:
 - **Top bar:** the Presets button on the right. The Visualization and Ableton Link buttons appear on the left when you turn them on in [Experimental Features](/manual/getting-started/#experimental-features).
 - **Beat rings:** one ring for each beat of the bar. Tap a ring to accent or mute that beat.
 - **Bar and beat readout:** where you are in the bar, while the metronome plays.
-- **Settings row:** the subdivision and the time signature, for example "♩ Quarter Notes · 4/4".
+- **Settings row:** the subdivision and the time signature, for example "♩ Quarter Notes · 4/4". With [rests](/manual/time-signatures/#rests-inside-the-beat), dots after the subdivision show the pattern.
 - **The BPM dial:** the tempo, with − and + buttons and the tempo name.
 - **Bottom buttons:** tap tempo, time signature, play/stop, sound, and the ••• menu.
 </Platform>
@@ -24,7 +24,7 @@ From top to bottom:
 <Platform only="android">
 - **Top bar:** the Visualization button on the left, always there, and the Presets button on the right.
 - **Beat rings:** one ring for each beat of the bar. Tap a ring to accent or mute that beat.
-- **Meter label:** the time signature and the subdivision, for example "4/4 ♩ Quarter Notes". Tap it to open the Time Signature sheet. While the metronome plays, the bar and beat readout takes its place.
+- **Meter label:** the time signature and the subdivision, for example "4/4 ♩ Quarter Notes". With [rests](/manual/time-signatures/#rests-inside-the-beat), dots after the subdivision show the pattern. Tap it to open the Time Signature sheet. While the metronome plays, the bar and beat readout takes its place.
 - **The BPM dial:** the tempo, with − and + buttons and the tempo name.
 - **Bottom buttons:** tap tempo, sound, play/stop, time signature (it shows the meter, for example **4/4**), and the ⋮ menu.
 
@@ -133,6 +133,10 @@ Press the green **play** button to start. It turns into a **stop** button while 
 
 The metronome keeps playing when you switch tabs, leave the app or lock the screen. It also works with Bluetooth speakers and headphones.
 
+<Platform only="ios android">
+If you unplug your headphones or a Bluetooth speaker disconnects, the metronome stops, so it doesn't go on through the built-in speaker. Press play to start again.<Platform only="ios" inline> With [Ableton Link](/manual/ableton-link/), the other apps in the session keep playing.</Platform>
+</Platform>
+
 <Platform only="mac">
 On Mac, press <kbd>Space</kbd> to start and stop, or use **Metronome → Play / Stop** in the menu bar.
 </Platform>
@@ -147,7 +151,7 @@ Each beat ring has three states. Tap a ring to change it, in this order:
 
 1. **Normal:** an empty ring. A regular click.
 2. **Accented:** <Platform only="ios mac" inline>a filled ring</Platform><Platform only="android" inline>a ring with a filled dot inside</Platform>. A stronger click.
-3. **Muted:** a dashed ring. No click on that beat.
+3. **Muted:** a dashed ring. No click on that beat, and none of its subdivision notes.
 
 The next tap goes back to normal.
 

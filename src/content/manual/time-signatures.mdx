@@ -1,18 +1,18 @@
 ---
 title: Time signatures
-description: Common and custom meters, accent groups like 2+2+3, compound meters with a dotted pulse, and subdivisions.
+description: Common and custom meters, accent groups like 2+2+3, compound meters with a dotted pulse, subdivisions and rests inside the beat.
 order: 30
 group: Basics
 platforms: [ios, mac, android]
 ---
 
-The time signature (or meter) sets how many beats a bar has and which note gets the beat. All time signatures and subdivisions are free.
+The time signature (or meter) sets how many beats a bar has and which note gets the beat. All time signatures, subdivisions and rests are free.
 
 ## Open the Time Signature sheet
 
 Tap <Platform only="ios mac" inline>the button with the notes, second from the left at the bottom of the metronome screen</Platform><Platform only="android" inline>the button that shows the meter, for example **4/4**, right of the play button. You can also tap the meter label above the dial</Platform>. The **Time Signature** sheet opens. Every change works at once, also while the metronome plays.
 
-<Screenshot name="time-signature-sheet" alt="The Time Signature sheet with 7/8 selected: Common meter buttons, the Custom wheels at 7 over 8, Accent groups 2+2+3, 2+3+2, 3+2+2 and Downbeat, and the Subdivision choices" only="ios mac android" caption="The Time Signature sheet in 7/8." />
+<Screenshot name="time-signature-sheet" alt="The Time Signature sheet with 7/8 selected: Common meter buttons, the Custom wheels at 7 over 8, Accent groups 2+2+3, 2+3+2, 3+2+2 and Downbeat, and the Subdivision choices in two rows with None selected" only="ios mac android" caption="The Time Signature sheet in 7/8." />
 
 <Platform only="ios">
 To close the sheet, swipe it down or tap outside it. On iPhone, if not everything fits, the sheet opens smaller: drag it up to see the rest.
@@ -32,7 +32,7 @@ The sheet has these sections, from top to bottom:
 - **Custom:** any meter from 1 to 16 beats.
 - **Count in:** how you count compound meters like 6/8. Only shown for those meters.
 - **Accent groups:** accents for meters with five or more beats, and for compound meters.
-- **Subdivision:** extra clicks between the beats.
+- **Subdivision:** extra clicks between the beats, and the rests inside the beat.
 
 The **Count in** section is about what you count. It is not the [count-in](/manual/count-in-and-auto-stop/#count-in) that plays before the music.
 
@@ -91,6 +91,7 @@ With a dotted beat:
 - The tempo range is 7 to 133 dotted beats a minute. That is the same 20 to 400 BPM, counted in eighth notes.
 - The beat rings still show every eighth note, grouped in threes.
 - Haptic feedback and screen flash follow the dotted beat.
+- The subdivisions are only the ones in the first row, and there are no rests (see [Subdivisions](#subdivisions)).
 
 <Screenshot name="metronome-6-8" alt="The metronome playing 6/8: six beat rings in two groups of three, the dial showing dotted-quarter BPM 80 with eighth note = 240 under it" only="ios" caption="6/8 counted in dotted quarters." />
 
@@ -111,18 +112,42 @@ A subdivision adds quieter clicks between the beats, so you can hear the eighth 
 
 To set a subdivision, tap one in the **Subdivision** section at the bottom of the sheet. **None** plays only the beats.
 
-The choices depend on the bottom number of the meter:
+The buttons are in two rows. The first row depends on the bottom number of the meter. The second row has **Quintuplets**, **Sextuplets** and **Septuplets**: 5, 6 or 7 notes in each beat.
 
-| Meter | Subdivisions |
-|---|---|
-| x/2 | None, Quarters, 8ths, Triplets |
-| x/4 | None, 8ths, 16ths, Triplets |
-| x/8 | None, 16ths, Triplets, 32nds |
-| x/16 | None, 32nds, Triplets |
+| Meter | First row | Second row |
+|---|---|---|
+| x/2 | None, Quarters, 8ths, Triplets | Quintuplets, Sextuplets, Septuplets |
+| x/4 | None, 8ths, 16ths, Triplets | Quintuplets, Sextuplets, Septuplets |
+| x/8 | None, 16ths, Triplets, 32nds | Quintuplets, Sextuplets, Septuplets |
+| x/16 | None, 32nds, Triplets | Not offered |
 
-**Triplets** plays three clicks for each beat. In compound meters, the section is called **Subdivision per ♪**, because it divides each eighth note.
+**Triplets** plays three clicks for each beat.
 
-If you switch to a meter that doesn't offer your subdivision, it goes back to None. For example, 16ths in 4/4 become None when you switch to an x/16 meter.
+Compound meters like 6/8 counted in dotted beats have only the first row. There the section is called **Subdivision per ♪**, because it divides each eighth note. If you count 6/8 in eighths (see [Compound meters](#compound-meters-and-the-dotted-pulse)), you get both rows, like in 7/8.
+
+If you switch to a meter that doesn't offer your subdivision, it changes. Quintuplets, sextuplets and septuplets go back to None in an x/16 meter or a dotted beat. 16ths in 4/4 go back to None in an x/16 meter. When you switch to counting in dotted beats, the rests are cleared.
+
+## Rests inside the beat
+
+You can silence single notes inside the beat. For example, 16ths with the second note silent make a gallop.
+
+Under the subdivision buttons there is a row of notes, one for each note in the beat:
+
+- The first note is the beat, a filled disc. You can't make it a rest here.
+- A played note is a solid ring.
+- A rest is a dashed ring.
+
+To make a rest, tap a note in that row. Tap it again to play it again. The rests are the same in every beat of the bar.
+
+<Screenshot name="time-signature-rests" alt="The Time Signature sheet in 4/4 with Septuplets selected in the second row, and under it a row of seven notes: the beat as a filled disc, notes 3 and 6 as dashed rings (rests), the others as solid rings" only="ios mac" caption="Septuplets with rests on notes 3 and 6." />
+
+Good to know:
+
+- To silence the beat itself, mute its ring on the main screen (see [Beat accents and muting](/manual/metronome-screen/#beat-accents-and-muting)). A muted beat also silences its subdivision notes.
+- When you pick another subdivision, the rests are cleared. Tapping the subdivision you already have keeps them.
+- The row of notes is not there for **None**, and not for compound meters counted in dotted beats.
+- The main screen shows the rests after the subdivision name, as dots: filled for a played note, empty for a rest. For example **♬ Septuplets ●●○●●○●**.
+- A preset saves the rests with the subdivision.
 
 ## How the meter label reads
 
@@ -131,6 +156,7 @@ The settings row above the dial shows your subdivision and meter. For example:
 - **♩ Quarter Notes · 4/4:** quarter notes, no subdivision.
 - **♪ Eighth Notes · 7/8 · 2+2+3:** 7/8 in groups of 2+2+3.
 - **♩. Dotted-quarter pulse · 6/8 · 3+3:** 6/8 counted in dotted quarters.
+- **♬ Septuplets ●●○●●○● · 4/4:** septuplets with rests on notes 3 and 6.
 
 With a subdivision, the first part names the notes you hear, for example **Sixteenth Notes** for 16ths in 4/4. The groups are not shown for **Downbeat**.
 

@@ -1,0 +1,92 @@
+---
+// A screenshot in a phone frame. `width` is the screen's CSS width on wide screens,
+// `mobileWidth` under 860 px. srcset covers 1x to 3x of both. With `lightbox`, a click
+// opens a larger copy in the page's <Lightbox />.
+import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  width: number;
+  mobileWidth: number;
+  eager?: boolean;
+  lightbox?: boolean;
+}
+
+const { src, alt, width, mobileWidth, eager = false, lightbox = false } = Astro.props;
+
+const widths = [...new Set([1, 2, 3].flatMap((x) => [mobileWidth * x, width * x]))]
+  .filter((w) => w <= src.width)
+  .sort((a, b) => a - b);
+const sizes = `(max-width: 860px) ${mobileWidth}px, ${width}px`;
+const full = lightbox ? await getImage({ src, width: Math.min(src.width, 900), format: 'webp' }) : undefined;
+---
+
+<div
+  class="phone"
+  style={`--w-lg:${width}px;--w-sm:${mobileWidth}px`}
+  data-lightbox={lightbox ? '' : undefined}
+  data-lightbox-src={full?.src}
+>
+  <div class="notch"></div>
+  <Image
+    src={src}
+    alt={alt}
+    width={width}
+    widths={widths}
+    sizes={sizes}
+    format="webp"
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : undefined}
+    decoding={eager ? undefined : 'async'}
+  />
+</div>
+
+<style>
+  .phone {
+    --w: var(--w-lg);
+    position: relative;
+    flex: none;
+    width: max-content;
+    padding: calc(var(--w) * 0.04);
+    background: #1c1c1e;
+    border-radius: calc(var(--w) * 0.18);
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      inset 0 0 0 2px #333;
+  }
+
+  .phone[data-lightbox] {
+    transition: transform 0.2s;
+  }
+
+  .phone[data-lightbox]:hover {
+    transform: scale(1.02);
+  }
+
+  .notch {
+    position: absolute;
+    top: calc(var(--w) * 0.07);
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(var(--w) * 0.32);
+    height: calc(var(--w) * 0.1);
+    background: #000;
+    border-radius: 20px;
+    z-index: 1;
+  }
+
+  img {
+    display: block;
+    width: var(--w);
+    height: auto;
+    border-radius: calc(var(--w) * 0.14);
+  }
+
+  @media (max-width: 860px) {
+    .phone {
+      --w: var(--w-sm);
+    }
+  }
+</style>

@@ -4,7 +4,7 @@ import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 // Release notes live in the app repo (mirocosic/makonome), docs/release-notes/.
-// CI checks that repo out into ./app. Locally: APP_REPO_PATH=../makonome npm run dev
+// CI checks that repo out into ./app. Locally: APP_REPO_PATH=../ios npm run dev
 const appRepo = process.env.APP_REPO_PATH || './app';
 const releaseNotesDir = resolve(appRepo, 'docs/release-notes');
 

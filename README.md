@@ -27,14 +27,14 @@ The changelog needs a checkout of the app repo. Point `APP_REPO_PATH` at it:
 
 ```bash
 npm ci
-APP_REPO_PATH=../makonome npm run dev
+APP_REPO_PATH=../ios npm run dev
 ```
 
 Without `APP_REPO_PATH` the build looks in `./app` (gitignored), so a symlink works too:
-`ln -s ../makonome app`. If the folder is missing, the build fails with an error on purpose.
+`ln -s ../ios app`. If the folder is missing, the build fails with an error on purpose.
 
 ```bash
-APP_REPO_PATH=../makonome npm run build
+APP_REPO_PATH=../ios npm run build
 ```
 
 ## Performance checks

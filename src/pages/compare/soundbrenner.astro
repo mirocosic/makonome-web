@@ -9,7 +9,7 @@ import CompareTable from '../../components/compare/CompareTable.astro';
 import type { CompareGroup } from '../../lib/compare';
 import { PRO_PRICE } from '../../lib/pricing';
 
-const title = 'Makonome vs Soundbrenner: a Soundbrenner alternative with no subscription';
+const title = 'Soundbrenner alternative with no subscription - Makonome';
 const description =
   'A Soundbrenner alternative with no subscription. Makonome and Soundbrenner compared on price, odd meters, practice tools and platforms.';
 
@@ -64,14 +64,14 @@ const groups: CompareGroup[] = [
       },
       {
         feature: 'Practice tracking',
-        makonome: { mark: 'yes', note: 'Sessions with time goals, history, streaks, daily reminder' },
+        makonome: { mark: 'yes', note: 'Practice sessions (Pro); history and streaks free' },
         them: { mark: 'yes', note: 'Daily and weekly goals, streaks, hours per instrument, reminders' },
       },
       {
         feature: 'Setlists',
         makonome: {
           mark: 'yes',
-          note: 'Presets and collections. Step through them with a Bluetooth foot pedal (Pro)',
+          note: 'Presets and collections, with a Bluetooth foot pedal (Pro)',
         },
         them: { mark: 'yes', note: 'Setlist management' },
       },
@@ -117,12 +117,12 @@ const groups: CompareGroup[] = [
       },
       {
         feature: 'Ableton Link',
-        makonome: { mark: 'yes' },
+        makonome: { mark: 'partial', note: 'iPhone, iPad and Mac' },
         them: { mark: 'yes', note: 'Listed on Google Play' },
       },
       {
         feature: 'USB and Bluetooth MIDI',
-        makonome: { mark: 'partial', note: 'MIDI input for the Accuracy Trainer only (iPhone, iPad, Mac)' },
+        makonome: { mark: 'partial', note: 'MIDI input for the Accuracy Trainer only (experimental; iPhone, iPad, Mac)' },
         them: { mark: 'yes', note: 'Listed on Google Play' },
       },
       {
@@ -146,9 +146,9 @@ const groups: CompareGroup[] = [
         them: { mark: 'yes' },
       },
       {
-        feature: 'One-time purchase',
-        makonome: { mark: 'yes', note: `Pro is ${PRO_PRICE}, paid once. 14-day free trial` },
-        them: { mark: 'no', note: 'Soundbrenner Plus is a subscription' },
+        feature: 'Pricing model',
+        makonome: { mark: 'yes', note: `One-time Pro purchase, ${PRO_PRICE}. 14-day free trial` },
+        them: { mark: 'yes', note: 'Plus subscription; App Store lists in-app purchases $4.99–$79.99' },
       },
     ],
   },
@@ -176,7 +176,7 @@ const groups: CompareGroup[] = [
           <h3>Makonome</h3>
           <p class="price">{PRO_PRICE} <span>one-time</span></p>
           <p>
-            The core metronome is free. Pro unlocks everything else, once. One purchase covers iPhone, iPad and Mac. Pro
+            The metronome, practice history, widgets and iCloud backup are free. Pro unlocks the rest, once. One purchase covers iPhone, iPad and Mac. Pro
             on Android is a separate purchase in Google Play.
           </p>
           <p class="trial">14-day free trial of everything</p>
@@ -185,7 +185,7 @@ const groups: CompareGroup[] = [
           <h3>Soundbrenner</h3>
           <p class="price">Subscription</p>
           <p>
-            The app is free, with a Soundbrenner Plus subscription since August 2024. The App Store lists in-app purchases
+            The app is free, with a Soundbrenner Plus subscription. The App Store lists in-app purchases
             from $4.99 to $79.99. Google Play lists in-app purchases too.
           </p>
         </div>
@@ -208,7 +208,7 @@ const groups: CompareGroup[] = [
           </li>
           <li><strong>Swing,</strong> with a fixed or changing swing ratio.</li>
           <li><strong>USB and Bluetooth MIDI,</strong> listed on its Google Play page.</li>
-          <li><strong>Song details</strong> (artist, album, key, tuning), landscape mode and high scores.</li>
+          <li><strong>Song details</strong> (artist, album, key, tuning) and high scores.</li>
           <li>
             <strong>A big, active app:</strong> 48,000+ ratings on the App Store, 5M+ installs on Google Play, and five iOS
             releases between May and October 2026.
@@ -220,7 +220,7 @@ const groups: CompareGroup[] = [
         <ul>
           <li>
             <strong>Bought once.</strong> Pro is {PRO_PRICE}, one time, for iPhone, iPad and Mac together. No subscription,
-            no ads. Soundbrenner Plus is a subscription, with App Store prices up to $79.99.
+            no ads. Soundbrenner Plus is a subscription, and its App Store in-app purchases go up to $79.99.
           </li>
           <li>
             <strong>Odd meters done right.</strong> Accent groups show 7/8 as 2+2+3, 3+2+2 or 2+3+2. Subdivisions go up to

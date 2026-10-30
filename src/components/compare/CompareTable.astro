@@ -23,6 +23,11 @@ const columns = (cells: { makonome: Cell; them: Cell }) => [
     groups.map((group) => (
       <table>
         <caption>{group.title}</caption>
+        <colgroup>
+          <col class="label-col" />
+          <col />
+          <col />
+        </colgroup>
         <thead>
           <tr>
             <th scope="col">Feature</th>
@@ -35,7 +40,8 @@ const columns = (cells: { makonome: Cell; them: Cell }) => [
             <tr>
               <th scope="row">{row.feature}</th>
               {columns(row).map(({ label, cell }) => (
-                <td data-label={label}>
+                <td>
+                  <span class="cell-label">{label}</span>
                   <span class:list={['mark', cell.mark]}>
                     {cell.mark === 'yes' ? (
                       <Icon name="check" size={16} />
@@ -101,7 +107,15 @@ const columns = (cells: { makonome: Cell; them: Cell }) => [
 
   tbody th {
     font-weight: 600;
+  }
+
+  .label-col {
     width: 34%;
+  }
+
+  /* App name above each cell, shown only when the rows stack. */
+  .cell-label {
+    display: none;
   }
 
   .mark {
@@ -160,7 +174,6 @@ const columns = (cells: { makonome: Cell; them: Cell }) => [
     }
 
     tbody th {
-      width: auto;
       margin-bottom: 0.5rem;
     }
 
@@ -173,8 +186,7 @@ const columns = (cells: { makonome: Cell; them: Cell }) => [
       margin-top: 0.5rem;
     }
 
-    td::before {
-      content: attr(data-label);
+    .cell-label {
       display: block;
       font-size: 0.75rem;
       color: var(--color-text-muted);

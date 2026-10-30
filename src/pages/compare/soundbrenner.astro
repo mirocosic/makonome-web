@@ -1,0 +1,425 @@
+---
+// Makonome vs Soundbrenner. Every fact traces to makonome-hq docs:
+// competitors/soundbrenner.md (checked 2026-10-29), FEATURES.md and MARKETING.md (Positioning).
+// Re-check the competitor file before changing a row; leave out anything it marks "?".
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import StoreButtons from '../../components/home/StoreButtons.astro';
+import CompareTable from '../../components/compare/CompareTable.astro';
+import type { CompareGroup } from '../../lib/compare';
+import { PRO_PRICE } from '../../lib/pricing';
+
+const title = 'Soundbrenner alternative with no subscription - Makonome';
+const description =
+  'A Soundbrenner alternative with no subscription. Makonome and Soundbrenner compared on price, odd meters, practice tools and platforms.';
+
+const groups: CompareGroup[] = [
+  {
+    title: 'Timing and meters',
+    rows: [
+      {
+        feature: 'Time signatures',
+        makonome: { mark: 'yes', note: 'Any meter from 1 to 16 beats over 2, 4, 8 or 16' },
+        them: { mark: 'yes', note: 'Custom time signatures' },
+      },
+      {
+        feature: 'Accents per beat',
+        makonome: { mark: 'yes', note: 'Accent or mute each beat' },
+        them: { mark: 'yes' },
+      },
+      {
+        feature: 'Subdivisions up to septuplets',
+        makonome: { mark: 'yes', note: 'Eighths and sixteenths, triplets up to septuplets' },
+        them: { mark: 'yes', note: '1 to 7 notes per beat (iOS)' },
+      },
+      {
+        feature: 'Rests inside the beat',
+        makonome: { mark: 'yes', note: 'Tap a note of the subdivision to silence it' },
+        them: { mark: 'yes', note: 'Per-beat subdivision and rest patterns (iOS)' },
+      },
+      {
+        feature: 'Swing',
+        makonome: { mark: 'no' },
+        them: { mark: 'yes', note: 'Fixed or changing swing ratios (iOS)' },
+      },
+      {
+        feature: 'Tap tempo',
+        makonome: { mark: 'yes' },
+        them: { mark: 'yes' },
+      },
+      {
+        feature: 'Count-in',
+        makonome: { mark: 'yes', note: '1, 2 or 4 bars, with the click or a voice count' },
+        them: { mark: 'yes', note: 'Customizable' },
+      },
+    ],
+  },
+  {
+    title: 'Practice tools',
+    rows: [
+      {
+        feature: 'Muted-beat trainer',
+        makonome: { mark: 'yes', note: 'Gap Trainer: mutes whole bars, gaps can grow each cycle (Pro)' },
+        them: { mark: 'yes', note: 'Muted beats trainer, can mute single beats at random (iOS)' },
+      },
+      {
+        feature: 'Practice tracking',
+        makonome: { mark: 'yes', note: 'Practice sessions (Pro); history and streaks free' },
+        them: { mark: 'yes', note: 'Daily and weekly goals, streaks, hours per instrument, reminders' },
+      },
+      {
+        feature: 'Setlists',
+        makonome: {
+          mark: 'yes',
+          note: 'Presets and collections, with a Bluetooth foot pedal (Pro)',
+        },
+        them: { mark: 'yes', note: 'Setlist management' },
+      },
+      {
+        feature: 'Voice counting',
+        makonome: { mark: 'yes', note: 'Voice Count sound (Pro)' },
+        them: { mark: 'yes', note: 'Advanced voice counting (Plus)' },
+      },
+      {
+        feature: 'Click sounds',
+        makonome: { mark: 'yes', note: '5 sounds, with pitch adjustment' },
+        them: { mark: 'yes', note: '20+ sounds' },
+      },
+      {
+        feature: 'Tuner',
+        makonome: { mark: 'no' },
+        them: { mark: 'yes', note: '100+ tuning profiles' },
+      },
+      {
+        feature: 'Widgets',
+        makonome: { mark: 'yes', note: 'Home and lock screen on iPhone and iPad, Mac desktop, Android home screen' },
+        them: { mark: 'yes', note: 'Home and lock screen on iOS' },
+      },
+    ],
+  },
+  {
+    title: 'Platforms and sync',
+    rows: [
+      {
+        feature: 'iPhone and iPad',
+        makonome: { mark: 'yes' },
+        them: { mark: 'yes' },
+      },
+      {
+        feature: 'Mac',
+        makonome: { mark: 'yes', note: 'Native Mac app with keyboard shortcuts' },
+        them: { mark: 'yes', note: 'The iOS app on Apple silicon Macs' },
+      },
+      {
+        feature: 'Android',
+        makonome: { mark: 'yes' },
+        them: { mark: 'yes' },
+      },
+      {
+        feature: 'Ableton Link',
+        makonome: { mark: 'partial', note: 'iPhone, iPad and Mac' },
+        them: { mark: 'yes', note: 'Listed on Google Play' },
+      },
+      {
+        feature: 'USB and Bluetooth MIDI',
+        makonome: { mark: 'partial', note: 'MIDI input for the Accuracy Trainer only (experimental; iPhone, iPad, Mac)' },
+        them: { mark: 'yes', note: 'Listed on Google Play' },
+      },
+      {
+        feature: 'Backup and sync',
+        makonome: { mark: 'yes', note: 'Free iCloud backup (iPhone, iPad and Mac)' },
+        them: { mark: 'yes', note: 'Cloud sync (Plus)' },
+      },
+      {
+        feature: 'Shared libraries for a group',
+        makonome: { mark: 'no' },
+        them: { mark: 'yes', note: 'Songs and setlists synced to a whole group (Plus)' },
+      },
+    ],
+  },
+  {
+    title: 'Price',
+    rows: [
+      {
+        feature: 'Free to download',
+        makonome: { mark: 'yes', note: 'No account, no ads' },
+        them: { mark: 'yes' },
+      },
+      {
+        feature: 'Pricing model',
+        makonome: { mark: 'yes', note: `One-time Pro purchase, ${PRO_PRICE}. 14-day free trial` },
+        them: { mark: 'yes', note: 'Plus subscription; App Store lists in-app purchases $4.99–$79.99' },
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <main>
+    <header>
+      <a href="/" class="back-link">← Back to home</a>
+      <p class="eyebrow">Compare</p>
+      <h1>Makonome vs Soundbrenner</h1>
+      <p class="lede">
+        Makonome and The Metronome by Soundbrenner are both metronome apps for iPhone, iPad, Mac and Android, with
+        subdivisions, rests inside the beat, setlists and practice tracking. Pick Soundbrenner if you want a built-in
+        tuner, a big sound library or libraries shared with your band, and don't mind a subscription. Pick Makonome if
+        you play in odd meters and want to pay once.
+      </p>
+    </header>
+
+    <section>
+      <h2>Price</h2>
+      <div class="price-pair">
+        <div class="price-card ours">
+          <h3>Makonome</h3>
+          <p class="price">{PRO_PRICE} <span>one-time</span></p>
+          <p>
+            The metronome, practice history, widgets and iCloud backup are free. Pro unlocks the rest, once. One purchase covers iPhone, iPad and Mac. Pro
+            on Android is a separate purchase in Google Play.
+          </p>
+          <p class="trial">14-day free trial of everything</p>
+        </div>
+        <div class="price-card">
+          <h3>Soundbrenner</h3>
+          <p class="price">Subscription</p>
+          <p>
+            The app is free, with a Soundbrenner Plus subscription. The App Store lists in-app purchases
+            from $4.99 to $79.99. Google Play lists in-app purchases too.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Features side by side</h2>
+      <CompareTable competitor="Soundbrenner" groups={groups} />
+    </section>
+
+    <section class="sides">
+      <div>
+        <h2>Where Soundbrenner is better</h2>
+        <ul>
+          <li><strong>Built-in tuner</strong> with 100+ tuning profiles, plus reference tones for Plus members.</li>
+          <li><strong>Bigger sound library:</strong> 20+ sounds, against Makonome's 5.</li>
+          <li>
+            <strong>Shared group libraries</strong> that sync songs and setlists to a whole band (Plus).
+          </li>
+          <li><strong>Swing,</strong> with a fixed or changing swing ratio.</li>
+          <li><strong>USB and Bluetooth MIDI,</strong> listed on its Google Play page.</li>
+          <li><strong>Song details</strong> (artist, album, key, tuning) and high scores.</li>
+          <li>
+            <strong>A big, active app:</strong> 48,000+ ratings on the App Store, 5M+ installs on Google Play, and five iOS
+            releases between May and October 2026.
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2>Where Makonome is better</h2>
+        <ul>
+          <li>
+            <strong>Bought once.</strong> Pro is {PRO_PRICE}, one time, for iPhone, iPad and Mac together. No subscription,
+            no ads. Soundbrenner Plus is a subscription, and its App Store in-app purchases go up to $79.99.
+          </li>
+          <li>
+            <strong>Odd meters done right.</strong> Accent groups show 7/8 as 2+2+3, 3+2+2 or 2+3+2. Subdivisions go up to
+            septuplets, you can put rests inside the beat, and the tempo moves in half-BPM steps if you want. Soundbrenner
+            has subdivisions with rests too. Makonome does it for a one-time price.
+          </li>
+          <li>
+            <strong>Practice, not just a click.</strong> Practice sessions with goals, history and streaks, widgets, the
+            Gap Trainer and the Tempo Changer. On iPhone, iPad and Mac there is also the new Accuracy Trainer: play an
+            electronic drum kit over MIDI and see your timing for every hit. It is still experimental.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Try Makonome free</h2>
+      <p>Every feature is free for 14 days. After that, the core metronome stays free, and Pro is {PRO_PRICE}, once.</p>
+      <StoreButtons />
+    </section>
+
+    <section class="fine-print">
+      <p>Compared in October 2026, based on Soundbrenner's App Store and Play listings.</p>
+      <p>Soundbrenner is a trademark of its owner. Makonome is not affiliated with it.</p>
+    </section>
+
+    <Footer />
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  header {
+    padding: 2rem 0 2.5rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .back-link:hover {
+    color: var(--color-accent);
+  }
+
+  .eyebrow {
+    color: var(--color-accent);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .lede {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  section {
+    margin-bottom: 4rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .price-pair {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: 1rem;
+  }
+
+  .price-card {
+    padding: 1.5rem;
+    background: var(--color-surface);
+    border: 1px solid #333;
+    border-radius: 16px;
+  }
+
+  .price-card.ours {
+    background: color-mix(in srgb, var(--color-accent) 5%, var(--color-surface));
+    border-color: var(--color-accent-dim);
+  }
+
+  .price-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .price-card p {
+    color: var(--color-text-muted);
+    line-height: 1.55;
+  }
+
+  .price-card .price {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .price-card:not(.ours) .price {
+    color: var(--color-text);
+  }
+
+  .price span {
+    color: var(--color-text-muted);
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .trial {
+    display: inline-block;
+    margin-top: 1rem;
+    background: var(--color-accent);
+    color: var(--color-bg) !important;
+    font-weight: 700;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+  }
+
+  .sides {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .sides ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .sides li {
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+  }
+
+  .sides li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+  }
+
+  .sides strong {
+    color: var(--color-text);
+  }
+
+  .cta {
+    padding: 2rem;
+    background: var(--color-surface);
+    border: 1px solid #333;
+    border-radius: 16px;
+  }
+
+  .cta h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .cta p {
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+  }
+
+  .fine-print p {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 600px) {
+    main {
+      padding: 1.25rem;
+    }
+
+    .cta {
+      padding: 1.5rem;
+    }
+  }
+</style>

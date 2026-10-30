@@ -77,6 +77,9 @@ Components, usable in any manual page without an import:
   `src/assets/manual/<platform>/<name>.png` for each platform in `only` (default `ios mac`), resized
   to WebP and lazy-loaded, and opens in the lightbox. A missing file for a listed platform fails the
   build with the path in the message. To show a shot on one platform only, list only that one.
+  Every file in `src/assets/manual/<platform>/` ships to `dist/`, used or not, so keep shots no page
+  uses in `src/assets/manual/unused/<platform>/` and move one up when a page needs it
+  (`npm run check:images` fails on deployed images nothing links).
 - `<Pro />`: Pro badge. `<Experimental feature="Accuracy Trainer" />`: "turn it on in Settings →
   Experimental Features" box. `<ComingSoon platform="android" message="…" />`: shown only on that platform.
 

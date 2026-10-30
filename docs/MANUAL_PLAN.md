@@ -73,7 +73,7 @@ Each page: a short intro, then tasks ("To play a collection: …") with a screen
 
 - Quick action "Start Practice" skips the Pro check.
 - The paywall lists Visualizations and Full History as Pro, but neither is gated.
-- FEATURES.md promises three haptic intensities, but no screen sets one.
+- makonome-hq docs/FEATURES.md promises three haptic intensities, but no screen sets one.
 - Android: backup rules name `makonome_database`, but the file is `makonome.db`, so presets and history aren't backed up (the Android session owns this).
 
 The manual documents what the code does. Where these are fixed first, it follows the fix.

@@ -6,6 +6,7 @@ import Icon, { type IconName } from '../components/home/Icon.astro';
 import Phone from '../components/home/Phone.astro';
 import StoreButtons from '../components/home/StoreButtons.astro';
 import { GOOGLE_PLAY_URL } from '../lib/stores';
+import { PRO_PRICE } from '../lib/pricing';
 import { Image, getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import metronomeMain from '../assets/screenshots/metronome-main.png';
@@ -15,9 +16,6 @@ import visualizationCircular from '../assets/screenshots/visualization-circular.
 import tempoChanger from '../assets/screenshots/screen-5.png';
 import gapTrainer from '../assets/screenshots/gap-trainer.png';
 import macTrainerLive from '../assets/screenshots/mac-trainer-live.png';
-
-// The one place the Pro price lives.
-const PRO_PRICE = '€4.99 / $4.99';
 
 interface Shot {
   src: ImageMetadata;

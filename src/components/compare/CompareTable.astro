@@ -1,0 +1,185 @@
+---
+// Feature table for a /compare/ page: one table per group, Makonome vs one competitor.
+// Under 600 px each row stacks into a small card, so the page never scrolls sideways.
+import Icon from '../home/Icon.astro';
+import { MARK_LABELS, type Cell, type CompareGroup } from '../../lib/compare';
+
+interface Props {
+  /** Competitor name for the column heading, for example "Soundbrenner". */
+  competitor: string;
+  groups: CompareGroup[];
+}
+
+const { competitor, groups } = Astro.props;
+
+const columns = (cells: { makonome: Cell; them: Cell }) => [
+  { label: 'Makonome', cell: cells.makonome },
+  { label: competitor, cell: cells.them },
+];
+---
+
+<div class="compare">
+  {
+    groups.map((group) => (
+      <table>
+        <caption>{group.title}</caption>
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col">Makonome</th>
+            <th scope="col">{competitor}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {group.rows.map((row) => (
+            <tr>
+              <th scope="row">{row.feature}</th>
+              {columns(row).map(({ label, cell }) => (
+                <td data-label={label}>
+                  <span class:list={['mark', cell.mark]}>
+                    {cell.mark === 'yes' ? (
+                      <Icon name="check" size={16} />
+                    ) : (
+                      <span aria-hidden="true">{cell.mark === 'no' ? '–' : '~'}</span>
+                    )}
+                    {MARK_LABELS[cell.mark]}
+                  </span>
+                  {cell.note && <span class="note">{cell.note}</span>}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    ))
+  }
+</div>
+
+<style>
+  .compare {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--color-surface);
+    border: 1px solid #333;
+    border-radius: 16px;
+    overflow: hidden;
+    table-layout: fixed;
+  }
+
+  caption {
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-bottom: 0.75rem;
+  }
+
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.85rem 1rem;
+    border-top: 1px solid #333;
+    line-height: 1.45;
+  }
+
+  thead th {
+    border-top: none;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  tbody th {
+    font-weight: 600;
+    width: 34%;
+  }
+
+  .mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 600;
+  }
+
+  .mark.yes {
+    color: var(--color-accent);
+  }
+
+  .mark.no {
+    color: var(--color-text-muted);
+  }
+
+  .mark.partial {
+    color: #facc15;
+  }
+
+  .note {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+    margin-top: 0.2rem;
+  }
+
+  @media (max-width: 600px) {
+    table,
+    tbody,
+    tr,
+    th,
+    td {
+      display: block;
+      width: 100%;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tbody tr {
+      border-top: 1px solid #333;
+      padding: 0.85rem 1rem;
+    }
+
+    tbody tr:first-child {
+      border-top: none;
+    }
+
+    tbody th,
+    td {
+      border-top: none;
+      padding: 0;
+    }
+
+    tbody th {
+      width: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    caption {
+      display: block;
+      padding: 0.85rem 1rem 0.25rem;
+    }
+
+    td + td {
+      margin-top: 0.5rem;
+    }
+
+    td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+</style>

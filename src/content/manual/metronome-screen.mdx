@@ -55,7 +55,7 @@ On Mac, press <kbd>↑</kbd> or <kbd>↓</kbd> to change the tempo by one step. 
 The tempo steps are whole numbers. <Platform only="ios mac" inline>To use steps of 0.5 BPM, turn on **Fine-grained BPM** in **Settings → Experimental Features**.</Platform>
 
 <Platform only="android">
-**Fine-grained BPM** in **Settings → Experimental** lets you type a tempo like 120.5 (not in dotted meters like 6/8), and lets tap tempo and the Tempo Changer use steps of 0.5 BPM. The dial and the − and + buttons still move in whole steps, and the dial shows the whole number.
+**Fine-grained BPM** in **Settings → Experimental** sets the tempo in steps of 0.5 BPM. The dial, the − and + buttons and tap tempo all step by 0.5, and the dial shows one decimal, like 120.0 or 120.5. Dotted meters like 6/8 stay in whole steps. When you turn it off, the tempo is rounded to a whole number.
 </Platform>
 
 In compound meters like 6/8, the dial shows the tempo of the dotted beat. See [Compound meters](/manual/time-signatures/#compound-meters-and-the-dotted-pulse).
@@ -77,7 +77,7 @@ The number pad has no decimal point, so you can only type whole numbers. With Fi
 </Platform>
 
 <Platform only="android">
-On Android a **Set Tempo** box opens. If the number is outside the range, it says **Enter a BPM from 20 to 400** and stays open, so you can fix the number. With Fine-grained BPM on, you can type a decimal, like 120.5, except in dotted meters like 6/8.
+On Android a **Set Tempo** box opens. If the number is outside the range, it says **Enter a BPM from 20 to 400** and stays open, so you can fix the number. With Fine-grained BPM on, you can type a decimal, like 120.5, and Makonome rounds it to the nearest 0.5. In dotted meters like 6/8 you type a whole number.
 </Platform>
 
 ## Tap tempo
@@ -172,7 +172,7 @@ While the metronome plays, the line under the beat rings shows where you are:
 
 <Screenshot name="metronome-main" alt="The metronome playing at 120 BPM, with beat 3 lit and the readout Bar 2, Beat 3" only="mac" caption="The readout on Mac." />
 
-When Gap Trainer or Tempo Changer is on, a second line under the readout shows its state. <Platform only="ios mac" inline>The settings row also shows **Gap** or **Tempo+**.</Platform><Platform only="android" inline>On Android the line shows only while the metronome plays, and the ⋮ button is highlighted while a trainer is on.</Platform> See [Trainers](/manual/trainers/).
+When Gap Trainer or Tempo Changer is on, a second line under the readout shows its state. <Platform only="ios mac" inline>The settings row also shows **Gap**, **Tempo+** or **Tempo−**.</Platform><Platform only="android" inline>On Android the line shows only while the metronome plays, and the ⋮ button is highlighted while a trainer is on.</Platform> See [Trainers](/manual/trainers/).
 
 ## The More menu
 
@@ -183,8 +183,8 @@ The More button (•••, bottom right) opens a menu with more options. Each e
 
 | Entry | What it does |
 |---|---|
-| **Gap Trainer** <Pro /> | Mutes whole bars so you practice keeping time. See [Gap Trainer](/manual/trainers/#gap-trainer). |
-| **Tempo Changer** <Pro /> | Raises the tempo step by step. See [Tempo Changer](/manual/trainers/#tempo-changer). |
+| **Gap Trainer** <Pro /> | Takes the click away for some bars or seconds so you practice keeping time. See [Gap Trainer](/manual/trainers/#gap-trainer). |
+| **Tempo Changer** <Pro /> | Makes the tempo faster or slower step by step. See [Tempo Changer](/manual/trainers/#tempo-changer). |
 | **Count-in** | Plays bars before the music starts. See [Count-in](/manual/count-in-and-auto-stop/#count-in). |
 | **Auto Stop** | Stops after a number of bars or a time. See [Auto stop](/manual/count-in-and-auto-stop/#auto-stop). |
 | **Screen Flash** | Turns the screen flash on or off. See [Screen flash](/manual/sound-and-feel/#screen-flash). |

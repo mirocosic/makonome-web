@@ -1,16 +1,16 @@
 ---
 title: Practice tracking
-description: Practice sessions and goals, history, streaks, reminders and widgets.
+description: Practice sessions and notes, history with a calendar and charts, the weekly goal and streak, reminders and widgets.
 order: 80
 group: Practice
 platforms: [ios, mac, android]
 ---
 
-Makonome can time your practice. You start a **practice session** when you begin, and complete it when you are done. Makonome keeps a history of your sessions, counts your streak of practice days, and shows your week on a widget.
+Makonome can time your practice. You start a **practice session** when you begin, and complete it when you are done. You can add a note, look back at your sessions in a list, a calendar or charts, set a **weekly goal** and build a streak of weeks, and see your week on a widget.
 
 Sessions are not recorded by themselves: only the sessions you start are tracked.
 
-<Pro /> Starting a practice session needs Makonome Pro. Your history, stats, streaks, reminders and widgets are free, so you keep seeing them after the trial.
+<Pro /> Starting a practice session, adding a past session, changing your weekly goal and editing a saved note need Makonome Pro. Your history, calendar, charts, stats, streak, reminders and widgets are free, so you keep seeing them after the trial. You can also delete sessions without Pro.
 
 ## Start a practice session
 
@@ -31,9 +31,9 @@ Sessions are not recorded by themselves: only the sessions you start are tracked
 6. Tap **Start**.
 </Platform>
 
-<Screenshot name="practice-home" alt="The Practice tab with Ready to Practice?, a Start Practice Session button, and the stats 20 Sessions, 10:14:00 Total Time, 59:00 This Week and 6 day streak (best: 9)" caption="The Practice tab before a session." />
+<Screenshot name="practice-home" alt="The Practice tab with Ready to Practice?, a Start Practice Session button, the stats Sessions, Total Time and This Week, and the weekly goal card" caption="The Practice tab before a session." />
 
-<Screenshot name="practice-home" alt="The Practice tab on Android: a daily goal ring with Goal reached!, Ready to Practice? with a Start Practice Session button, and Stats: 9 Sessions, 4h 20m Total, 3h 28m This Week, 25m Today, Streak 6 and Best Streak 6" only="android" caption="The Practice tab on Android, with the daily goal at the top." />
+<Screenshot name="practice-home" alt="The Practice tab on Android: a Daily Goal ring at 20m of 30m, Ready to Practice? with a Start Practice Session button, Stats with 48 Sessions, 34h 10m Total, 2h 45m This Week and 20m Today, and the weekly goal card" only="android" caption="The Practice tab on Android, with a daily minimum set." />
 
 <Screenshot name="practice-setup" alt="The New Session sheet with Session Details set to Practice Session, Practice Goal with the Set time goal switch, Metronome with the Start metronome switch, and a Start button" caption="Set a name, a goal and the metronome." />
 
@@ -61,6 +61,8 @@ While a session runs, the Practice tab button shows the time.
 - **Pause:** tap the pause button. The timer stops. If the session started the metronome, the metronome stops too.
 - **Resume:** tap the play button. The timer goes on, and the metronome starts again (with its [count-in](/manual/count-in-and-auto-stop/), if you set one).
 - **Complete:** tap **Complete Session**. The session goes into your history. If the session started the metronome, it stops.
+
+Then **How did it go?** asks for a note. Type one and tap **Save**, or tap **Skip**. The note is optional.
 </Platform>
 
 <Platform only="android">
@@ -70,16 +72,20 @@ The Practice tab shows the session name, the time so far, and, with a goal, a pr
 - **Resume:** tap the play button. The metronome starts too, even if it wasn't playing before the pause (with its [count-in](/manual/count-in-and-auto-stop/), if you set one).
 - **Complete:** tap **Complete**. The session goes into your history. If the metronome is playing, it stops.
 
-The timer on screen stops while you pause, but the time saved in your history runs from when you started the session to when you completed it, so paused time counts there. A running session isn't saved until you complete it: if you close Makonome completely, it is lost.
+Then **How did it go?** asks for a note. It starts with what you typed in **Notes**. Tap **Save**, or tap **Skip**.
+
+Paused time doesn't count as practice. A running session isn't saved until you complete it: if you close Makonome completely, it is lost.
 </Platform>
 
-<Screenshot name="practice-active" alt="A running practice session called Groove work at 12:37, with a progress bar, Goal: 30:00 and 17:22 remaining, a pause button and a Complete Session button, and the Practice tab button showing 12:37" only="ios" caption="A session with a 30-minute goal." />
+<Screenshot name="practice-active" alt="A running practice session called Groove work at 12:36, with a progress bar, Goal: 30:00 and 17:23 remaining, a pause button, a Complete Session button and the weekly goal card, and the Practice tab button showing 12:36" only="ios" caption="A session with a 30-minute goal." />
 
 You can use the metronome tab freely during a session. [Auto stop](/manual/count-in-and-auto-stop/#auto-stop) stops only the metronome: the session keeps timing until you complete it.
 
 ## Practice history
 
-To see your past sessions, tap the clock button in the top right corner of the Practice tab. **<Platform only="ios mac" inline>Practice History</Platform><Platform only="android" inline>History</Platform>** opens.
+To see your past sessions, tap the clock button in the top right corner of the Practice tab. **<Platform only="ios mac" inline>Practice History</Platform><Platform only="android" inline>History</Platform>** opens. Use the switch at the top to go between **List**, **Calendar** and **Charts**. Makonome remembers your choice.
+
+### List
 
 <Platform only="ios mac">
 - Pick **All Time**, **This Week** or **This Month** at the top.
@@ -91,17 +97,97 @@ To see your past sessions, tap the clock button in the top right corner of the P
 <Platform only="android">
 - Pick **All Time**, **This Week** or **This Month** at the top.
 - The summary shows **Sessions**, **Total Time**, **Average** and **Goals Met** (the number of sessions that reached their goal).
-- Each row shows the name, the length and the goal, the date and time, and your notes. A green check means the goal was met.
+- Each row shows the name, the length and the goal, the date and time, the preset and your note. A green check means the goal was met.
 - To delete a session, swipe left on it and tap the delete button.
 </Platform>
 
-<Screenshot name="practice-history" alt="Practice History with All Time selected: 20 Sessions, Average 30:42, 10:14:00 Total Time, Goals met 11/20, and a list of sessions such as Warm-up and rudiments, 32:00, 27 October 2026, with a 30:00 goal and a green check" caption="Practice History, all time." />
+<Screenshot name="practice-history" alt="Practice History with List selected and All Time under it: the number of sessions, the average, the total time, Goals met, and a list of sessions with their length, date, goal and a green check" caption="Practice History, all time." />
 
-History shows how long you practiced. It does not save the tempo or the metronome settings of a session.
+**This Week** is the calendar week. It starts on the first day of the week in your region, so on that day it starts at 0. **This Month** is <Platform only="ios mac" inline>the last month, counted back from today</Platform><Platform only="android" inline>the current calendar month</Platform>.
 
-**This Week** is the calendar week. It starts on <Platform only="ios mac" inline>the first day of the week in your region</Platform><Platform only="android" inline>Monday</Platform>, so on that day it starts at 0. **This Month** is the current calendar month.
+### Session details
 
-## Stats and streaks
+Tap a session to open it. You see the date, the start and end time, the duration and the preset, whether you met your goal, and your note.
+
+- **Edit the note:** tap the **Note** field and type. It saves when you leave the field. Editing a note needs Pro. Without Pro you see the note, or **No note**, and **Edit with Pro**.
+- **Delete the session:** tap **Delete Session**. It asks first. This is free.
+
+A session saves how long you practiced and the preset. It does not save the tempo or the other metronome settings.
+
+### Add a past session
+
+<Pro /> Forgot to start a session? Add it afterwards.
+
+1. In **<Platform only="ios mac" inline>Practice History</Platform><Platform only="android" inline>History</Platform>**, tap **+**.
+2. Set when it **Started**.
+3. Set the **Duration**, from 1 minute to 12 hours. It is 30 minutes at first.
+4. Pick a **Preset** if you like, and add a **Note**.
+5. Tap **Save**.
+
+The session is called after its preset, or "Practice" without one. It shows an **Added** tag, and it counts for your calendar, charts, weekly goal and streak. It can't end in the future. An added session has no time goal. With Pro you can still edit it later.
+
+### Calendar
+
+The calendar shows a month at a time, on today's month at first. A filled day has at least one finished session, and today has a ring. The header shows the month and its total, for example **12 days · 6 h 40 min**.
+
+- Tap a day to see its sessions. A day without any shows **No practice**. Tap a session to open it.
+- Swipe, or use **‹** and **›**, to change the month. You can go back to the month of your first session.
+
+A session counts on the day it ended, so one that runs past midnight counts on the new day.
+
+<Screenshot name="practice-calendar" alt="The Calendar view: November 2026 with the practiced days filled in green, today with a ring, and the session of the selected day below" only="ios" caption="The calendar on iPhone." />
+
+<Screenshot name="practice-calendar" alt="The Calendar view on Android: October 2026 with 23 days · 13 h 5 min, and the practiced days filled in" only="android" caption="The calendar on Android." />
+
+### Charts
+
+Charts show your practice time as bars. Each bar is the total time in that period. Pick the range at the top:
+
+| Range | Bars |
+|---|---|
+| **Day** | The last 14 days |
+| **Week** | The last 12 weeks. This is the range at first |
+| **Month** | The last 12 months |
+| **Year** | One bar per year, from your first session |
+
+The header shows the total and the average, for example **Total 6 h 40 min · Avg 29 min/day**. The average counts the days or weeks you didn't practice too. Tap a bar to see its date and time. Tap it again to clear it.
+
+<Screenshot name="practice-charts-selected" alt="The Charts view with Week selected: the total and average, a bar chart of practice time, and the selected week with its time under the header" only="ios" caption="Charts, with a bar selected." />
+
+<Screenshot name="practice-charts" alt="The Charts view on Android: Day, Week, Month and Year at the top, the total and average, and a bar chart of practice time" only="android" caption="Charts on Android." />
+
+## Weekly goal and streak
+
+The weekly goal is the number of days a week you want to practice. Every week you reach it adds to your streak.
+
+The goal card on the Practice tab shows how far you are this week, with a dot for each day:
+
+- **2 more days to reach your goal**, then **Goal reached this week**.
+- Below that, your streak: **Goal reached 4 weeks in a row · Best: 9 weeks**.
+- With no streak yet: **Reach 3 days this week to start a streak**.
+
+<Screenshot name="practice-goal" alt="The weekly goal card on the Practice tab: Goal reached this week, a dot for each day, and the week streak" only="ios" caption="The weekly goal card." />
+
+<Screenshot name="practice-goal" alt="The weekly goal card on Android with a dot for each day of the week and the week streak" only="android" caption="The weekly goal on Android." />
+
+To set your goal, tap the goal card<Platform only="android" inline> (or **Set a Weekly Goal** on the Practice tab)</Platform>. **Weekly Goal** opens:
+
+- **Days per week:** 1 to 7. It is 3 at first.
+- **Daily minimum:** **Off**, or 5 to 120 minutes in steps of 5. It is Off at first.
+
+<Screenshot name="practice-goal-sheet" alt="The Weekly Goal sheet with Days per week and Daily minimum" only="ios" caption="The Weekly Goal sheet." />
+
+Changing the goal needs Pro. Without Pro the sheet shows your goal with **Unlock with Pro**, and your streak keeps counting with that goal.
+
+How it counts:
+
+- A day counts when you practice at least the daily minimum that day. With the minimum **Off**, a minute or more is enough. All your sessions that day add up.
+- A week meets the goal when enough days count.
+- The streak is the weeks in a row that met the goal. The current week doesn't break it: it joins the streak once you reach the goal, and it can't end the streak while it is still running.
+- Paused time doesn't count, and [added sessions](#add-a-past-session) do.
+- The streak is worked out from your sessions with your current goal, so changing the goal, or deleting sessions, can change it.
+
+## Stats
 
 <Platform only="ios mac">
 The Practice tab shows, when no session runs:
@@ -109,7 +195,6 @@ The Practice tab shows, when no session runs:
 - **Sessions:** all completed sessions
 - **Total Time:** all your practice time
 - **This Week:** your practice time in the calendar week, from the first day of the week in your region
-- **Streak:** how many days in a row you practiced, with your best streak, for example **6 day streak (best: 9)**
 </Platform>
 
 <Platform only="android">
@@ -117,16 +202,10 @@ The **Stats** card on the Practice tab shows:
 
 - **Sessions:** all completed sessions
 - **Total:** all your practice time
-- **This Week:** your practice time since Monday
+- **This Week:** your practice time in the calendar week, from the first day of the week in your region
 - **Today:** your practice time today
-- **Streak:** how many days in a row you practiced
-- **Best Streak:** your longest streak
-</Platform>
 
-A day counts for the streak when you complete at least one session that day. If you practiced yesterday, the streak is still alive today: practice today to keep it going. If you miss a whole day, the streak starts again. <Platform only="ios mac" inline>Your best streak is kept.</Platform><Platform only="android" inline>On Android the best streak is worked out from your sessions of the last year, so deleting sessions can lower it.</Platform>
-
-<Platform only="android">
-The Practice tab on Android also has a **Daily Goal**: the practice time you want each day, from 5 to 120 minutes. Tap **Set a Daily Goal** (or the edit button on the goal card), pick the time and tap **Save**. A ring shows how far you are today, and **Goal reached!** when you get there. **Remove Goal** turns it off. The ring is hidden while a session runs.
+With a daily minimum set, a **Daily Goal** ring at the top of the Practice tab shows how far you are today, and **Goal reached!** when you get there. The ring is hidden while a session runs. Set the minimum in **Weekly Goal**.
 </Platform>
 
 ## Practice reminders
@@ -150,24 +229,26 @@ On Android the reminder starts at 9:00. If you don't allow notifications, the sw
 ## Widgets
 
 <Platform only="ios mac">
-The **Practice Stats** widget shows your practice this week and your streak. It is free. Tap it to open the Practice tab.
+The **Practice Stats** widget shows your practice this week and your week streak. It is free. Tap it to open the Practice tab.
 
 | Widget | Shows |
 |---|---|
-| Small | This week's time and your streak |
-| Medium | This week's time, the number of sessions and your streak |
+| Small | This week's time, the number of sessions and your streak |
+| Medium | This week's time and the number of sessions, with your streak next to them |
+
+The streak shows like **3 wks in a row**. With no streak it says **Start a streak**.
 </Platform>
 
-<Screenshot name="widget-small" alt="The small Practice Stats widget: This Week, 59m and 6 day streak" caption="The small widget." />
+<Screenshot name="widget-small" alt="The small Practice Stats widget: This Week, the time, a flame with the week streak, and the number of sessions" caption="The small widget." />
 
-<Screenshot name="widget-medium" alt="The medium Practice Stats widget: This Week, 59m, 2 sessions, and a flame with 6 day streak" caption="The medium widget." />
+<Screenshot name="widget-medium" alt="The medium Practice Stats widget: This Week, the time and the number of sessions, and a flame with the week streak" caption="The medium widget." />
 
 <Platform only="android">
-Android has one home screen widget. It is free. It shows **This Week** with your practice time since Monday, and your streak, for example **3 day streak**. With no streak, it shows the number of sessions this week. You can make it bigger or smaller.
+Android has one home screen widget. It is free. It shows **This Week** with your practice time this week, and your week streak, for example **3 wks in a row**. With no streak, it says **Start a streak**. You can make it bigger or smaller.
 
 To add it, touch and hold the home screen, tap **Widgets**, find **Makonome** and drag the widget to your home screen.
 
-Android updates the widget about every 30 minutes, so a session you just completed can take a while to show. Tapping the widget doesn't open the app.
+The widget updates right after a session, when you change your goal, and at midnight. Tap it to open the Practice tab.
 </Platform>
 
 <Platform only="ios">
@@ -177,17 +258,17 @@ There are also three **Lock Screen** widgets:
 
 | Widget | Shows |
 |---|---|
-| Circular | Your streak, with a flame |
-| Rectangular | This Week, the time, and the sessions and streak |
+| Circular | Your week streak, with a flame |
+| Rectangular | This Week, the time, and the sessions and week streak, for example "4 sessions · 3 wks in a row" |
 | Inline (above the clock) | The time this week, for example "2h 5m this week" |
 
 To add one, touch and hold the Lock Screen, tap **Customize**, pick the Lock Screen, and tap the widget area.
 
-<Screenshot name="widget-lock-circular" alt="The circular Lock Screen widget: a flame and the number 6" only="ios" />
+<Screenshot name="widget-lock-circular" alt="The circular Lock Screen widget: a flame and the number of weeks in your streak" only="ios" />
 
-<Screenshot name="widget-lock-rectangular" alt="The rectangular Lock Screen widget: This Week, 59m, 2 sessions · 6 day streak" only="ios" />
+<Screenshot name="widget-lock-rectangular" alt="The rectangular Lock Screen widget: This Week, the time, the number of sessions and the week streak" only="ios" />
 
-<Screenshot name="widget-lock-inline" alt="The inline Lock Screen widget: a flame and 59m this week" only="ios" />
+<Screenshot name="widget-lock-inline" alt="The inline Lock Screen widget: a flame and the time this week" only="ios" />
 </Platform>
 
 <Platform only="mac">
@@ -195,13 +276,13 @@ On Mac there are the small and medium widgets. To add one, right-click the deskt
 </Platform>
 
 <Platform only="ios mac">
-The widget updates when you complete a session, and at least every 30 minutes and at midnight. **This Week** is the same on the widget, the Practice tab and in Practice History: the calendar week, starting on the first day of the week in your region. Paused time counts the same everywhere.
+The widget updates when you complete a session, and at least every 30 minutes and at midnight. **This Week** is the same on the widget, the Practice tab and in Practice History: the calendar week, starting on the first day of the week in your region. Paused time doesn't count anywhere.
 </Platform>
 
 ### The widget shows 0
 
 <Platform only="android">
-On Android the widget shows 0 at the start of each week (on Monday), and until it updates after your first session. The rest of this section is about iPhone, iPad and Mac.
+On Android the widget shows 0 at the start of each week, and until your first session. The rest of this section is about iPhone, iPad and Mac.
 </Platform>
 
 After you update to Makonome 1.1, **open the app once**. Until 1.1 the widget could not read your practice data. The first launch of 1.1 moves your data to where the widget can read it. Until then the widget shows zeros.
@@ -209,7 +290,7 @@ After you update to Makonome 1.1, **open the app once**. Until 1.1 the widget co
 ## Back up your practice
 
 <Platform only="ios mac">
-Your sessions, stats and streaks can be backed up to iCloud with the rest of your Makonome data, and come back when you reinstall the app. Turn it on in **Settings → Data Management → Back up to iCloud**. See [Settings, backup and data](/manual/settings-and-data/).
+Your sessions, stats, streak and weekly goal can be backed up to iCloud with the rest of your Makonome data, and come back when you reinstall the app. Turn it on in **Settings → Data Management → Back up to iCloud**. See [Settings, backup and data](/manual/settings-and-data/).
 </Platform>
 
 <Platform only="android">

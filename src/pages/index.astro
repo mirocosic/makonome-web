@@ -13,9 +13,11 @@ import metronomeMain from '../assets/screenshots/metronome-main.png';
 import meter78 from '../assets/screenshots/meter-7-8.png';
 import timeSignatureSheet from '../assets/screenshots/time-signature-sheet.png';
 import visualizationCircular from '../assets/screenshots/visualization-circular.png';
-import tempoChanger from '../assets/screenshots/screen-5.png';
+import tempoChanger from '../assets/screenshots/tempo-changer.png';
 import gapTrainer from '../assets/screenshots/gap-trainer.png';
 import macTrainerLive from '../assets/screenshots/mac-trainer-live.png';
+import practiceGoal from '../assets/screenshots/practice-goal.png';
+import practiceCalendar from '../assets/screenshots/practice-calendar.png';
 
 interface Shot {
   src: ImageMetadata;
@@ -45,10 +47,19 @@ const features: Feature[] = [
   {
     icon: 'mute',
     title: 'Gap Trainer and Tempo Changer',
-    text: 'Build your internal clock with periodic silent intervals. Then raise the tempo gradually, over time or over bars, to push your limits.',
+    text: 'Build your internal clock: the Gap Trainer drops the click and the visuals for a set number of bars or seconds, so only your own timing is left. The Tempo Changer speeds up or slows down over bars or time, and at the target it can stay, start over or bounce back.',
     phones: [
-      { src: gapTrainer, alt: 'Metronome with the Gap Trainer in a muted bar' },
-      { src: tempoChanger, alt: 'Tempo Changer' },
+      { src: gapTrainer, alt: 'Metronome in a muted bar of the Gap Trainer, with the beat rings dark' },
+      { src: tempoChanger, alt: 'Metronome with the Tempo Changer counting down to the next tempo step' },
+    ],
+  },
+  {
+    icon: 'chart',
+    title: 'Practice goals, calendar and charts',
+    text: 'Time your practice and add a note after each session. Pick how many days a week to practice and build a streak of weeks. See the days you practiced on a calendar and your time in charts. Practice sessions and changing your goal are part of Pro.',
+    phones: [
+      { src: practiceGoal, alt: 'Practice tab with the weekly goal card and a five-week streak' },
+      { src: practiceCalendar, alt: 'Practice history calendar with the practiced days filled in' },
     ],
   },
   {
@@ -74,8 +85,8 @@ const more: { icon: IconName; title: string; text: string }[] = [
     title: 'Count-in and auto stop',
     text: 'Count in 1, 2 or 4 bars with a click or a voice count. Stop after a number of bars or a set time, with a bar counter on screen. A soft screen flash to see the beat.',
   },
-  { icon: 'list', title: 'Play a collection', text: 'Step through a setlist with buttons, arrow keys or a Bluetooth foot pedal.' },
-  { icon: 'chart', title: 'Practice tracking', text: 'Session history and streaks. Widgets on the home and lock screen on iPhone and iPad, the desktop on Mac and the home screen on Android.' },
+  { icon: 'list', title: 'Presets and collections', text: 'Save presets with an artist and notes, search and sort them, and step through a setlist with buttons, arrow keys or a Bluetooth foot pedal.' },
+  { icon: 'chart', title: 'Widgets', text: 'Your week and your streak at a glance: on the home and lock screen on iPhone and iPad, the desktop on Mac and the home screen on Android.' },
   { icon: 'laptop', title: 'Native on Mac', text: 'Space plays and stops, the arrow keys change the tempo, and the Accuracy Trainer opens in its own resizable window. A menu bar menu and Ableton Link. On the Mac App Store.',
    },
 ];
@@ -86,7 +97,7 @@ const freeForever = [
   'Count-in and auto stop',
   'Screen flash',
   'Visualizations',
-  'Practice history and streaks',
+  'Practice history, calendar, charts and streak',
   'Widgets',
   'iCloud backup (iPhone, iPad and Mac)',
 ];

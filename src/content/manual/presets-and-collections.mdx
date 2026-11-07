@@ -1,6 +1,6 @@
 ---
 title: Presets and collections
-description: Save and edit presets, favorites and notes, group them in collections and play a collection hands-free.
+description: Save presets with an artist and notes, search and sort them, group them in collections and play a collection hands-free.
 order: 70
 group: Practice
 platforms: [ios, mac, android]
@@ -8,15 +8,15 @@ platforms: [ios, mac, android]
 
 A **preset** saves your metronome setup under a name, so you can get it back in one tap. A **collection** is a list of presets, like a practice routine or a set list. You can **play a collection**: the presets come one after another, and you switch with one tap, a key or a foot pedal.
 
-<Pro /> <Platform only="ios mac" inline>Loading, favoriting and deleting presets and collections is free. Creating, editing and duplicating them, and playing a collection, need Makonome Pro.</Platform><Platform only="android" inline>On Android, loading, favoriting, editing and deleting presets is free, and so are reordering and deleting collections. Creating presets and collections, editing a collection, adding presets to it and playing it need Makonome Pro.</Platform>
+<Pro /> Loading, favoriting, deleting and reordering presets and collections is free, and so are searching and sorting presets. Creating, editing and duplicating them, adding presets to a collection and playing a collection need Makonome Pro.
 
 ## Open the presets list
 
 On the metronome screen, tap the list button in the top right corner. The **Presets** screen opens. Use the <Platform only="ios mac" inline>switch</Platform><Platform only="android" inline>tabs</Platform> at the top to go between **Presets** and **Collections**.
 
-<Screenshot name="presets-list" alt="The Presets screen with Presets selected: a Favorites section with Warm-up 80 and Rock 120, then All Presets with Odd time 7/8, Groove 96 and Speed builder. Each row shows the tempo, meter, subdivision, accents and notes, a star on the left and a green load button on the right" caption="Favorites sit above all other presets." />
+<Screenshot name="presets-list" alt="The Presets screen with Presets selected and a search field under the switch: a Favorites section with Warm-up 80 and Rock 120, then All Presets. Each row shows the tempo, meter, subdivision, accents and notes, a star on the left and a green load button on the right" caption="Favorites sit above all other presets." />
 
-<Screenshot name="presets-list" alt="The Presets screen on Android with the Presets tab selected: Favorites with Funk groove 96 and Ballad 64, then All Presets with Odd meter 7 groove and Waltz 3/4 132. Each row shows the tempo, meter and subdivision, with a star on the right" only="android" caption="Favorites sit above all other presets." />
+<Screenshot name="presets-list" alt="The Presets screen on Android with the Presets tab selected and a search field: Favorites with Warm-up and Funk groove, then All Presets. Each row has a drag handle on the left, then the tempo, meter and subdivision, and a star on the right" only="android" caption="Favorites sit above all other presets." />
 
 ## Save a preset
 
@@ -25,7 +25,7 @@ Set up the metronome first: tempo, time signature, subdivision and beat accents.
 <Platform only="ios mac">
 1. Open the presets list and tap **+** in the top right corner.
 2. Type a **Preset Name**.
-3. Add **Notes** if you like, for example "Rudiments, loose wrists". Notes are optional.
+3. Add an **Artist** and **Notes** if you like, for example "Rudiments, loose wrists". Both are optional.
 4. Check **Current Settings**: this is what the preset saves.
 5. Tap **Save**.
 </Platform>
@@ -33,11 +33,12 @@ Set up the metronome first: tempo, time signature, subdivision and beat accents.
 <Platform only="android">
 1. Open the presets list and tap the round **+** button in the bottom right corner.
 2. In **Save as Preset**, type a **Name**.
-3. Add **Notes (optional)** if you like, for example "Rudiments, loose wrists".
-4. Tap **Save**.
+3. Add **Artist (optional)** and **Notes (optional)** if you like, for example "Rudiments, loose wrists".
+4. Check **Current Settings**: this is what the preset saves.
+5. Tap **Save**.
 </Platform>
 
-<Screenshot name="preset-new" alt="The New Preset form with the name My Preset, an empty Notes field, and Current Settings: BPM 120, Time Signature 4/4, Subdivision Quarter Notes, Accented Beats 1, and a Save button" caption="A new preset saves the current settings." />
+<Screenshot name="preset-new" alt="The New Preset form with the name My Preset, empty Artist and Notes fields, and Current Settings: BPM 120, Time Signature 4/4, Subdivision Quarter Notes, Accented Beats 1, and a Save button" caption="A new preset saves the current settings." />
 
 A preset saves:
 
@@ -45,30 +46,59 @@ A preset saves:
 - The time signature, with its beat unit (for example dotted beats in 6/8) and accent groups
 - The subdivision, with its [rests](/manual/time-signatures/#rests-inside-the-beat)
 - Which beats are accented and which are muted
-- The name and notes
+- The name, artist and notes
 
 <Platform only="ios mac">
 A preset does not save the sound, volume, trainers, count-in or auto stop. Those stay as they are when you load a preset.
 </Platform>
 
 <Platform only="android">
-On Android a preset also saves the sound. Loading a preset sets its sound, puts the volume back to 100% and the pitch back to 0. A preset does not save the trainers, count-in or auto stop: those stay as they are.
+On Android a preset also saves the sound. Loading a preset sets its sound. A preset does not save the volume, pitch, trainers, count-in or auto stop: those stay as they are.
 </Platform>
 
 ## Load a preset
 
 Tap <Platform only="ios mac" inline>the green load button on the right of the preset</Platform><Platform only="android" inline>the preset's row</Platform>. Makonome goes back to the metronome screen with the preset's settings. If the metronome is playing, it switches at once and starts again at bar 1.
 
-Each row shows the tempo, meter and subdivision (with dots for the rests, if it has any)<Platform only="ios mac" inline>, the accented and muted beats (for example **Beats 1, 3, 5 accented**), and the notes</Platform>.
+Each row shows the name and artist, the tempo, meter and subdivision (with dots for the rests, if it has any), the accented and muted beats (for example **Beats 1, 3, 5 accented**), and the notes.
 
 ## Favorites
 
 Tap the star on the <Platform only="ios mac" inline>left</Platform><Platform only="android" inline>right</Platform> of a preset to make it a favorite. Favorites show in a **Favorites** section at the top, above **All Presets**. Tap the star again to remove it.
 
+## Find and sort presets
+
+**Search:** type in the **Name or artist** field at the top of the Presets screen. It finds presets by name or artist, and doesn't mind upper or lower case or accents.<Platform only="ios mac" inline> It shows only on Presets. If you switch to Collections, your text is kept for when you come back.</Platform>
+
+**Sort:** tap the sort button <Platform only="ios mac" inline>in the top right corner</Platform><Platform only="android" inline>next to the search field</Platform> and pick one under **Sort By**:
+
+- **Manual:** your own order. This is the order at first.
+- **Name:** A to Z.
+- **Recently Played:** the presets you played last come first.
+- **Recently Created:** the newest presets come first.
+
+Makonome remembers your choice. Favorites stay in their own section at the top, sorted the same way.
+
+### Reorder presets
+
+Dragging presets into your own order is free. It works in **Manual** sort with an empty search and at least two presets.
+
+<Platform only="ios mac">
+1. Tap the sort button and pick **Reorder**.
+2. Drag the presets by their handles.
+3. Tap **Done**.
+</Platform>
+
+<Platform only="android">
+Drag a preset by the ≡ handle on its left. With TalkBack, use the **Move up** and **Move down** actions.
+</Platform>
+
+A preset moves only inside its own section: **Favorites** or **All Presets**.
+
 ## Edit, duplicate and delete
 
 <Platform only="ios mac">
-- **Edit:** swipe right on a preset, or touch and hold it and pick **Edit**. You can change the name and the notes. The settings are shown but you can't change them here: to change them, load the preset, change the metronome, and save a new preset.
+- **Edit:** swipe right on a preset, or touch and hold it and pick **Edit**. You can change the name, the artist and the notes. The settings are shown but you can't change them here: to change them, load the preset, change the metronome, and save a new preset.
 - **Duplicate:** touch and hold a preset and pick **Duplicate**. The copy is called "(Copy)", for example "Rock 120 (Copy)", and sits under the original.
 - **Delete:** swipe left on a preset, or touch and hold it and pick **Delete**. It is deleted at once, with no question, and removed from every collection.
 
@@ -78,10 +108,12 @@ The menu also has **Favorite** or **Unfavorite**. Without Pro, the **+** button 
 <Platform only="android">
 On Android, swipe left on a preset to show two buttons:
 
-- **Edit** (the pencil): change the name and the notes. To change the settings, load the preset, change the metronome, and save a new preset.
+- **Edit** (the pencil): change the name, the artist and the notes. To change the settings, load the preset, change the metronome, and save a new preset.
 - **Delete** (the bin): the preset is deleted at once, with no question, and removed from every collection.
 
-There is no Duplicate on Android. Without Pro, the **+** button opens the upgrade screen. Your saved presets keep working.
+To duplicate a preset, touch and hold it (or right-click it) and pick **Duplicate**. The copy is called "(Copy)", for example "Rock 120 (Copy)", and sits under the original. The menu also has **Favorite** or **Unfavorite**, **Edit** and **Delete**.
+
+Editing and duplicating need Pro. Without Pro, the **+** button opens the upgrade screen, and a swipe shows only Delete. Your saved presets keep working: you can still load, favorite and delete them.
 </Platform>
 
 <Platform only="mac">
@@ -118,7 +150,8 @@ To see your collections, open the presets list and pick **Collections** at the t
 1. In **Collections**, tap the round **+** button.
 2. In **New Collection**, type a **Name** and, if you like, **Notes (optional)**.
 3. Tap **Save**.
-4. Open the new collection. Under **Add Presets**, tap each preset you want (or its **+**).
+4. Open the new collection and tap **Add Presets**.
+5. Tick the presets you want, then tap **Done**.
 </Platform>
 
 ### Inside a collection
@@ -128,30 +161,38 @@ Tap a collection to open it. You see its notes, a **Play Collection** button and
 <Platform only="ios mac">
 - **Load one preset:** tap the green load button on its row.
 - **Add presets:** tap **Add Presets** at the bottom, or **••• → Add Presets** in the top right corner.
-- **Remove a preset:** swipe left on it and tap **Remove**. This only takes it out of the collection. The preset stays in your presets list.
+- **Remove a preset:** swipe left on it and tap **Remove from Collection**. This only takes it out of the collection. The preset stays in your presets list.
 - **Reorder:** tap **••• → Reorder**, drag the presets by their handles, then tap **Done**.
 - **Rename or change the notes:** tap **••• → Edit Collection**.
 </Platform>
 
 <Platform only="android">
 - **Load one preset:** tap its row.
-- **Add presets:** tap them in the **Add Presets** section at the bottom. It lists the presets that aren't in the collection yet.
+- **Add presets:** tap **Add Presets** at the bottom, tick the presets you want, then tap **Done**. Favorites come first, and presets already in the collection stay ticked.
 - **Remove a preset:** tap **−** on its row. This only takes it out of the collection. The preset stays in your presets list.
 - **Reorder:** drag a preset by the handle on its left. With TalkBack, use the **Move up** and **Move down** actions.
-- **Rename or change the notes:** in the Collections list, swipe left on the collection and tap **Edit**.
+- **Rename or change the notes:** tap the pencil in the top bar.
 </Platform>
 
 <Screenshot name="collection-detail" alt="The Saturday gig collection: the notes Set list, in order, a Play Collection button, 5 Presets (Rock 120, Groove 96, Odd time 7/8, Shuffle 108, Ballad 64) each with a load button, and Add Presets at the bottom" caption="A collection with its Play Collection button." />
+
+<Screenshot name="collection-detail" alt="A collection on Android: the notes, a Play Collection button, the list of presets with drag handles and − buttons, and an Add Presets button" only="android" caption="A collection on Android." />
 
 <Screenshot name="collection-reorder" alt="The Saturday gig collection in reorder mode, with drag handles on the right of each preset and a Done button in the top right corner" only="ios" caption="Drag the handles to change the order." />
 
 <Platform only="ios mac">
 In the collections list, favorites, duplicating, editing and deleting work like they do for presets: the star, swipe right to edit, swipe left to delete, and touch and hold (right-click on Mac) for **Duplicate**, **Edit**, **Favorite** and **Delete**.
+
+To change the order of your collections, tap **••• → Reorder** in the collections list, drag them by their handles, then tap **Done**. Reordering is free. Each collection moves only inside its own section: **Favorites** or **All Collections**.
 </Platform>
 
 <Platform only="android">
-In the collections list on Android, swipe left on a collection for **Edit** and **Delete**. Collections have no favorites and no Duplicate.
+In the collections list on Android, tap the star to make a collection a favorite. Swipe left on a collection for **Edit** and **Delete**, or touch and hold it (right-click) for **Favorite**, **Duplicate**, **Edit** and **Delete**. A duplicate is called "(Copy)" and has the same presets.
+
+To change the order of your collections, drag them by the ≡ handle. Reordering is free. Each collection moves only inside its own section: **Favorites** or **All Collections**.
 </Platform>
+
+<Screenshot name="collection-list-reorder" alt="The Collections screen in reorder mode, with drag handles on the rows and a Done button in the top right corner" only="ios" caption="Reordering the collections list." />
 
 Deleting a collection does not delete its presets.
 
@@ -167,9 +208,9 @@ To play a collection:
 
 If the metronome was already playing, it switches to the first preset at once.
 
-<Screenshot name="collection-player-bar" alt="The metronome playing Groove 96 at 96 BPM, with the player bar above the dial: Saturday gig, Groove 96, 2 of 5, a back button on the left, a forward button and a close button on the right" caption="The player bar on the metronome screen." />
+<Screenshot name="collection-player-bar" alt="The metronome playing Groove 96 at 96 BPM, with the player bar above the dial: Saturday gig, Groove 96, 2 of 5, a round back button on the left, a round forward button and a small close button on the right" caption="The player bar on the metronome screen." />
 
-<Screenshot name="collection-player-bar" alt="The metronome on Android playing Funk groove 96 with the readout Bar 3 of 8, Beat 2, and the player bar above the buttons: Saturday gig, Funk groove 96, 2 of 5, with back, forward and close buttons" only="android" caption="The player bar on Android." />
+<Screenshot name="collection-player-bar" alt="The metronome on Android playing at 120 BPM with the readout Bar 2, Beat 2, and the player bar above the buttons: Daily practice, Odd time study, 2 of 4, with back, forward and close buttons" only="android" caption="The player bar on Android." />
 
 The player bar shows the collection name, the current preset, and where you are, for example **2 of 5**. It has three buttons:
 

@@ -1,8 +1,9 @@
 ---
 // <Screenshot name="metronome-main" alt="…" only="ios mac" />
 // Loads src/assets/manual/<platform>/<name>.png for each platform in `only`
-// (default "ios mac"). Android shots are the 1.1.0 Play Store screenshots, so only a
-// few scenes have one: list "android" in `only` where a file exists.
+// (default "ios mac"). Android shots come from tools/manual-screenshots.sh in the Android
+// repo, plus the Play Store shots for the practice history. Only the scenes a page uses are
+// copied here: list "android" in `only` where a file exists.
 // A missing file for a listed platform fails the build.
 // The eager glob below ships every file it matches to dist/, used or not, so shots no page
 // uses live in src/assets/manual/unused/<platform>/, which the pattern skips.

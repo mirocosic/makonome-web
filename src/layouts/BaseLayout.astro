@@ -1,5 +1,6 @@
 ---
 import SeoMeta from '../components/SeoMeta.astro';
+import Analytics from '../components/Analytics.astro';
 
 interface Props {
   title: string;
@@ -20,6 +21,7 @@ const { title, description = "A precision metronome app for iPhone, iPad, Mac an
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>{title}</title>
     <SeoMeta title={title} description={description} />
+    <Analytics />
     <slot name="head" />
   </head>
   <body>

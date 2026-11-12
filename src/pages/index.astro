@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import Icon, { type IconName } from '../components/home/Icon.astro';
 import Phone from '../components/home/Phone.astro';
 import StoreButtons from '../components/home/StoreButtons.astro';
-import { GOOGLE_PLAY_URL } from '../lib/stores';
+import { storeUrl } from '../lib/stores';
 import { PRO_PRICE } from '../lib/pricing';
 import { Image, getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
@@ -125,7 +125,7 @@ const macFull = await getImage({ src: macTrainerLive, width: 1440, format: 'webp
           A metronome for 7/8, septuplets and subdivisions with rests, with a Gap Trainer that mutes bars so you keep
           the time yourself. The core metronome is free.
         </p>
-        <StoreButtons />
+        <StoreButtons campaign="web-home" />
         <p class="platforms">iPhone, iPad, Mac and Android · <a href="/manual/">Read the manual →</a></p>
       </div>
       <div class="hero-phone">
@@ -194,7 +194,7 @@ const macFull = await getImage({ src: macTrainerLive, width: 1440, format: 'webp
           <div>
             <strong>On Android too</strong>
             <span
-              >Same metronome on Android phones. <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener"
+              >Same metronome on Android phones. <a href={storeUrl('google-play', 'web-home-pricing')} target="_blank" rel="noopener"
                 >Get it on Google Play</a
               >.</span
             >

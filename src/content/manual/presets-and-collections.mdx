@@ -1,6 +1,6 @@
 ---
 title: Presets and collections
-description: Save presets with an artist and notes, search and sort them, group them in collections and play a collection hands-free.
+description: Save presets with an artist, notes and their sound, search and sort them, group them in collections, play a collection hands-free and share them.
 order: 70
 group: Practice
 platforms: [ios, mac, android]
@@ -46,21 +46,18 @@ A preset saves:
 - The time signature, with its beat unit (for example dotted beats in 6/8) and accent groups
 - The subdivision, with its [rests](/manual/time-signatures/#rests-inside-the-beat)
 - Which beats are accented and which are muted
+- The sound
 - The name, artist and notes
 
-<Platform only="ios mac">
-A preset does not save the sound, volume, trainers, count-in or auto stop. Those stay as they are when you load a preset.
-</Platform>
+Loading a preset switches to its sound. Without Pro, a preset with a Pro sound (Clave, Woodblock, Cowbell or Voice) keeps your current sound.<Platform only="ios mac" inline> So does a preset saved before Makonome 1.4, which had no sound yet.</Platform>
 
-<Platform only="android">
-On Android a preset also saves the sound. Loading a preset sets its sound. A preset does not save the volume, pitch, trainers, count-in or auto stop: those stay as they are.
-</Platform>
+A preset does not save the volume, pitch, trainers, count-in or auto stop. Those stay as they are when you load a preset.
 
 ## Load a preset
 
 Tap <Platform only="ios mac" inline>the green load button on the right of the preset</Platform><Platform only="android" inline>the preset's row</Platform>. Makonome goes back to the metronome screen with the preset's settings. If the metronome is playing, it switches at once and starts again at bar 1.
 
-Each row shows the name and artist, the tempo, meter and subdivision (with dots for the rests, if it has any), the accented and muted beats (for example **Beats 1, 3, 5 accented**), and the notes.
+Each row shows the name and artist, the tempo, meter and subdivision (with dots for the rests, if it has any), the beats that differ from the usual (for example **Beats 3, 5 accented** or **Beat 1 muted**), and the notes. Beat 1 is accented unless you change it, so it is listed only when it isn't.
 
 ## Favorites
 
@@ -70,7 +67,7 @@ Tap the star on the <Platform only="ios mac" inline>left</Platform><Platform onl
 
 **Search:** type in the **Name or artist** field at the top of the Presets screen. It finds presets by name or artist, and doesn't mind upper or lower case or accents.<Platform only="ios mac" inline> It shows only on Presets. If you switch to Collections, your text is kept for when you come back.</Platform>
 
-**Sort:** tap the sort button <Platform only="ios mac" inline>in the top right corner</Platform><Platform only="android" inline>next to the search field</Platform> and pick one under **Sort By**:
+**Sort:** <Platform only="ios mac" inline>tap **•••** in the top right corner and pick one under **Sort By**</Platform><Platform only="android" inline>tap the sort button next to the search field and pick one under **Sort By**</Platform>:
 
 - **Manual:** your own order. This is the order at first.
 - **Name:** A to Z.
@@ -84,7 +81,7 @@ Makonome remembers your choice. Favorites stay in their own section at the top, 
 Dragging presets into your own order is free. It works in **Manual** sort with an empty search and at least two presets.
 
 <Platform only="ios mac">
-1. Tap the sort button and pick **Reorder**.
+1. Tap **•••** and pick **Reorder**.
 2. Drag the presets by their handles.
 3. Tap **Done**.
 </Platform>
@@ -102,7 +99,7 @@ A preset moves only inside its own section: **Favorites** or **All Presets**.
 - **Duplicate:** touch and hold a preset and pick **Duplicate**. The copy is called "(Copy)", for example "Rock 120 (Copy)", and sits under the original.
 - **Delete:** swipe left on a preset, or touch and hold it and pick **Delete**. It is deleted at once, with no question, and removed from every collection.
 
-The menu also has **Favorite** or **Unfavorite**. Without Pro, the **+** button shows a sparkle icon and opens the upgrade screen, and Edit and Duplicate are not offered. Your saved presets keep working: you can still load, favorite and delete them.
+The menu also has **Favorite** or **Unfavorite**, and **Share…** to [send the preset as a file](/manual/sharing-and-backup/#share-presets-or-collections). Without Pro, the **+** button shows a sparkle icon and opens the upgrade screen, and Edit, Duplicate and Share are not offered. Your saved presets keep working: you can still load, favorite and delete them.
 </Platform>
 
 <Platform only="android">
@@ -111,13 +108,13 @@ On Android, swipe left on a preset to show two buttons:
 - **Edit** (the pencil): change the name, the artist and the notes. To change the settings, load the preset, change the metronome, and save a new preset.
 - **Delete** (the bin): the preset is deleted at once, with no question, and removed from every collection.
 
-To duplicate a preset, touch and hold it (or right-click it) and pick **Duplicate**. The copy is called "(Copy)", for example "Rock 120 (Copy)", and sits under the original. The menu also has **Favorite** or **Unfavorite**, **Edit** and **Delete**.
+To duplicate a preset, touch and hold it (or right-click it) and pick **Duplicate**. The copy is called "(Copy)", for example "Rock 120 (Copy)", and sits under the original. The menu also has **Favorite** or **Unfavorite**, **Share** and **Save to…** to [send or save the preset as a file](/manual/sharing-and-backup/#share-presets-or-collections), **Edit** and **Delete**.
 
 Editing and duplicating need Pro. Without Pro, the **+** button opens the upgrade screen, and a swipe shows only Delete. Your saved presets keep working: you can still load, favorite and delete them.
 </Platform>
 
 <Platform only="mac">
-On Mac, right-click a preset to see Edit, Duplicate, Favorite and Delete.
+On Mac, right-click a preset to see Edit, Duplicate, Favorite, Share…, Export… and Delete.
 </Platform>
 
 ### Presets from a newer version
@@ -195,6 +192,8 @@ To change the order of your collections, drag them by the ≡ handle. Reordering
 <Screenshot name="collection-list-reorder" alt="The Collections screen in reorder mode, with drag handles on the rows and a Done button in the top right corner" only="ios" caption="Reordering the collections list." />
 
 Deleting a collection does not delete its presets.
+
+A collection holds each preset once. To send a collection with its presets to someone, see [Sharing and backup files](/manual/sharing-and-backup/).
 
 ## Play a collection
 

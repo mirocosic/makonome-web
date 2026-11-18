@@ -10,7 +10,7 @@ Makonome can time your practice. You start a **practice session** when you begin
 
 Sessions are not recorded by themselves: only the sessions you start are tracked.
 
-<Pro /> Starting a practice session, adding a past session, changing your weekly goal and editing a saved note need Makonome Pro. Your history, calendar, charts, stats, streak, reminders and widgets are free, so you keep seeing them after the trial. You can also delete sessions without Pro.
+<Pro /> Starting a practice session, adding a past session, changing your weekly goal and editing a saved note need Makonome Pro. Your history, calendar, charts, stats, streak, reminders, widgets and the [spreadsheet export](#export-your-practice-history) are free, so you keep seeing them after the trial. You can also delete sessions without Pro.
 
 ## Start a practice session
 
@@ -18,14 +18,14 @@ Sessions are not recorded by themselves: only the sessions you start are tracked
 2. Tap **Start Practice Session**.
 
 <Platform only="ios mac">
-3. In **New Session**, type a name, or keep "Practice Session".
+3. In **New Session**, type a **Session Name** if you like. It is optional: a session without a name shows as "Practice Session".
 4. To set a goal, turn on **Set time goal** and pick a **Target Duration** from 1 to 60 minutes.
 5. To start the metronome with the session, turn on **Start metronome**. You can then pick a **Preset** to load, or keep **None** to play the current settings.
 6. Tap **Start**.
 </Platform>
 
 <Platform only="android">
-3. Type a **Session Name**, or keep the one Makonome suggests, for example "Practice Session #4".
+3. Type a **Name** if you like. It is optional: a session without a name shows as "Practice Session".
 4. To set a goal, turn on **Set a time goal** and pick 5 to 120 minutes, in steps of 5.
 5. To start the metronome with the session, turn on **Auto-start metronome**. The metronome plays your current settings: there is no preset choice.
 6. Tap **Start**.
@@ -125,6 +125,26 @@ A session saves how long you practiced and the preset. It does not save the temp
 5. Tap **Save**.
 
 The session is called after its preset, or "Practice" without one. It shows an **Added** tag, and it counts for your calendar, charts, weekly goal and streak. It can't end in the future. An added session has no time goal. With Pro you can still edit it later.
+
+### Export your practice history
+
+To get all your finished sessions as a spreadsheet (CSV), tap the share button in the top bar of **<Platform only="ios mac" inline>Practice History</Platform><Platform only="android" inline>History</Platform>** and pick where to send or save it. The button works once you have finished a session. It is free.
+
+The file is called `Makonome practice` with the date and time, for example `Makonome practice 2026-11-18 14-30.csv`. It opens in Numbers, Excel or Google Sheets. It has one row per session, oldest first, with these columns:
+
+| Column | What it is |
+|---|---|
+| `date`, `start_time`, `end_time` | When the session ran, in your local time |
+| `minutes` | How long you practiced, without paused time |
+| `target_minutes` | The session's time goal, if it had one |
+| `session_name` | The name, empty for a session without one |
+| `preset_name` | The preset you practiced with |
+| `bpm` | The tempo you finished on, if the metronome played |
+| `preset_bpm` | The preset's tempo |
+| `notes` | Your note |
+| `added_by_hand` | **yes** for a session you [added afterwards](#add-a-past-session) |
+
+The tempo you finished on is in the file only: the app doesn't show it. To move your whole history to another device, use a [backup file](/manual/sharing-and-backup/#back-up-to-a-file) instead.
 
 ### Calendar
 
@@ -288,6 +308,8 @@ On Android the widget shows 0 at the start of each week, and until your first se
 After you update to Makonome 1.1, **open the app once**. Until 1.1 the widget could not read your practice data. The first launch of 1.1 moves your data to where the widget can read it. Until then the widget shows zeros.
 
 ## Back up your practice
+
+A [backup file](/manual/sharing-and-backup/#back-up-to-a-file) holds your practice history too, with the rest of your Makonome data. It also moves your history between iPhone and Android.
 
 <Platform only="ios mac">
 Your sessions, stats, streak and weekly goal can be backed up to iCloud with the rest of your Makonome data, and come back when you reinstall the app. Turn it on in **Settings → Data Management → Back up to iCloud**. See [Settings, backup and data](/manual/settings-and-data/).

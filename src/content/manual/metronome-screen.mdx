@@ -94,7 +94,6 @@ Tap tempo counts a tap the moment your finger touches the screen. It ignores an 
 
 Under the number, the dial shows the classical name for the tempo:
 
-<Platform only="ios mac">
 | Tempo (BPM) | Name |
 |---|---|
 | below 40 | Grave |
@@ -107,25 +106,8 @@ Under the number, the dial shows the classical name for the tempo:
 | 156 to 175 | Vivace |
 | 176 to 199 | Presto |
 | 200 and faster | Prestissimo |
-</Platform>
 
-<Platform only="android">
-| Tempo (BPM) | Name |
-|---|---|
-| below 40 | Grave |
-| 40 to 54 | Largo |
-| 55 to 64 | Larghetto |
-| 65 to 72 | Adagio |
-| 73 to 84 | Andante |
-| 85 to 97 | Moderato |
-| 98 to 108 | Allegretto |
-| 109 to 131 | Allegro |
-| 132 to 167 | Vivace |
-| 168 to 199 | Presto |
-| 200 and faster | Prestissimo |
-</Platform>
-
-The name follows the beat you feel. In 7/8 at 210 eighth notes a minute, that is 105 quarter notes, so the name is <Platform only="ios mac" inline>Andante</Platform><Platform only="android" inline>Allegretto</Platform>. In compound meters like 6/8, the dial shows the eighth-note tempo in place of the name.
+The name follows the beat you feel. In 7/8 at 210 eighth notes a minute, that is 105 quarter notes, so the name is Andante. In compound meters like 6/8, the dial shows the eighth-note tempo in place of the name.
 
 ## Start and stop
 
@@ -154,6 +136,8 @@ Each beat ring has three states. Tap a ring to change it, in this order:
 3. **Muted:** a dashed ring. No click on that beat, and none of its subdivision notes.
 
 The next tap goes back to normal.
+
+Beat 1 is accented at first, so you hear where the bar starts. That is the case for a new time signature, and for a preset saved without accents. Tap its ring to make it normal or muted.
 
 <Screenshot name="metronome-beat-states" alt="Four beat rings: beat 1 and beat 3 filled (accented), beat 2 empty (normal), beat 4 dashed (muted)" only="ios mac" caption="Beats 1 and 3 accented, beat 2 normal, beat 4 muted." />
 

@@ -1,0 +1,79 @@
+---
+title: Siri, Shortcuts and AI assistants
+description: Start the metronome, a preset or a practice session with Siri and Shortcuts, find presets in Spotlight, and let AI assistants on Android use Makonome.
+order: 115
+group: Setup and help
+platforms: [ios, mac, android]
+---
+
+<Platform only="ios mac">
+You can control Makonome with **Siri**, build **Shortcuts** with it, and find your presets and collections in **Spotlight**, without opening the app. The metronome plays in the background.
+</Platform>
+
+<Platform only="android">
+On Android 17 and later, **AI assistants** can use Makonome through Android's App Functions: start and stop the metronome, play a preset, read your practice history, and make presets and setlists for you.
+</Platform>
+
+<Pro /> Playing, stopping, setting the tempo, playing a preset and asking about your practice are free. Playing a collection, creating presets, adding presets to collections and starting a practice session need Makonome Pro, the same as in the app. Without Pro, <Platform only="ios mac" inline>Siri</Platform><Platform only="android" inline>the assistant</Platform> tells you that, for example **Presets & Collections needs Makonome Pro.**
+
+<Platform only="ios mac">
+
+## Siri
+
+Say a phrase, or tap a Makonome shortcut in the Shortcuts app. Most phrases end in "in Makonome", for example "Start the metronome in Makonome".
+
+| What it does | Say | Pro |
+|---|---|---|
+| Start the metronome | "Start Makonome", or "Start the metronome in Makonome". You can give a tempo. | |
+| Stop the metronome | "Stop Makonome", or "Stop the metronome in Makonome" | |
+| Set the tempo | "Set the tempo in Makonome". Siri asks **What tempo?** If the metronome plays, it keeps playing at the new tempo. | |
+| Play a preset | "Play Warm-up 80 in Makonome", or "Start a preset in Makonome" | |
+| Play a collection | "Play the collection Saturday gig in Makonome". It starts on the first preset. | <Pro /> |
+| Create a preset | "Create a preset in Makonome", with a name, tempo, time signature (4/4 if you don't say) and artist | <Pro /> |
+| Add a preset to a collection | "Add a preset to a collection in Makonome" | <Pro /> |
+| Start a practice session | "Start practicing in Makonome". Siri asks **For how many minutes?** (say 0 for no goal). You can pick a preset. | <Pro /> |
+| Ask about your practice | "How much did I practice in Makonome", or "Show my practice this week in Makonome" | |
+
+The tempo goes from 20 to 400 BPM, the same as the dial. In other meters, like 6/8, it follows the dial too.
+
+Siri answers short, for example **Playing at 120 BPM.** or **You practiced 1 hour 5 minutes on 3 days this week.** with your week streak, if you have one.
+
+## Shortcuts
+
+Every action above is also in the **Shortcuts** app, under **Makonome**. Use them in your own shortcuts, for example a "Practice" shortcut that starts a 30-minute session with your warm-up preset, or put one on the Home Screen.
+
+## Spotlight
+
+Your presets and collections show up when you search with Spotlight. A preset shows its tempo, time signature and artist, for example **120 BPM · 4/4 · Rock band**. A collection shows how many presets it has.
+
+- Tap a **preset** to open the metronome with it loaded. It doesn't start playing.
+- Tap a **collection** to open it in the [collection player](/manual/presets-and-collections/#play-a-collection), on its first preset. That needs Pro: without Pro, Makonome just opens.
+
+</Platform>
+
+<Platform only="android">
+
+## AI assistants on Android
+
+AI assistants that support App Functions can use Makonome on Android 17 and later. Makonome doesn't name a specific assistant: which ones work depends on your phone and the assistant.
+
+The switch is **Settings → General → Let AI Assistants Use Makonome**. It is on at first. Turn it off and no assistant can use Makonome. The switch shows only on phones with Android 17 or later.
+
+With the switch on, an assistant can see your presets, collections and practice history, notes included. It can:
+
+| What | Pro |
+|---|---|
+| Start the metronome at a tempo, or with a preset | |
+| Start a collection | <Pro /> |
+| Stop the metronome | |
+| Find presets and collections, and read their settings | |
+| Read your practice sessions and a practice summary for a time range | |
+| Create or change a preset | <Pro /> |
+| Create or change a collection | <Pro /> |
+| Make a setlist from a list of songs, as a new collection | <Pro /> |
+
+Tempos go from 20 to 400 BPM. An assistant can't delete anything.
+
+If Makonome can't play, the assistant is told **Makonome's metronome couldn't be reached. Ask the user to open Makonome.**
+
+</Platform>
